@@ -1,0 +1,37 @@
+AnyData::Standalone -- install AnyData without make or compile
+
+WHAT IT IS (AND ISN'T)
+
+ This package includes all of the files needed to install AnyData
+ and DBD::AnyData.  It is *only* for extreme cases where you can't
+ use CPAN or PPM or manual install (for example if you only have
+ FTP access to a server or you are installing onto a PDA or other
+ limited environment).  If you are using this package to avoid
+ learning how to install modules, please don't do that.  Learn to
+ install modules, it will really, really help you in the long run.
+
+HOW TO INSTALL
+
+ Unpack this package in the desired location (or unpack it locally and
+ then FTP the resulting MyLib directory to the final location).  In
+ scripts that call the modules put this at the top:
+
+     use lib 'path/MyLib';   # path = wherever you unpacked MyLib
+
+ This package does not include DBI.  If you want to use DBD::AnyData,
+ you'll need to install DBI separately.  DBI also has a Pure Perl
+ version that can be installed without compile or make, see the DBI
+ and DBI::PurePerl docs for further info.
+
+WHAT VERSIONS ARE INCLUDED
+
+     AnyData        0.08
+     DBD::AnyData   0.06
+     DBD::File      0.22
+     SQL::Statement 1.005
+
+=head1 DOCUMENTATION
+ 
+ The documentation for each module is included with the module, use
+ perldoc <module_name> or just read the pod section in a text viewer
+ or look up the docs online at http://search.cpan.org/~jzucker/.
