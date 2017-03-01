@@ -1,4 +1,6 @@
 #!/usr/bin/perl -w
+use strict;
+use warnings;
 
 # ---------------------------------------------
 # view_history.cgi   - Create by Lance Wicks

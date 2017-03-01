@@ -1,33 +1,93 @@
 #!/usr/bin/perl -w
+use strict;
+use warnings;
 
-# ---------------------------------------------
-# e-judo.cgi   - Create by Lance Wicks
-#                e-judo.sourceforge.net
-# This is free open source software! Released under GPL
-#
-# Description:
-# This script is the initial login screen for the new e-Judo code.
-# this screen allows you to login, or link to script to create a new user
-# this script will validate a user from the users_csv data file.
-#
-# History:
-# ========
-# 20 December 2003, Lance Wicks - Created initial file.
-# 02 January 2004, Lance Wicks - Create USer complete, so start on Create user, first create a main menu script.
-# 16 March 2004, Lance Wicks - Added code to create the JUDOKA_CSV file if it does not exist. (Also my brithday if you are bored enough to care!)
-# 16 March 2004, Lance Wicks - Added code to create the users file if it does not exist already.
+use CGI qw(:standard);  
+use lib './MyLib';
+use DBI;
 
-my $DEBUG = 1;    #  If this is set to 1 then we see the debug messages.
-
-use strict;               # force strict programming controls
-use CGI qw(:standard);    # use the CGI.PM module
-use lib './MyLib'
-    ; # use the modules in MyLib, this is the DBD::Anydata used for database activities
-use DBI
-    ; # This calls the DBI module, which along with the line above allows us to do database activities
-
+our $DEBUG = 0;
 print header(), start_html("e-Judo Test Area"),
     h1("e-Judo test area");   # This line uses CGI.PM to to create the webpage
+
+if ( param() ) { 
+    # If there is a parameter(or parameters) then validate, else show the login screen.
+    # the following lines are excecuted if paramaters HAVE been entered
+
+    my $name = param("ID");
+    my $password = param("ejudopass");
+    
+    if ( $name eq "" or $password eq "" ) { 
+        print "Come on, enter some data!!";
+        exit;
+    }
+
+    my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):'); 
+    $dbh->func( 'users', 'CSV', './data/users_csv', 'ad_catalog' );
+    
+    my $user = $dbh->selectall_arrayref(
+        'SELECT * FROM users WHERE id = ?',
+        {Slice=>{}},
+        $name
+    );
+    
+    my @result;
+    my $pass = $user->[0]{PASSWORD};
+    
+    if ($pass) {
+        if ( $pass eq $password ) {
+            print p("OK");
+            print('<a href="main_menu.cgi?id=$name">Click here to continue</a>');    
+        }
+        else {  
+            print("Invalid Credentials");
+        }
+    }
+    else {       
+        print p('Invalid Credentials');
+    }
+}
+else {
+    if ( -e "./data/judoka_csv" ) {
+        print p("Judoka_csv exists") if $DEBUG;
+    }
+    else {
+        print p("about to call the create_judoka_file sub") if $DEBUG;
+        create_judoka_file();
+    }
+
+    # second, check if the USERS datafile exists, if not we will create it.
+    if ( -e "./data/users_csv" ) {
+        print p("users_csv exists") if $DEBUG;
+    }
+    else {
+        print p("about to call the create_users_file sub") if $DEBUG;
+        create_users_file();
+    }
+
+    # third, check if the shiai datafile exists, if not we will create it.
+    if ( -e "./data/shiai_csv" ) {
+        print p("shiai_csv exists") if $DEBUG;
+    }
+    else {
+        print p("about to call the create_shiai_file sub") if $DEBUG;
+        create_shiai_file();
+    }
+
+    print hr;
+    print start_form;
+    print p( "What is your user ID: ", textfield("ID") );
+    print p( "Your Password: ", password_field("ejudopass") );
+    print submit( -name => 'submit button' );
+    print end_form;
+    print hr;
+    print('else click <a href="create_user.cgi">HERE</a> to create a new user');
+}
+
+print end_html;
+
+
+# ----------------------------
 
 sub create_judoka_file {
     # This sub creates the data/judoka_csv file
@@ -35,7 +95,7 @@ sub create_judoka_file {
 
     # create the scalers we need to use in the sql
     # ----------------------------------------------
-    my $judoka_table = "data/judoka_csv/"
+    my $judoka_table = "./data/judoka_csv"
         ;    # eg: data/shiai_data/userTest.ldr the ladder itself
     print p( " table name = ", $judoka_table ) if $DEBUG;
     # Okay now we must create the database files
@@ -198,7 +258,7 @@ sub create_users_file {
 
     # create the scalers we need to use in the sql
     # ----------------------------------------------
-    my $users_table = "data/users_csv/";
+    my $users_table = "./data/users_csv";
     print p( " table name = ", $users_table ) if $DEBUG;
     # Okay now we must create the database files
     # here is the DBI/SQL code
@@ -256,7 +316,7 @@ sub create_shiai_file {
 
     # create the scalers we need to use in the sql
     # ----------------------------------------------
-    my $shiai_table = "data/shiai_csv/";
+    my $shiai_table = "./data/shiai_csv";
     print p( " table name = ", $shiai_table ) if $DEBUG;
     # Okay now we must create the database files
     # here is the DBI/SQL code
@@ -308,91 +368,19 @@ sub create_shiai_file {
 
 }
 
-if ( param() )
-{ # If there is a parameter(or parameters) then validate, else show the login screen.
-        # the following lines are excecuted if paramaters HAVE been entered
-
-    my $name = param("ID")
-        ; # $name is the user name/ID from the webpage form enetered by the user
-    my $password = param("ejudopass")
-        ; # $password is the password from the webpage form enetered by the user
-    if ( $name eq "" or $password eq "" )
-    { # If the user does not enter any data then tell them they did wrong and stop
-        print "Come on, enter some data!!";
-        exit;
-    }
-    my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):')
-        ;    # tell DBI we want to use the Anydata module in ./MyLibs
-    $dbh->func( 'users', 'CSV', 'data/users_csv', 'ad_catalog' )
-        ;    # Connect to the users_csv data file
-    my $sth = $dbh->prepare("SELECT * FROM users WHERE id = ?")
-        ;    # select the password for the user entered anme from the database
-    $sth->execute($name);    # excecute the select command above
-    my @result = $sth->fetchrow_array
-        ; # this line takes the results of the select and puts it in the array called RESULTS
-    $dbh->disconnect()
-        ; # we are done with the datbase for now, so disconnect from it (MAY NOT BE NECESSARY)
-    my $pass = $result[0]
-        ; # here we get a scaler variable from our array, as the is only one piece of data requested we choose array item 0
-
-    if ($pass) {    # if we get a match then...
-        if ( $pass eq $password )
-        {    # if the password entered matches the one from the database then
-            print p("OK");
-            print(
-                " <a href='main_menu.cgi?id=$name'>Click here to continue</a>"
-            );    # this line tells the user to continue to the main menu
-        }
-        else {    # if however we do not have a match then
-            print("no good");
-
-        }
-    }
-    else {        # if there is no match
-        print p("Nay good, try again");
-    }
-
-}
-else {
-# The following lines are excecuted only if no parameters have been entered. (Ie when you first arrive)
-
-    # first, check if the judoka datafile exists, if not we will create it.
-    if ( -e "data/judoka_csv" ) {
-        print p("Judoka_csv exists") if $DEBUG;
-    }
-    else {
-        print p("about to call the create_judoka_file sub") if $DEBUG;
-        create_judoka_file();
-    }
-
-    # second, check if the USERS datafile exists, if not we will create it.
-    if ( -e "data/users_csv" ) {
-        print p("users_csv exists") if $DEBUG;
-    }
-    else {
-        print p("about to call the create_users_file sub") if $DEBUG;
-        create_users_file();
-    }
-
-    # third, check if the shiai datafile exists, if not we will create it.
-    if ( -e "data/shiai_csv" ) {
-        print p("shiai_csv exists") if $DEBUG;
-    }
-    else {
-        print p("about to call the create_shiai_file sub") if $DEBUG;
-        create_shiai_file();
-    }
-
-    print hr, start_form;    # create a form using CGI.PM
-    print p( "What is your user ID: ", textfield("ID") )
-        ;                    # which asks for a username & password
-    print p( "Your Password: ", password_field("ejudopass") );
-    print submit( -name => 'submit button' );
-    print end_form, hr;      # end the form
-    print(
-        "else click <a href='create_user.cgi'>HERE</a> to create a new user")
-        ;                    # this line invites them to create a new user.
-
-}
-print end_html;              # this closes the web page properly
-
+# ---------------------------------------------
+# e-judo.cgi   - Create by Lance Wicks
+# This is free open source software! Released under GPL
+#
+# Description:
+# This script is the initial login screen for the new e-Judo code.
+# this screen allows you to login, or link to script to create a new user
+# this script will validate a user from the users_csv data file.
+#
+# History:
+# ========
+# 20 December 2003, Lance Wicks - Created initial file.
+# 02 January 2004, Lance Wicks - Create USer complete, so start on Create user, first create a main menu script.
+# 16 March 2004, Lance Wicks - Added code to create the JUDOKA_CSV file if it does not exist. (Also my brithday if you are bored enough to care!)
+# 16 March 2004, Lance Wicks - Added code to create the users file if it does not exist already.
+# 01 March 2017, Lance Wicks - Restarting the project.

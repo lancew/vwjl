@@ -1,4 +1,6 @@
 #!/usr/bin/perl -w
+use strict;
+use warnings;
 
 # ---------------------------------------------
 # create_shiai.cgi   - Create by Lance Wicks

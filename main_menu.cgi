@@ -1,4 +1,6 @@
 #!/usr/bin/perl -w
+use strict;
+use warnings;
 
 # ---------------------------------------------
 # main_menu.cgi   - Create by Lance Wicks

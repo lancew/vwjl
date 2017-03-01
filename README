@@ -1,0 +1,4 @@
+To run via plackup:
+
+ plackup -R ./ -MPlack::App::CGIBin -e 'Plack::App::CGIBin->new(root => "/media/mac/Sites/vwjl")->to_app'
+

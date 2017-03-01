@@ -1,4 +1,6 @@
 #!/usr/bin/perl -w
+use strict;
+use warnings;
 
 # ---------------------------------------------
 # Accept_Challenges.cgi   - Create by Lance Wicks

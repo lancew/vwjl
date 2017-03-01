@@ -1,32 +1,49 @@
 #!/usr/bin/perl -w
+use strict;
+use warnings;
 
-# ---------------------------------------------
-# create-user.cgi   - Create by Lance Wicks
-#                       e-judo.sourceforge.net
-# This is free open source software! Released under GPL
-#
-# Description:
-# This script adds a new user to the users database
-#
-# History:
-# ========
-# 20 December 2003, Lance Wicks - Created initial file.
-# 23 December 2003, Lance Wicks - On the suggestion of Jeff Zucker, am re-writing this code to use more sub-routines and some other good suggestions.
-# 02 January 2004, Lance Wicks - Finally finished this module, is now working, still need to add input validation and user notification etc.
+our $DEBUG = 1;    #  If this is set to 1 then we see the debug messages.
 
-my $DEBUG = 0;    #  If this is set to 1 then we see the debug messages.
+use CGI qw(:standard);
+use lib './MyLib';
+use DBI;
 
-# The following 4 lines set strict PERL coding then load the CGI DBI and DBD::Anydata modules.
-# ---------------------------------------------------------------------------------------------
-use strict;               # force strict programming controls
-use CGI qw(:standard);    # use the CGI.PM module
-use lib './MyLib'
-    ; # use the modules in MyLib, this is the DBD::Anydata used for database activities
-use DBI
-    ; # This calls the DBI module, which along with the line above allows us to do database activities
 
-# Sub routines
-# --------------
+# main code block
+# ---------------
+
+print header(), start_html("e-Judo Test Area"),
+    h1("CREATE NEW USER");    # This line uses CGI.PM to to create the webpage
+
+print p("Start main block") if $DEBUG;
+print p( "parameters: ", param() ) if $DEBUG;
+#   print p("no parameters so print the form") if !(param());
+if ( param() )
+{ # If there is a parameter(or parameters) then validate, else show the login screen.
+        # the following lines are excecuted if paramaters HAVE been entered
+
+    print p("collect user data ...") if $DEBUG;
+    my @temp_variable = collect_user_input();
+    print p("... gave us: ") if $DEBUG;
+
+    print p("going to validate user input") if $DEBUG;
+    my @temp_variable2 = validate_user_input(@temp_variable);
+    print p("VALIDATED") if $DEBUG;
+    # print p("validate user data gave us: @temp_variable2") if $DEBUG;
+
+    print p("going to Add user data to DB") if $DEBUG;
+    my @temp_variable3 = add_user_input_to_db(@temp_variable2);
+    print p("added") if $DEBUG;
+    # print p("add user data to db gave us: @temp_variable3") if $DEBUG;
+
+}
+else
+{   # if there are no parameters (the form has not yet been filled in then....
+    print_user_data_form();
+}
+
+print end_html;    # this closes the web page properly
+print p("End of main block") if $DEBUG;
 
 sub collect_user_input {
 # This routine collects the data entered by the user from the form and adds the initial values and returns the @user_data array
@@ -141,7 +158,7 @@ sub add_user_input_to_db {
 
         print p("User Created");       # just a reference in debug mode
         print p(
-            "-> <a href=http://www.judocoach.com/e-judo/e-judo.cgi>Click HERE to continue</a>"
+            "-> <a href='e-judo.cgi'>Click HERE to continue</a>"
         );
     }
     print p("END of add_user_input_to_db") if $DEBUG;
@@ -178,39 +195,22 @@ sub print_user_data_form {
 # end of subroutines
 # -------------------
 
-# main code block
-# ---------------
 
-print header(), start_html("e-Judo Test Area"),
-    h1("CREATE NEW USER");    # This line uses CGI.PM to to create the webpage
 
-print p("Start main block") if $DEBUG;
-print p( "parameters: ", param() ) if $DEBUG;
-#   print p("no parameters so print the form") if !(param());
-if ( param() )
-{ # If there is a parameter(or parameters) then validate, else show the login screen.
-        # the following lines are excecuted if paramaters HAVE been entered
 
-    print p("collect user data ...") if $DEBUG;
-    my @temp_variable = collect_user_input();
-    print p("... gave us: ") if $DEBUG;
 
-    print p("going to validate user input") if $DEBUG;
-    my @temp_variable2 = validate_user_input(@temp_variable);
-    print p("VALIDATED") if $DEBUG;
-    # print p("validate user data gave us: @temp_variable2") if $DEBUG;
 
-    print p("going to Add user data to DB") if $DEBUG;
-    my @temp_variable3 = add_user_input_to_db(@temp_variable2);
-    print p("added") if $DEBUG;
-    # print p("add user data to db gave us: @temp_variable3") if $DEBUG;
-
-}
-else
-{   # if there are no parameters (the form has not yet been filled in then....
-    print_user_data_form();
-}
-
-print end_html;    # this closes the web page properly
-print p("End of main block") if $DEBUG;
-
+# ---------------------------------------------
+# create-user.cgi   - Create by Lance Wicks
+#                       e-judo.sourceforge.net
+# This is free open source software! Released under GPL
+#
+# Description:
+# This script adds a new user to the users database
+#
+# History:
+# ========
+# 20 December 2003, Lance Wicks - Created initial file.
+# 23 December 2003, Lance Wicks - On the suggestion of Jeff Zucker, am re-writing this code to use more sub-routines and some other good suggestions.
+# 02 January 2004, Lance Wicks - Finally finished this module, is now working, still need to add input validation and user notification etc.
+# 01 March 2016, Lance Wicks - Restarting the project

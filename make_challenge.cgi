@@ -1,4 +1,6 @@
 #!/usr/bin/perl -wT
+use strict;
+use warnings;
 
 # ---------------------------------------------
 # make_challenge.cgi   - Create by Lance Wicks
