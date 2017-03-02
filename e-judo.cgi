@@ -37,10 +37,10 @@ if ( param() ) {
     if ($pass) {
         if ( $pass eq $password ) {
             print p("OK");
-            print('<a href="main_menu.cgi?id=$name">Click here to continue</a>');    
+            print("<a href='main_menu.cgi?id=$name'>Click here to continue</a>");    
         }
         else {  
-            print("Invalid Credentials");
+            print('Invalid Credentials');
         }
     }
     else {       
