@@ -95,9 +95,7 @@ sub create_judoka_file {
 
     # create the scalers we need to use in the sql
     # ----------------------------------------------
-    my $judoka_table = "./data/judoka_csv"
-        ;    # eg: data/shiai_data/userTest.ldr the ladder itself
-    print p( " table name = ", $judoka_table ) if $DEBUG;
+    my $judoka_table = "./data/judoka_csv";
     # Okay now we must create the database files
     # here is the DBI/SQL code
     # ----------------------------------------------------

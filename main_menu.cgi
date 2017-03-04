@@ -31,7 +31,8 @@ sub print_menu {
     print p(" <a href=create_judoka.cgi?id=$id>Create a Judoka</a>");
     print p(" <a href=view_judoka.cgi?id=$id>View a Judoka</a>");
     print hr;
-    print p(" <a href=create_shiai.cgi?id=$id>Create a Shiai</a>");
+    # Hide create option for now
+    #print p(" <a href=create_shiai.cgi?id=$id>Create a Shiai</a>");
     print p(" <a href=view_shiai.cgi?id=$id>View Shiai</a>");
     print hr;
     print p(" <a href=simulate.cgi>Simulate matches</a>");

@@ -2,8 +2,6 @@
 use strict;
 use warnings;
 
-our $DEBUG = 1;    #  If this is set to 1 then we see the debug messages.
-
 use CGI qw(:standard); 
 use lib './MyLib';
 use DBI;
@@ -277,7 +275,7 @@ sub create_ladder_data {
         . "_ldr";    # eg: data/shiai_data/userTest.ldr the ladder itself
     my $history_table   = "data/shiai_data/" . $shiai_ID . "_hst";
     my $challenge_table = "data/shiai_data/" . $shiai_ID . "_chal";
-    print p( " table name = ", $ladder_table ) if $DEBUG;
+
 
     # Okay now we must create the database files (three)
     # here is the DBI/SQL code
