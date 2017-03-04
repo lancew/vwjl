@@ -5,15 +5,13 @@ use warnings;
 use CGI qw(:standard);
 use lib './MyLib';
 use DBI;
+use VWJL;
 
-our $DEBUG = 0;
-print header(), start_html("e-Judo Test Area"),
-    h1("e-Judo test area");   # This line uses CGI.PM to to create the webpage
+print header();
+print start_html("e-Judo Test Area");
+print h1("e-Judo test area");
 
 if ( param() ) {
-# If there is a parameter(or parameters) then validate, else show the login screen.
-# the following lines are excecuted if paramaters HAVE been entered
-
     my $name     = param("ID");
     my $password = param("ejudopass");
 
@@ -22,15 +20,9 @@ if ( param() ) {
         exit;
     }
 
-    my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
-    $dbh->func( 'users', 'CSV', './data/users_csv', 'ad_catalog' );
-
-    my $user = $dbh->selectall_arrayref( 'SELECT * FROM users WHERE id = ?',
-        { Slice => {} }, $name );
-
-    my @result;
-    my $pass = $user->[0]{PASSWORD};
-
+    my $user = VWJL::get_user($name);
+    my $pass = $user->{PASSWORD};
+    
     if ($pass) {
         if ( $pass eq $password ) {
             print p("OK");
@@ -47,30 +39,16 @@ if ( param() ) {
     }
 }
 else {
-    if ( -e "./data/judoka_csv" ) {
-        print p("Judoka_csv exists") if $DEBUG;
-    }
-    else {
-        print p("about to call the create_judoka_file sub") if $DEBUG;
+    unless ( -e "./data/judoka_csv" ) {
         create_judoka_file();
     }
 
-    # second, check if the USERS datafile exists, if not we will create it.
-    if ( -e "./data/users_csv" ) {
-        print p("users_csv exists") if $DEBUG;
-    }
-    else {
-        print p("about to call the create_users_file sub") if $DEBUG;
+    unless ( -e "./data/users_csv" ) {
         create_users_file();
     }
 
-    # third, check if the shiai datafile exists, if not we will create it.
-    if ( -e "./data/shiai_csv" ) {
-        print p("shiai_csv exists") if $DEBUG;
-    }
-    else {
-        print p("about to call the create_shiai_file sub") if $DEBUG;
-        create_shiai_file();
+    unless ( -e "./data/shiai_csv" ) {
+       create_shiai_file();
     }
 
     print hr;
@@ -90,7 +68,6 @@ print end_html;
 
 sub create_judoka_file {
     # This sub creates the data/judoka_csv file
-    print p("Start of create_judoka_file") if $DEBUG;
 
     # create the scalers we need to use in the sql
     # ----------------------------------------------
@@ -242,27 +219,10 @@ sub create_judoka_file {
     ) or die "Can not create table";
 
     $dbh->func( 'judoka', 'CSV', $judoka_table, 'ad_export' );
-
-    print p("Judoka table created") if $DEBUG;
-
-    print p("END of create_judoka_file") if $DEBUG;
-
 }
 
 sub create_users_file {
-    # This sub creates the data/users_csv file
-    print p("Start of create_users_file") if $DEBUG;
-
-    # create the scalers we need to use in the sql
-    # ----------------------------------------------
     my $users_table = "./data/users_csv";
-    print p( " table name = ", $users_table ) if $DEBUG;
-    # Okay now we must create the database files
-    # here is the DBI/SQL code
-    # ----------------------------------------------------
-
-# First create the array and hash to hold the table fields and data definitions
-# ------------------------------------------------------------------------------
     my @users_fields
         = qw/ id first_name surname date_of_birth email password active last_login create_date earnings cash judoka_limit sensei_limit dojo_limit team_limit rank /;
     my %users_field_def = (
@@ -297,24 +257,10 @@ sub create_users_file {
             )
             . ")"
     ) or die "Can not create table";
-
-    $dbh->func( 'users', 'CSV', $users_table, 'ad_export' );
-
-    print p("Users table created") if $DEBUG;
-
-    print p("END of create_users_file") if $DEBUG;
-
 }
 
 sub create_shiai_file {
-
-    # This sub creates the data/shiai_csv file
-    print p("Start of create_shiai_file") if $DEBUG;
-
-    # create the scalers we need to use in the sql
-    # ----------------------------------------------
     my $shiai_table = "./data/shiai_csv";
-    print p( " table name = ", $shiai_table ) if $DEBUG;
     # Okay now we must create the database files
     # here is the DBI/SQL code
     # ----------------------------------------------------
@@ -358,11 +304,6 @@ sub create_shiai_file {
     ) or die "Can not create table";
 
     $dbh->func( 'shiai', 'CSV', $shiai_table, 'ad_export' );
-
-    print p("Shiai table created") if $DEBUG;
-
-    print p("END of create_shiai_file") if $DEBUG;
-
 }
 
 # ---------------------------------------------
