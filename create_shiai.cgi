@@ -26,8 +26,6 @@ if ( param("id") ) {
     my $shiai_count = shiai_count($user_id);
 
     if ( $shiai_count >= $shiai_limit ) { 
-        # If they have already created all the Judoka 
-        # they are allowed return to main menu
         print p("SORRY!!, Shiai Limit reached.");
         print p("You can create a new Shiai");
         print p(
