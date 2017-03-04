@@ -15,21 +15,17 @@ my $shiai = 'lancewlw1';
 
 show_history($shiai);
 
-
 sub show_history {
-    my @shiai = @_;
-    my $history_table
-        = "data/shiai_data/"
-        . $shiai[0]
-        . "_hst"; 
+    my @shiai         = @_;
+    my $history_table = "data/shiai_data/" . $shiai[0] . "_hst";
 
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'history_db', 'CSV', $history_table, 'ad_catalog' );
 
     my $sql = "SELECT * FROM history_db";
 
-    my $sth = $dbh->prepare($sql);  
-    $sth->execute();       
+    my $sth = $dbh->prepare($sql);
+    $sth->execute();
 
     print h2("History");
     print("<table width=85% border=1>");

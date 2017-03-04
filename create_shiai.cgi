@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use CGI qw(:standard); 
+use CGI qw(:standard);
 use lib './MyLib';
 use DBI;
 
@@ -13,25 +13,25 @@ print header();
 print start_html("e-Judo Test Area");
 print h1("CREATE NEW SHIAI");
 
-if ( param("id") ) { 
-    # the ID parameter should be present when they first 
+if ( param("id") ) {
+    # the ID parameter should be present when they first
     # arrive and not when the form is filled in, so if it
     # does exist we need to do the lines below
-    
-    my $user_id = param("id");
-    my @user_data = get_user_data($user_id);
+
+    my $user_id     = param("id");
+    my @user_data   = get_user_data($user_id);
     my $shiai_limit = $user_data[12];
     my $shiai_count = shiai_count($user_id);
 
-    if ( $shiai_count >= $shiai_limit ) { 
+    if ( $shiai_count >= $shiai_limit ) {
         print p("SORRY!!, Shiai Limit reached.");
         print p("You can create a new Shiai");
         print p(
             "-> <a href=main_menu.cgi?id=$user_id>Click HERE to continue</a>"
         );
-    } 
-    
-    # if the User has NOT entered any data then call the form 
+    }
+
+    # if the User has NOT entered any data then call the form
     # and add user to the DB
     print_shiai_data_form($user_id);
 }
@@ -44,25 +44,25 @@ else {
     create_shiai_db_files(@temp_data3);
 }
 
-print end_html;   
+print end_html;
 
 # Sub routines
 # --------------
 
 sub get_user_data {
     my @internal_user_data = @_;
-    my $entered_id = $internal_user_data[0];
+    my $entered_id         = $internal_user_data[0];
 
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'users', 'CSV', 'data/users_csv', 'ad_catalog' );
 
-    # select from the datafile the id for the user ID from the array 
+    # select from the datafile the id for the user ID from the array
     # passed from the previous sub routine
     my @parameters = ($entered_id);
-    my $sql = "SELECT * FROM users WHERE id = ?";
+    my $sql        = "SELECT * FROM users WHERE id = ?";
 
     my $sth = $dbh->prepare($sql);
-    $sth->execute(@parameters);   
+    $sth->execute(@parameters);
 
     my @result = $sth->fetchrow_array;
     $dbh->disconnect();
@@ -74,19 +74,19 @@ sub shiai_count {
     # judoka_csv file and returns the number
 
     my @internal_shiai_data = @_;
-    my $entered_id = $internal_shiai_data[0];
+    my $entered_id          = $internal_shiai_data[0];
 
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'shiai_db', 'CSV', 'data/shiai_csv', 'ad_catalog' );
 
-    my $sql = "SELECT * FROM shiai_db WHERE owner_id = ?";
+    my $sql    = "SELECT * FROM shiai_db WHERE owner_id = ?";
     my @params = ($entered_id);
 
-    my $sth = $dbh->prepare($sql);  
-    $sth->execute(@params);         
+    my $sth = $dbh->prepare($sql);
+    $sth->execute(@params);
 
     my $row_count = 0;
-    my @results;                    
+    my @results;
     while ( @results = $sth->fetchrow_array ) {
         $row_count++;
     }
@@ -104,7 +104,7 @@ sub print_shiai_data_form {
 
     my @internal_shiai_data = @_;
     print hr;
-    print start_form;    
+    print start_form;
     my $user_id_passed = $internal_shiai_data[0];
 
     print p( "Shiai Name: ", textfield("shiai_name"),
@@ -152,8 +152,8 @@ sub collect_shiai_data {
 #                   0         1    2     3        4      5          6         7      8      9       10       11          12           13          14          15          16          17
 #                                  *     *        *      *                                           *                     *            *           *           *           *           *
     my @shiai_data;
-    $shiai_data[0] = param("user_id");
-    $shiai_data[1] = "BLANK_for_now";
+    $shiai_data[0]  = param("user_id");
+    $shiai_data[1]  = "BLANK_for_now";
     $shiai_data[2]  = param("shiai_name");
     $shiai_data[3]  = param("closedate");
     $shiai_data[4]  = "ladder";
@@ -192,8 +192,8 @@ sub generate_initial_values {
 # user_id is already in the data array at this stage.
 
     my @internal_shiai_data = @_;
-    $internal_shiai_data[1] = $internal_shiai_data[0]
-        . $internal_shiai_data[2];
+    $internal_shiai_data[1]
+        = $internal_shiai_data[0] . $internal_shiai_data[2];
 
     $internal_shiai_data[6]
         = "for now just an abitrary data filed till I pass the users name OK!";
@@ -213,18 +213,18 @@ sub add_shiai_to_db {
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'shiai_db', 'CSV', 'data/shiai_csv', 'ad_catalog' );
 
-    # select from the datafile the id for the user ID from 
+    # select from the datafile the id for the user ID from
     # the array paased from the previous sub routine
-    my $sql = "SELECT * FROM shiai_db WHERE shiai_id = ?";
+    my $sql    = "SELECT * FROM shiai_db WHERE shiai_id = ?";
     my $params = ($entered_shiai_id);
 
-    my $sth = $dbh->prepare($sql);  
-    $sth->execute($params);         
+    my $sth = $dbh->prepare($sql);
+    $sth->execute($params);
 
     my @result = $sth->fetchrow_array;
     $dbh->disconnect();
 
-    if (@result) {  
+    if (@result) {
         print p("Sorry this shiai ID is in use already");
     }
     else {
@@ -238,20 +238,22 @@ sub add_shiai_to_db {
             = "INSERT INTO shiai_db VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
         my @shiai_params = (@internal_shiai_data);
 
-        my $sth = $dbh->prepare($sql); 
-        $sth->execute(@shiai_params);  
+        my $sth = $dbh->prepare($sql);
+        $sth->execute(@shiai_params);
 
-        print p("Shiai Created");      
-        print p("-> <a href=main_menu.cgi?id=$internal_shiai_data[0];>Click HERE to continue</a>");
+        print p("Shiai Created");
+        print p(
+            "-> <a href=main_menu.cgi?id=$internal_shiai_data[0];>Click HERE to continue</a>"
+        );
     }
 }
 
 sub create_shiai_db_files {
-    # This sub looks at the type of the shiai and calls subs to create the data for it
-    # Basically it creates database tables.
+# This sub looks at the type of the shiai and calls subs to create the data for it
+# Basically it creates database tables.
 
-    my @the_shiai_data = @_;  
-    my $shiai_type = $the_shiai_data[4]; 
+    my @the_shiai_data = @_;
+    my $shiai_type     = $the_shiai_data[4];
 
     my $flag = "0";  # This flag is zero unless a valid module has been called
     if ( $shiai_type eq "ladder" && $flag eq "0" ) {
@@ -275,7 +277,6 @@ sub create_ladder_data {
         . "_ldr";    # eg: data/shiai_data/userTest.ldr the ladder itself
     my $history_table   = "data/shiai_data/" . $shiai_ID . "_hst";
     my $challenge_table = "data/shiai_data/" . $shiai_ID . "_chal";
-
 
     # Okay now we must create the database files (three)
     # here is the DBI/SQL code

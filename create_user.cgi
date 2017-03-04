@@ -8,7 +8,6 @@ use CGI qw(:standard);
 use lib './MyLib';
 use DBI;
 
-
 # main code block
 # ---------------
 
@@ -157,9 +156,7 @@ sub add_user_input_to_db {
         $sth->execute(@params);        # excecute the SQL using our parameters
 
         print p("User Created");       # just a reference in debug mode
-        print p(
-            "-> <a href='e-judo.cgi'>Click HERE to continue</a>"
-        );
+        print p( "-> <a href='e-judo.cgi'>Click HERE to continue</a>" );
     }
     print p("END of add_user_input_to_db") if $DEBUG;
 }    # end of sub routine add_user_input_to_db
@@ -194,11 +191,6 @@ sub print_user_data_form {
 
 # end of subroutines
 # -------------------
-
-
-
-
-
 
 # ---------------------------------------------
 # create-user.cgi   - Create by Lance Wicks

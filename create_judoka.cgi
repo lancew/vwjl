@@ -2,19 +2,19 @@
 use strict;
 use warnings;
 
-use CGI qw(:standard);  
-use lib './MyLib'; 
+use CGI qw(:standard);
+use lib './MyLib';
 use DBI;
- 
+
 print header();
 print start_html("e-Judo Test Area");
-print h1("CREATE NEW JUDOKA");  
+print h1("CREATE NEW JUDOKA");
 
-if ( param("id") ) { 
-    my $user_id = param("id");
+if ( param("id") ) {
+    my $user_id   = param("id");
     my @user_data = get_user_data($user_id);
 
-    my $judoka_limit = $user_data[11]; 
+    my $judoka_limit = $user_data[11];
     my $judoka_count = judoka_count($user_id);
 
     if ( $judoka_count >= $judoka_limit ) {
@@ -23,7 +23,7 @@ if ( param("id") ) {
         print p(
             "-> <a href='main_menu.cgi?id=$user_id'>Click HERE to continue</a>"
         );
-    } 
+    }
 
     print_judoka_data_form($user_id);
 }
@@ -42,14 +42,14 @@ print end_html;    # this closes the web page properly
 
 sub get_user_data {
     my $entered_id = shift;
-    
+
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'users', 'CSV', 'data/users_csv', 'ad_catalog' );
 
     # select from the datafile the id for the user ID from the array
     # passed from the previous sub routine
     my @parameters = ($entered_id);
-    my $sql = "SELECT * FROM users WHERE id = ?";
+    my $sql        = "SELECT * FROM users WHERE id = ?";
 
     my $sth = $dbh->prepare($sql);    # prepare the SQL command
     $sth->execute(@parameters);       # excecute the SQL using our parameters
@@ -62,22 +62,22 @@ sub get_user_data {
 
 sub judoka_count {
     my $entered_id = shift;
-    
+
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'judoka', 'CSV', 'data/judoka_csv', 'ad_catalog' );
 
-    # select from the datafile the id for the user ID from the array 
+    # select from the datafile the id for the user ID from the array
     # passed from the previous sub routine
     my $sql = "SELECT * FROM judoka WHERE user_id = ?";
 
     my @params = ($entered_id);
 
     my $sth = $dbh->prepare($sql);
-    $sth->execute(@params);       
+    $sth->execute(@params);
 
     my $row_count = 0;
-    my @results;                  
-    while ( @results = $sth->fetchrow_array ) {    
+    my @results;
+    while ( @results = $sth->fetchrow_array ) {
         $row_count++;
     }
 
@@ -126,13 +126,13 @@ sub print_judoka_data_form {
 }
 
 sub collect_judoka_data {
-    # This subroutine collects the user input from the 
+    # This subroutine collects the user input from the
     # form and returns it to the next form
-    
+
     my @judoka_data;
     $judoka_data[0] = param("user_id");
 
-    $judoka_data[1] = "BLANK";
+    $judoka_data[1]  = "BLANK";
     $judoka_data[2]  = param("judoka_name");
     $judoka_data[3]  = "blank";
     $judoka_data[4]  = param("dojo");
@@ -190,10 +190,10 @@ sub add_judoka_to_db {
     my @internal_user_data = @_;
 
     my $entered_judoka_id = $internal_user_data[1];
-    my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
+    my $dbh               = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'judoka', 'CSV', 'data/judoka_csv', 'ad_catalog' );
 
-    my $sql = "SELECT * FROM judoka WHERE judoka_id = ?";
+    my $sql    = "SELECT * FROM judoka WHERE judoka_id = ?";
     my @params = ($entered_judoka_id);
 
     my $sth = $dbh->prepare($sql);    # prepare the SQL command

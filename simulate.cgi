@@ -2,14 +2,14 @@
 use strict;
 use warnings;
 
-use CGI;  
-$CGI::DISABLE_UPLOADS = 1;            # Disable uploads
-$CGI::POST_MAX        = 51_200;       # Maximum number of bytes per post
+use CGI;
+$CGI::DISABLE_UPLOADS = 1;         # Disable uploads
+$CGI::POST_MAX        = 51_200;    # Maximum number of bytes per post
 
 use lib './MyLib';
 use DBI;
 
-my $query = CGI->new();    # Start a new cgi object
+my $query = CGI->new();            # Start a new cgi object
 
 my $judoka_id;
 my $judoka_name;
@@ -25,7 +25,7 @@ print $query->end_html;
 # ---------------------------------------------------
 
 sub find_challenge {
-    my $query = shift;
+    my $query    = shift;
     my $shiai_id = "lancewlw1";    # Hard coding for now.
     my $challenge_table = "data/shiai_data/" . $shiai_id . "_chal";
 
@@ -33,8 +33,8 @@ sub find_challenge {
     $dbh->func( 'challenge_db', 'CSV', $challenge_table, 'ad_catalog' );
 
     my $sql = "SELECT * FROM challenge_db";
-    my $sth = $dbh->prepare($sql);    
-    $sth->execute();                  
+    my $sth = $dbh->prepare($sql);
+    $sth->execute();
 
     while ( my @sql_returned = $sth->fetchrow_array ) {
         if ( $sql_returned[2] eq "Yes" ) {
@@ -50,13 +50,13 @@ sub find_challenge {
 
 sub read_judoka_data {
     my @passed_info = @_;
-    my $judoka_id = $passed_info[0];
+    my $judoka_id   = $passed_info[0];
 
     my @judoka_data;
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'judoka', 'CSV', 'data/judoka_csv', 'ad_catalog' );
 
-    my $sql_query = "SELECT * FROM judoka WHERE judoka_id = ?";
+    my $sql_query  = "SELECT * FROM judoka WHERE judoka_id = ?";
     my $sql_params = ($judoka_id);
 
     my $sth = $dbh->prepare($sql_query);
@@ -70,13 +70,13 @@ sub read_judoka_data {
 
 sub get_player_data {
     my @internal_data = @_;
-    my @player = read_judoka_data( $internal_data[0] );
+    my @player        = read_judoka_data( $internal_data[0] );
     return @player;
 }
 
 sub fight {
-    my $query = shift;
-    my @passed_info  = @_;
+    my $query           = shift;
+    my @passed_info     = @_;
     my $length_of_array = @passed_info / 2;
 
     print $query->h3( $passed_info[2], " Vs. ", $passed_info[125] );
@@ -129,11 +129,10 @@ sub update_stats {
 
     my @judoka_data;
 
-
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'judoka', 'CSV', 'data/judoka_csv', 'ad_catalog' );
 
-    my $sql_query = "SELECT * FROM judoka WHERE judoka_id = ?";
+    my $sql_query  = "SELECT * FROM judoka WHERE judoka_id = ?";
     my $sql_params = ($winner);
 
     my $sth = $dbh->prepare($sql_query);
@@ -141,53 +140,53 @@ sub update_stats {
 
     my @winner_data = $sth->fetchrow_array;
 
-    my $wins = $winner_data[10] + 1;
-    my $sql_insert = "UPDATE judoka SET wins = ? WHERE judoka_id = ?";
+    my $wins              = $winner_data[10] + 1;
+    my $sql_insert        = "UPDATE judoka SET wins = ? WHERE judoka_id = ?";
     my @sql_insert_params = ( $wins, $winner );
 
-    $sth = $dbh->prepare($sql_insert); 
+    $sth = $dbh->prepare($sql_insert);
     $sth->execute(@sql_insert_params);
 
     # Grab the winners strength data and update by say 10?
     my $strength = $winner_data[14] + 10;
-    
+
     my $sql_strength = "UPDATE judoka SET strength = ? WHERE judoka_id = ?";
     my @sql_strength_params = ( $strength, $winner );
-    
+
     $sth = $dbh->prepare($sql_strength);
     $sth->execute(@sql_strength_params);
 
     # okay give the loser some stats
     $sql_query  = "SELECT * FROM judoka WHERE judoka_id = ?";
     $sql_params = ($loser);
-    
+
     $sth = $dbh->prepare($sql_query);
     $sth->execute($sql_params);
     my @loser_data = $sth->fetchrow_array;
-    
+
     my $losses = $loser_data[11] + 1;
     $sql_insert = "UPDATE judoka SET losses = ? WHERE judoka_id = ?";
     @sql_insert_params = ( $losses, $loser );
-    
+
     $sth = $dbh->prepare($sql_insert);
     $sth->execute(@sql_insert_params);
     $strength = $loser_data[14] + 5;
-    
+
     $sql_strength = "UPDATE judoka SET strength = ? WHERE judoka_id = ?";
     @sql_strength_params = ( $strength, $loser );
-    $sth = $dbh->prepare($sql_strength);
+    $sth                 = $dbh->prepare($sql_strength);
     $sth->execute(@sql_strength_params);
 
     $dbh->disconnect();
-    
+
     enter_history( $winner_data[2], $loser_data[2] );
 }
 
 sub remove_challenge {
-    my @info            = @_;
+    my @info = @_;
 
     #TODO: ShiaiID is hadcoded, fix this.
-    my $shiai_id = 'lancewlw1';
+    my $shiai_id        = 'lancewlw1';
     my $challenge_table = "data/shiai_data/" . $shiai_id . "_chal";
 
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
@@ -204,15 +203,12 @@ sub remove_challenge {
 }
 
 sub enter_history {
-    # TODO: Don't hard code the shiai id 
+    # TODO: Don't hard code the shiai id
     my $shiai_id = 'lancewlw1';
 
-    my $history_table
-        = "data/shiai_data/"
-        . $shiai_id
-        . "_hst";
+    my $history_table = "data/shiai_data/" . $shiai_id . "_hst";
 
-    my @info = @_;
+    my @info        = @_;
     my $date_time   = gmtime();
     my $activity    = "Fight";
     my $description = "$info[0] beat $info[1]";
@@ -224,8 +220,8 @@ sub enter_history {
 
     my @history_params = ( $date_time, $activity, $description );
 
-    my $sth = $dbh->prepare($sql);  
-    $sth->execute(@history_params); 
+    my $sth = $dbh->prepare($sql);
+    $sth->execute(@history_params);
 
     $dbh->disconnect();
 }

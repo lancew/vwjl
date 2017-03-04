@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use CGI qw(:standard);  
+use CGI qw(:standard);
 use lib './MyLib';
 use DBI;
 
@@ -10,40 +10,39 @@ our $DEBUG = 0;
 print header(), start_html("e-Judo Test Area"),
     h1("e-Judo test area");   # This line uses CGI.PM to to create the webpage
 
-if ( param() ) { 
-    # If there is a parameter(or parameters) then validate, else show the login screen.
-    # the following lines are excecuted if paramaters HAVE been entered
+if ( param() ) {
+# If there is a parameter(or parameters) then validate, else show the login screen.
+# the following lines are excecuted if paramaters HAVE been entered
 
-    my $name = param("ID");
+    my $name     = param("ID");
     my $password = param("ejudopass");
-    
-    if ( $name eq "" or $password eq "" ) { 
+
+    if ( $name eq "" or $password eq "" ) {
         print "Come on, enter some data!!";
         exit;
     }
 
-    my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):'); 
+    my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'users', 'CSV', './data/users_csv', 'ad_catalog' );
-    
-    my $user = $dbh->selectall_arrayref(
-        'SELECT * FROM users WHERE id = ?',
-        {Slice=>{}},
-        $name
-    );
-    
+
+    my $user = $dbh->selectall_arrayref( 'SELECT * FROM users WHERE id = ?',
+        { Slice => {} }, $name );
+
     my @result;
     my $pass = $user->[0]{PASSWORD};
-    
+
     if ($pass) {
         if ( $pass eq $password ) {
             print p("OK");
-            print("<a href='main_menu.cgi?id=$name'>Click here to continue</a>");    
+            print(
+                "<a href='main_menu.cgi?id=$name'>Click here to continue</a>"
+            );
         }
-        else {  
+        else {
             print('Invalid Credentials');
         }
     }
-    else {       
+    else {
         print p('Invalid Credentials');
     }
 }
@@ -77,15 +76,15 @@ else {
     print hr;
     print start_form;
     print p( "What is your user ID: ", textfield("ID") );
-    print p( "Your Password: ", password_field("ejudopass") );
+    print p( "Your Password: ",        password_field("ejudopass") );
     print submit( -name => 'submit button' );
     print end_form;
     print hr;
-    print('else click <a href="create_user.cgi">HERE</a> to create a new user');
+    print(
+        'else click <a href="create_user.cgi">HERE</a> to create a new user');
 }
 
 print end_html;
-
 
 # ----------------------------
 

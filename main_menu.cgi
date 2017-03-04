@@ -10,14 +10,14 @@ print header();
 print start_html("e-Judo Test Area");
 print h1("Main Menu");
 
-if ( param() ) { 
+if ( param() ) {
     # If there is a parameter(or parameters) then validate,
     # else show the login screen.
     # the following lines are excecuted if paramaters HAVE been entered
-    
+
     print_menu();
 }
-else {   
+else {
     # if there are no parameters (the form has not
     # yet been filled in then....
     print p("Error, you do not seem to have logged in okay");

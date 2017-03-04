@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use CGI;   
+use CGI;
 
 $CGI::DISABLE_UPLOADS = 1;         # Disable uploads
 $CGI::POST_MAX        = 51_200;    # Maximum number of bytes per post
@@ -10,16 +10,15 @@ $CGI::POST_MAX        = 51_200;    # Maximum number of bytes per post
 use lib './MyLib';
 use DBI;
 
-my $query = CGI->new();  
+my $query = CGI->new();
 
 print header();
 print start_html("e-Judo Test Area");
-print h1("Accept CHALLENGES"); 
+print h1("Accept CHALLENGES");
 
 print h3("under development");
 
-print end_html;    
-
+print end_html;
 
 # ---------------------------------------------
 # Accept_Challenges.cgi   - Create by Lance Wicks

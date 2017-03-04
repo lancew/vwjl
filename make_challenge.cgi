@@ -2,11 +2,11 @@
 use strict;
 use warnings;
 
-use CGI;     
-$CGI::DISABLE_UPLOADS = 1;            # Disable uploads
-$CGI::POST_MAX        = 51_200;       # Maximum number of bytes per post
+use CGI;
+$CGI::DISABLE_UPLOADS = 1;         # Disable uploads
+$CGI::POST_MAX        = 51_200;    # Maximum number of bytes per post
 
-my $DEBUG    = 0;       #  If this is set to 1 then we see the debug messages.
+my $DEBUG = 0;    #  If this is set to 1 then we see the debug messages.
 
 use lib './MyLib';
 use DBI;
@@ -19,18 +19,18 @@ my $shiai_id;
 
 print $query->header();
 print $query->start_html( -title => 'Make Challenge' ),
-print $query->h1("E-Judo Test Area - Make Challenge");
+    print $query->h1("E-Judo Test Area - Make Challenge");
 
 if ( $query->param ) {
     $judoka_id   = $query->url_param('judoka_id');
     $judoka_name = $query->url_param('judoka_name');
 
-    # Setting this manually for now, needs to be a loop 
+    # Setting this manually for now, needs to be a loop
     # to access all Shiai at a later date.
 
     #TODO: Hardcoded teh shiai ID, should be param
-    $shiai_id    = "lancewlw1";
-      
+    $shiai_id = "lancewlw1";
+
     if ( $query->param("challenge") ) {
         enter_in_database($query);
         enter_chal_in_history();
@@ -38,17 +38,16 @@ if ( $query->param ) {
     }
     else {
         identify_judoka();
-        my @temp = identify_shiai($shiai_id);
+        my @temp                 = identify_shiai($shiai_id);
         my @returned_judoka_list = identify_other_judoka( $temp[0] );
         my @available_judoka
             = identify_available_judoka(@returned_judoka_list);
-        display_list($query, @available_judoka);
+        display_list( $query, @available_judoka );
     }
 }
-else
-{ 
+else {
     print $query->h1("No Parameters passed so there was a problem");
-     print $query->h1("CLICK YOUR BACK BUTTON");
+    print $query->h1("CLICK YOUR BACK BUTTON");
 }
 
 print $query->end_html;
@@ -57,7 +56,7 @@ print $query->end_html;
 # Sub-routines
 # ---------------------------------------------------
 
-sub identify_judoka {}
+sub identify_judoka { }
 
 sub identify_shiai {
     # In this sub we are finding what shiai this player is entered in
@@ -78,15 +77,15 @@ sub identify_shiai {
     warn $ladder_table;
     warn $sql;
 
-    my $sth = $dbh->prepare($sql);  
-    $sth->execute();        
+    my $sth = $dbh->prepare($sql);
+    $sth->execute();
 
     my @sql_returned;
 
     my $judoka_found_flag = 0;
     while ( @sql_returned = $sth->fetchrow_array ) {
         my $found_id = $sql_returned[1];
-        
+
         if ( $judoka_id eq $found_id ) {
             $judoka_found_flag = 1;
         }
@@ -109,8 +108,8 @@ sub identify_other_judoka {
 
     my $sql = "SELECT * FROM ladder_db";
 
-    my $sth = $dbh->prepare($sql);    
-    $sth->execute();                  
+    my $sth = $dbh->prepare($sql);
+    $sth->execute();
 
     my @sql_returned;
     my @judoka_list;
@@ -118,13 +117,13 @@ sub identify_other_judoka {
 
     my $counter = 0;
     while ( @sql_returned = $sth->fetchrow_array ) {
-        my $found_id = $sql_returned[1];
+        my $found_id   = $sql_returned[1];
         my $found_name = $sql_returned[0];
 
         if ( $found_id ne $judoka_id ) {
             $judoka_list[$counter]  = $found_id;
             $judoka_names[$counter] = $found_name;
-            $counter = $counter + 1;
+            $counter                = $counter + 1;
         }
     }
 
@@ -147,7 +146,7 @@ sub identify_available_judoka {
 }
 
 sub display_list {
-    my $query = shift;
+    my $query         = shift;
     my @incoming_list = @_;
 
    # take the list and work out how many entries there are.
@@ -176,12 +175,12 @@ sub enter_in_database {
     # Challenge database fields = challenger opponent_id
     my $challenger = $judoka_id;
 
-    # Accepted database field = 0 for unaccepted. 
+    # Accepted database field = 0 for unaccepted.
     # 1 for accepted. (Default should be 0)
     my $accepted = "Yes";
 
     # TODO: hard coding shiai here.
-    my $shiai_id = 'lancewlw1';
+    my $shiai_id        = 'lancewlw1';
     my $challenge_table = "data/shiai_data/" . $shiai_id . "_chal";
 
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
@@ -192,10 +191,10 @@ sub enter_in_database {
 
     my @challenge_params = ( $challenger, $opponent_id, $accepted );
 
-    my $sth = $dbh->prepare($sql);    
-    $sth->execute(@challenge_params); 
+    my $sth = $dbh->prepare($sql);
+    $sth->execute(@challenge_params);
     $dbh->disconnect();
-    
+
     print $query->p("Challenge Entered");
 }
 

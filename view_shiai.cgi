@@ -8,9 +8,9 @@ use DBI;
 
 print header();
 print start_html("e-Judo Test Area");
-print h1("VIEW SHIAI");   
+print h1("VIEW SHIAI");
 
-if ( param("id") ) { 
+if ( param("id") ) {
     if ( param("shiai") ) {
         my $shiai = param("shiai");
 
@@ -18,29 +18,28 @@ if ( param("id") ) {
         display_shiai_data(@shiai_info);
         show_players($shiai);
     }
-    else
-    { 
+    else {
         list_shiai( param("id") );
     }
 }
-else { 
+else {
     print p("Problem!");
     print p("-> <a href=e-judo.cgi>Click HERE to continue</a>");
 }
 
 sub read_shiai_data {
-    my @passed_info = @_;  
-    my $shiai_id = $passed_info[0];
+    my @passed_info = @_;
+    my $shiai_id    = $passed_info[0];
 
     my @shiai_data;
     my $dbh1 = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh1->func( 'shiaidb', 'CSV', 'data/shiai_csv', 'ad_catalog' );
 
-    my $the_query = "SELECT * FROM shiaidb WHERE shiai_id = ?";
+    my $the_query  = "SELECT * FROM shiaidb WHERE shiai_id = ?";
     my $the_params = ($shiai_id);
 
-    my $sth1 = $dbh1->prepare($the_query);  
-    $sth1->execute($the_params);    
+    my $sth1 = $dbh1->prepare($the_query);
+    $sth1->execute($the_params);
 
     my @query_result = $sth1->fetchrow_array;
     $dbh1->disconnect();
@@ -63,7 +62,7 @@ sub display_shiai_data {
 
     my @result = $sth->fetchrow_array;
 
-    my @headings = @{ $sth->{NAME} };
+    my @headings           = @{ $sth->{NAME} };
     my $number_of_headings = @headings;
 
     $dbh->disconnect();
@@ -78,7 +77,7 @@ sub display_shiai_data {
 
 sub list_shiai {
     my @passed_info = @_;
-    my $user_id = $passed_info[0];
+    my $user_id     = $passed_info[0];
 
     my @shiai_found;
 
@@ -87,12 +86,12 @@ sub list_shiai {
 
     my $sql = "SELECT shiai_id,name FROM shiai_db";
 
-    my $sth = $dbh->prepare($sql);   
-    $sth->execute();                 
+    my $sth = $dbh->prepare($sql);
+    $sth->execute();
 
     print h2("SHIAI LIST");
-    while (my @sql_returned = $sth->fetchrow_array ) {
-        my $shiai_id = $sql_returned[0];
+    while ( my @sql_returned = $sth->fetchrow_array ) {
+        my $shiai_id   = $sql_returned[0];
         my $shiai_name = $sql_returned[1];
         print p(
             "<a href=view_shiai.cgi?id=$user_id&shiai=$shiai_id>$shiai_name</a>"
@@ -103,20 +102,17 @@ sub list_shiai {
 }
 
 sub show_players {
-    my @passed_info = @_;
-    my $shiai_id = $passed_info[0];
-    my $ladder_table
-        = "data/shiai_data/"
-        . $shiai_id
-        . "_ldr";
-        
+    my @passed_info  = @_;
+    my $shiai_id     = $passed_info[0];
+    my $ladder_table = "data/shiai_data/" . $shiai_id . "_ldr";
+
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'ladder_db', 'CSV', $ladder_table, 'ad_catalog' );
 
     my $sql = "SELECT * FROM ladder_db";
 
     my $sth = $dbh->prepare($sql);
-    $sth->execute();              
+    $sth->execute();
 
     print h2("Judoka Entered LIST");
     while ( my @sql_returned = $sth->fetchrow_array ) {

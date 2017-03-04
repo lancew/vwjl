@@ -8,7 +8,7 @@ use DBI;
 
 print header();
 print start_html("e-Judo View Ranks");
-print h1("VIEW Ranks");  
+print h1("VIEW Ranks");
 
 show_ranks();
 
@@ -21,8 +21,8 @@ sub show_ranks {
     my $sql = "SELECT * FROM judoka_db";
 
     my $sth = $dbh->prepare($sql);
-    $sth->execute();            
-    
+    $sth->execute();
+
     my %ranking;
     while ( my @sql_returned = $sth->fetchrow_array ) {
         $ranking{ $sql_returned[2] } = $sql_returned[10];
