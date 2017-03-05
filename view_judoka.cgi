@@ -5,24 +5,24 @@ use warnings;
 use CGI qw(:standard);
 use lib './MyLib';
 use DBI;
+use VWJL;
 
 print header();
 print start_html("e-Judo Test Area");
 print h1("VIEW JUDOKA");
 
 if ( param("id") ) {
-    if ( param("judoka") ) {
-        my $judoka      = param("judoka");
-        my $judoka_name = param("name");
-        my @judoka_info = read_judoka_data($judoka);
+    if ( my $judoka_id = param("judoka") ) {
+        my $judoka = VWJL::get_judoka( $judoka_id );
+
         print p(
-            " <a href=entershiai.cgi?judoka_id=$judoka&judoka_name=$judoka_name>Enter a shiai</a>"
+            " <a href=entershiai.cgi?judoka_id=$judoka_id&judoka_name=$judoka->{NAME}>Enter a shiai</a>"
         );
         print p(
-            " <a href=make_challenge.cgi?judoka_id=$judoka&judoka_name=$judoka_name>Make a challenge</a>"
+            " <a href=make_challenge.cgi?judoka_id=$judoka_id&judoka_name=$judoka->{NAME}>Make a challenge</a>"
         );
 
-        display_judoka_data(@judoka_info);
+        display_judoka_data($judoka);
     }
     else {
         list_users_judoka( param("id") );
@@ -33,49 +33,14 @@ else {
     print p("-> <a href=e-judo.cgi>Click HERE to continue</a>");
 }
 
-# --------------
-sub read_judoka_data {
-    my @passed_info = @_;
-    my $judoka_id   = $passed_info[0];
-
-    my @judoka_data;
-    my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
-    $dbh->func( 'judoka', 'CSV', 'data/judoka_csv', 'ad_catalog' );
-
-    my $sql_query  = "SELECT * FROM judoka WHERE judoka_id = ?";
-    my $sql_params = ($judoka_id);
-
-    my $sth = $dbh->prepare($sql_query);
-    $sth->execute($sql_params);
-
-    my @result = $sth->fetchrow_array;
-    $dbh->disconnect();
-
-    return @result;
-}
 
 sub display_judoka_data {
-    my @passed_info = @_;
-    print h1( "Judoka: ", $passed_info[2] );
-    my $number_of_items = @passed_info;
+    my $judoka = shift;
+    print h1( "Judoka: ", $judoka->{NAME} );
 
-    my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
-    $dbh->func( 'judoka', 'CSV', 'data/judoka_csv', 'ad_catalog' );
-
-    my $sql_dataquery = "SELECT * FROM judoka";
-
-    my $sth = $dbh->prepare($sql_dataquery);
-    $sth->execute();
-
-    my @result = $sth->fetchrow_array;
-
-    my @headings           = @{ $sth->{NAME} };
-    my $number_of_headings = @headings;
-
-    $dbh->disconnect();
     print("<table width=85% border=1>");
-    for ( my $loop = 2; $loop ne 123; $loop++ ) {
-        print("<TR><TD>$headings[$loop]</TD><TD>$passed_info[$loop]</TD>");
+    for ( sort keys %$judoka  ) {
+        print("<TR><TD>$_</TD><TD>$judoka->{$_}</TD>");
         print("</TR>");
     }
     print("</table>");
