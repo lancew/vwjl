@@ -37,6 +37,7 @@ else {
 sub display_judoka_data {
     my $judoka = shift;
     print h1( "Judoka: ", $judoka->{NAME} );
+    print h2('| Wins: ', $judoka->{WINS}, ' | Losses: ', $judoka->{LOSSES}, ' |');
 
     print("<table width=85% border=1>");
     for ( sort keys %$judoka  ) {
