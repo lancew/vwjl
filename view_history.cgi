@@ -22,7 +22,7 @@ sub show_history {
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'history_db', 'CSV', $history_table, 'ad_catalog' );
 
-    my $sql = "SELECT * FROM history_db";
+    my $sql = "SELECT * FROM history_db ORDER BY DATE_TIME ASC ";
 
     my $sth = $dbh->prepare($sql);
     $sth->execute();
