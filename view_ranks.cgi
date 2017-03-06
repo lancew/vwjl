@@ -18,22 +18,17 @@ sub show_ranks {
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
     $dbh->func( 'judoka_db', 'CSV', $judoka_table, 'ad_catalog' );
 
-    my $sql = "SELECT * FROM judoka_db";
-
-    my $sth = $dbh->prepare($sql);
-    $sth->execute();
-
-    my %ranking;
-    while ( my @sql_returned = $sth->fetchrow_array ) {
-        $ranking{ $sql_returned[2] } = $sql_returned[10];
-    }
+    my $judoka_list = $dbh->selectall_arrayref(
+        'SELECT * FROM judoka_db',
+        {Slice=>{}}
+    );
 
     print h2("JUDOKA - Ranked by number of Wins");
     print("<table width=85% border=1>");
-    print("<TR><TD>Name</TD><TD>Wins</TD></TR>");
+    print("<TR><TD>Name</TD><TD>Wins</TD><TD>Losses</TD></TR>");
 
-    for my $key ( sort { $ranking{$b} <=> $ranking{$a} } ( keys %ranking ) ) {
-        print p("<TR><TD> $key </TD><TD>$ranking{$key}</TD></TR>");
+    for my $judoka ( sort { $b->{WINS} <=> $a->{WINS} } @$judoka_list ) {
+        print p("<TR><TD> $judoka->{NAME} </TD><TD>$judoka->{WINS}</TD><TD>$judoka->{LOSSES}</TD></TR>");
     }
     print("</table>");
 
