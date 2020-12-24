@@ -1,4 +1,7 @@
-To run via plackup:
+Install dependencies:
+ carton install
 
- plackup -R ./ -MPlack::App::CGIBin -e 'Plack::App::CGIBin->new(root => "/media/mac/Sites/vwjl")->to_app'
+Run the app:
+ carton exec  plackup -R ./ -MPlack::App::CGIBin -e 'Plack::App::CGIBin->new(root => "./")->to_app'
+
 
