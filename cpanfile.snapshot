@@ -1,5 +1,32 @@
 # carton snapshot format: version 1.0
 DISTRIBUTIONS
+  AnyData-0.12
+    pathname: R/RE/REHSACK/AnyData-0.12.tar.gz
+    provides:
+      AnyData 0.12
+      AnyData::Format::Base undef
+      AnyData::Format::CSV 0.12
+      AnyData::Format::FileSys undef
+      AnyData::Format::Fixed 0.12
+      AnyData::Format::HTMLtable 0.12
+      AnyData::Format::Ini 0.12
+      AnyData::Format::Mp3 0.12
+      AnyData::Format::Paragraph 0.12
+      AnyData::Format::Passwd 0.12
+      AnyData::Format::Pipe 0.12
+      AnyData::Format::Tab 0.12
+      AnyData::Format::Text undef
+      AnyData::Format::Weblog 0.12
+      AnyData::Format::XML 0.12
+      AnyData::Storage::File undef
+      AnyData::Storage::FileSys undef
+      AnyData::Storage::PassThru 0.12
+      AnyData::Storage::RAM 0.12
+      AnyData::Storage::TiedHash undef
+    requirements:
+      CGI 0
+      ExtUtils::MakeMaker 0
+      perl 5.008001
   Apache-LogFormat-Compiler-0.36
     pathname: K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.36.tar.gz
     provides:
@@ -99,6 +126,12 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Clone-0.45
+    pathname: A/AT/ATOOMIC/Clone-0.45.tar.gz
+    provides:
+      Clone 0.45
+    requirements:
+      ExtUtils::MakeMaker 0
   Cookie-Baker-0.11
     pathname: K/KA/KAZEBURO/Cookie-Baker-0.11.tar.gz
     provides:
@@ -124,6 +157,21 @@ DISTRIBUTIONS
       overload 0
       strict 0
       warnings 0
+  DBD-AnyData-0.110
+    pathname: R/RE/REHSACK/DBD-AnyData-0.110.tar.gz
+    provides:
+      DBD::AnyData 0.110
+      DBD::AnyData::Statement undef
+      DBD::AnyData::Table undef
+      DBD::AnyData::db undef
+      DBD::AnyData::dr undef
+      DBD::AnyData::st undef
+    requirements:
+      AnyData 0.07
+      DBI 1.611_93
+      Params::Util 1.00
+      SQL::Statement 1.27_02
+      Test::More 0.9
   DBI-1.643
     pathname: T/TI/TIMB/DBI-1.643.tar.gz
     provides:
@@ -605,6 +653,22 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
+  Params-Util-1.102
+    pathname: R/RE/REHSACK/Params-Util-1.102.tar.gz
+    provides:
+      Params::Util 1.102
+      Params::Util::PP 1.102
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      File::Copy 0
+      File::Path 0
+      File::Spec 0
+      IPC::Cmd 0
+      Scalar::Util 1.18
+      XSLoader 0.22
+      parent 0
   Plack-1.0048
     pathname: M/MI/MIYAGAWA/Plack-1.0048.tar.gz
     provides:
@@ -712,6 +776,71 @@ DISTRIBUTIONS
     requirements:
       Exporter 5.57
       perl 5.006
+  SQL-Statement-1.414
+    pathname: R/RE/REHSACK/SQL-Statement-1.414.tar.gz
+    provides:
+      SQL::Dialects::ANSI 1.414
+      SQL::Dialects::AnyData 1.414
+      SQL::Dialects::CSV 1.414
+      SQL::Dialects::Role 1.414
+      SQL::Eval 1.414
+      SQL::Eval::Table 1.414
+      SQL::Parser 1.414
+      SQL::Statement 1.414
+      SQL::Statement::Aggregate 1.414
+      SQL::Statement::ColumnValue 1.414
+      SQL::Statement::ConstantTerm 1.414
+      SQL::Statement::Function 1.414
+      SQL::Statement::Function::NumericEval 1.414
+      SQL::Statement::Function::StrConcat 1.414
+      SQL::Statement::Function::SubString 1.414
+      SQL::Statement::Function::Trim 1.414
+      SQL::Statement::Function::UserFunc 1.414
+      SQL::Statement::Functions 1.414
+      SQL::Statement::GetInfo 1.414
+      SQL::Statement::Group 1.414
+      SQL::Statement::Limit 1.414
+      SQL::Statement::Operation 1.414
+      SQL::Statement::Operation::ANSI::Is 1.414
+      SQL::Statement::Operation::And 1.414
+      SQL::Statement::Operation::Between 1.414
+      SQL::Statement::Operation::Clike 1.414
+      SQL::Statement::Operation::Contains 1.414
+      SQL::Statement::Operation::Equal 1.414
+      SQL::Statement::Operation::Equality 1.414
+      SQL::Statement::Operation::Greater 1.414
+      SQL::Statement::Operation::GreaterEqual 1.414
+      SQL::Statement::Operation::Is 1.414
+      SQL::Statement::Operation::Like 1.414
+      SQL::Statement::Operation::Lower 1.414
+      SQL::Statement::Operation::LowerEqual 1.414
+      SQL::Statement::Operation::Neg 1.414
+      SQL::Statement::Operation::NotEqual 1.414
+      SQL::Statement::Operation::Or 1.414
+      SQL::Statement::Operation::Regexp 1.414
+      SQL::Statement::Operation::Rlike 1.414
+      SQL::Statement::Order 1.414
+      SQL::Statement::Param 1.414
+      SQL::Statement::Placeholder 1.414
+      SQL::Statement::RAM 1.414
+      SQL::Statement::RAM::Table 1.414
+      SQL::Statement::Table 1.414
+      SQL::Statement::TempTable 1.414
+      SQL::Statement::Term 1.414
+      SQL::Statement::TermFactory 1.414
+      SQL::Statement::Util 1.414
+      SQL::Statement::Util::Column 1.414
+      SQL::Statement::Util::Function 1.414
+    requirements:
+      Carp 0
+      Clone 0.30
+      Data::Dumper 0
+      ExtUtils::MakeMaker 0
+      Module::Runtime 0
+      Params::Util 1.00
+      Scalar::Util 1.0
+      Text::Balanced 0
+      perl 5.008
   Stream-Buffered-0.03
     pathname: D/DO/DOY/Stream-Buffered-0.03.tar.gz
     provides:

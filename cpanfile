@@ -5,3 +5,4 @@ requires 'CGI::Compile';
 requires 'DBI';
 requires 'Moo';
 requires 'namespace::clean';
+requires 'DBD::AnyData';

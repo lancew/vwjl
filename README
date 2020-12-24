@@ -4,4 +4,7 @@ Install dependencies:
 Run the app:
  carton exec  plackup -R ./ -MPlack::App::CGIBin -e 'Plack::App::CGIBin->new(root => "./")->to_app'
 
+Access the app via:
+ http://localhost:5000/e-judo.cgi
+
 
