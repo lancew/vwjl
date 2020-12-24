@@ -28,7 +28,7 @@ if ( $query->param ) {
     my $opponent_id = $query->param("challenge");
 
     #TODO: Hardcoded teh shiai ID, should be param
-    $shiai_id = "lancewlw1";
+    $shiai_id = "lancewFoobar";
 
     if ( $query->param("challenge") ) {
         enter_in_database($judoka_id, $opponent_id);
@@ -54,7 +54,7 @@ sub identify_other_judoka {
 
     my $exclude_judoka_id = $args{exclude};
 
-    my $shiai_id = 'lancewlw1';
+    my $shiai_id = 'lancewFoobar';
     my $the_ladder_table
         = "data/shiai_data/"
         . $shiai_id
@@ -98,7 +98,7 @@ sub enter_in_database {
     my $accepted = "Yes";
 
     # TODO: hard coding shiai here.
-    my $shiai_id        = 'lancewlw1';
+    my $shiai_id        = 'lancewFoobar';
     my $challenge_table = "data/shiai_data/" . $shiai_id . "_chal";
 
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');

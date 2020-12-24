@@ -32,7 +32,7 @@ print $query->end_html;
 
 sub find_challenges {
     my $query    = shift;
-    my $shiai_id = "lancewlw1";    # Hard coding for now.
+    my $shiai_id = "lancewFoobar";    # Hard coding for now.
     my $challenge_table = "data/shiai_data/" . $shiai_id . "_chal";
 
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
@@ -117,7 +117,7 @@ sub remove_challenge {
     my $match = shift;
 
     #TODO: ShiaiID is hadcoded, fix this.
-    my $shiai_id        = 'lancewlw1';
+    my $shiai_id        = 'lancewFoobar';
     my $challenge_table = "data/shiai_data/" . $shiai_id . "_chal";
 
     my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');
@@ -137,7 +137,7 @@ sub enter_history {
     my ($winner,$loser) = @_;
 
     # TODO: Don't hard code the shiai id
-    my $shiai_id = 'lancewlw1';
+    my $shiai_id = 'lancewFoobar';
 
     my $history_table = "data/shiai_data/" . $shiai_id . "_hst";
 

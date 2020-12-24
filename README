@@ -8,3 +8,11 @@ Access the app via:
  http://localhost:5000/e-judo.cgi
 
 
+
+Setup:
+ Hacky for now.
+
+Create a shiai called "Foobar", most of the code is hardcoded to work for that event ID
+
+
+

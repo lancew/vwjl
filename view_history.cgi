@@ -11,7 +11,7 @@ print start_html("e-Judo Test Area");
 print h1("VIEW SHIAI");
 
 # TODO: Hardcode the shiai for now
-my $shiai = 'lancewlw1';
+my $shiai = 'lancewFoobar';
 
 show_history($shiai);
 
