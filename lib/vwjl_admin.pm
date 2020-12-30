@@ -10,4 +10,17 @@ get '/' => sub {
     template 'admin/index' => { 'title' => 'VWJL Admin' };
 };
 
+get '/users' => sub {
+	redirect '/' unless session('admin');
+
+    my $users = [
+        'Lance Wicks',
+        'Joe Bloggs',
+        'Jane Doe',
+    ];
+   
+    my $total_users = 0 + @{$users};
+
+    template 'admin/users' => { 'title' => 'VWJL Admin', users => $users, total_users => $total_users };
+};
 true;

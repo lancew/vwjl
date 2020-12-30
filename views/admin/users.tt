@@ -33,11 +33,11 @@
           <h2>Virtual World Judo League</h2>
         </div>
 
-        <div id="getting-started">
+          <h1>Users ([% total_users %])</h1>
           <ul>
-            <li> <a href="/admin/users">Users</a>
-            <li> <a href="#">Etc</a>
+            [% FOREACH user IN users %]
+              <li> [% user %]
+            [% END %]  
           </ul>
-        </div>
       </div>
     </div>
