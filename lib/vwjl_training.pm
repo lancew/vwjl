@@ -7,13 +7,8 @@ our $VERSION = '0.1';
 get '/' => sub {
     redirect '/' unless session('user');
 
-    template 'training/index' => { 
-    };
+    template 'training/index' => {};
 };
 
 true;
-
-
-
-
 

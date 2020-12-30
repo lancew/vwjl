@@ -1151,6 +1151,29 @@ DISTRIBUTIONS
       strict 0
       vars 0
       warnings 0
+  Perl-Tidy-20201207
+    pathname: S/SH/SHANCOCK/Perl-Tidy-20201207.tar.gz
+    provides:
+      Perl::Tidy 20201207
+      Perl::Tidy::Debugger 20201207
+      Perl::Tidy::DevNull 20201207
+      Perl::Tidy::Diagnostics 20201207
+      Perl::Tidy::FileWriter 20201207
+      Perl::Tidy::Formatter 20201207
+      Perl::Tidy::HtmlWriter 20201207
+      Perl::Tidy::IOScalar 20201207
+      Perl::Tidy::IOScalarArray 20201207
+      Perl::Tidy::IndentationItem 20201207
+      Perl::Tidy::LineBuffer 20201207
+      Perl::Tidy::LineSink 20201207
+      Perl::Tidy::LineSource 20201207
+      Perl::Tidy::Logger 20201207
+      Perl::Tidy::Tokenizer 20201207
+      Perl::Tidy::VerticalAligner 20201207
+      Perl::Tidy::VerticalAligner::Alignment 20201207
+      Perl::Tidy::VerticalAligner::Line 20201207
+    requirements:
+      ExtUtils::MakeMaker 0
   Plack-1.0048
     pathname: M/MI/MIYAGAWA/Plack-1.0048.tar.gz
     provides:

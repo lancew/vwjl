@@ -14,11 +14,10 @@ use vwjl_competition;
 use Plack::Builder;
 
 builder {
-    mount '/'        => vwjl->to_app;
-    mount '/admin'   => vwjl_admin->to_app;
-    mount '/athlete' => vwjl_athlete->to_app;
-    mount '/training' => vwjl_training->to_app;
+    mount '/'            => vwjl->to_app;
+    mount '/admin'       => vwjl_admin->to_app;
+    mount '/athlete'     => vwjl_athlete->to_app;
+    mount '/training'    => vwjl_training->to_app;
     mount '/competition' => vwjl_competition->to_app;
 }
-
 
