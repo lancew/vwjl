@@ -1,0 +1,75 @@
+<div id="page">
+      <div id="sidebar">
+        <ul id="sidebar-items">
+          <li>
+            <h3>Menu</h3>
+            <ul class="links">
+                 [% IF session.user %]
+                        [% session.user %]
+                        <li><a href="/logout">Logout</a>
+                        <hr>
+                           <li><a href="/athlete">Athlete</a>
+                           <li><a href="/training">Training</a>
+                           <li><a href="/competition">Competitions</a>
+                           [% IF session.admin %]
+                             <hr>
+                             <li><a href="/admin">Admin</a>
+                           [% END %]
+                 [% ELSE %]
+                       <li> <a href="/login">Login</a>
+                       <li> or <a href="/register">Register</a>
+                 [% END %]
+            </ul>
+          </li>
+
+
+        </ul>
+
+      </div>
+
+      <div id="content">
+        <div id="header">
+          <h1>VWJL</h1>
+          <h2>Virtual World Judo League</h2>
+        </div>
+
+        <div id="getting-started">
+            <h1>Status</h1>
+          <p>
+            December 2020: WIP rebuild in Dancer2 after getting original (CGIs) to run.
+          </p>
+
+          <hr>
+          <h1>Virtual Judo simulation</h1>
+          <h2>Create, train, compete in an online Judo simulation</h2>
+
+
+          <ol>
+            <li>
+              <h2>Create a Judoka</h2>
+
+              <p>
+                Create a virtual athlete
+              </p>
+            </li>
+
+            <li>
+              <h2>Train</h2>
+
+              <p>
+                Train your athlete
+              </p>
+            </li>
+
+            <li>
+              <h2>Compete</h2>
+
+              <p>
+                Enter competitions, challenge other athletes, have fun!
+              </p>
+            </li>
+
+          </ol>
+        </div>
+      </div>
+    </div>

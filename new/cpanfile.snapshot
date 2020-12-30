@@ -7,33 +7,6 @@ DISTRIBUTIONS
       Algorithm::Diff::_impl 1.201
     requirements:
       ExtUtils::MakeMaker 0
-  AnyData-0.12
-    pathname: R/RE/REHSACK/AnyData-0.12.tar.gz
-    provides:
-      AnyData 0.12
-      AnyData::Format::Base undef
-      AnyData::Format::CSV 0.12
-      AnyData::Format::FileSys undef
-      AnyData::Format::Fixed 0.12
-      AnyData::Format::HTMLtable 0.12
-      AnyData::Format::Ini 0.12
-      AnyData::Format::Mp3 0.12
-      AnyData::Format::Paragraph 0.12
-      AnyData::Format::Passwd 0.12
-      AnyData::Format::Pipe 0.12
-      AnyData::Format::Tab 0.12
-      AnyData::Format::Text undef
-      AnyData::Format::Weblog 0.12
-      AnyData::Format::XML 0.12
-      AnyData::Storage::File undef
-      AnyData::Storage::FileSys undef
-      AnyData::Storage::PassThru 0.12
-      AnyData::Storage::RAM 0.12
-      AnyData::Storage::TiedHash undef
-    requirements:
-      CGI 0
-      ExtUtils::MakeMaker 0
-      perl 5.008001
   Apache-LogFormat-Compiler-0.36
     pathname: K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.36.tar.gz
     provides:
@@ -98,72 +71,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test::More 0
       perl 5.008008
-  B-Hooks-EndOfScope-0.24
-    pathname: E/ET/ETHER/B-Hooks-EndOfScope-0.24.tar.gz
-    provides:
-      B::Hooks::EndOfScope 0.24
-      B::Hooks::EndOfScope::PP 0.24
-      B::Hooks::EndOfScope::XS 0.24
-    requirements:
-      ExtUtils::MakeMaker 0
-      Hash::Util::FieldHash 0
-      Module::Implementation 0.05
-      Scalar::Util 0
-      Sub::Exporter::Progressive 0.001006
-      Text::ParseWords 0
-      Tie::Hash 0
-      Variable::Magic 0.48
-      perl 5.006001
-      strict 0
-      warnings 0
-  CGI-4.51
-    pathname: L/LE/LEEJO/CGI-4.51.tar.gz
-    provides:
-      CGI 4.51
-      CGI::Carp 4.51
-      CGI::Cookie 4.51
-      CGI::File::Temp 4.51
-      CGI::HTML::Functions undef
-      CGI::MultipartBuffer 4.51
-      CGI::Pretty 4.51
-      CGI::Push 4.51
-      CGI::Util 4.51
-      Fh 4.51
-    requirements:
-      Carp 0
-      Config 0
-      Encode 0
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      File::Spec 0.82
-      File::Temp 0.17
-      HTML::Entities 3.69
-      if 0
-      overload 0
-      parent 0.225
-      perl 5.008001
-      strict 0
-      utf8 0
-      warnings 0
-  CGI-Compile-0.25
-    pathname: R/RK/RKITOVER/CGI-Compile-0.25.tar.gz
-    provides:
-      CGI::Compile 0.25
-    requirements:
-      File::pushd 0
-      Module::Build::Tiny 0.034
-      Sub::Name 0
-      perl 5.008001
-  CGI-Emulate-PSGI-0.23
-    pathname: T/TO/TOKUHIROM/CGI-Emulate-PSGI-0.23.tar.gz
-    provides:
-      CGI::Emulate::PSGI 0.23
-      CGI::Parse::PSGI undef
-    requirements:
-      CGI 3.63
-      ExtUtils::MakeMaker 0
-      HTTP::Response 0
-      perl 5.008001
   Capture-Tiny-0.48
     pathname: D/DA/DAGOLDEN/Capture-Tiny-0.48.tar.gz
     provides:
@@ -271,123 +178,6 @@ DISTRIBUTIONS
       overload 0
       strict 0
       warnings 0
-  DBD-AnyData-0.110
-    pathname: R/RE/REHSACK/DBD-AnyData-0.110.tar.gz
-    provides:
-      DBD::AnyData 0.110
-      DBD::AnyData::Statement undef
-      DBD::AnyData::Table undef
-      DBD::AnyData::db undef
-      DBD::AnyData::dr undef
-      DBD::AnyData::st undef
-    requirements:
-      AnyData 0.07
-      DBI 1.611_93
-      Params::Util 1.00
-      SQL::Statement 1.27_02
-      Test::More 0.9
-  DBI-1.643
-    pathname: T/TI/TIMB/DBI-1.643.tar.gz
-    provides:
-      Bundle::DBI 12.008696
-      DBD::DBM 0.08
-      DBD::DBM::Statement 0.08
-      DBD::DBM::Table 0.08
-      DBD::DBM::db 0.08
-      DBD::DBM::dr 0.08
-      DBD::DBM::st 0.08
-      DBD::ExampleP 12.014311
-      DBD::ExampleP::db 12.014311
-      DBD::ExampleP::dr 12.014311
-      DBD::ExampleP::st 12.014311
-      DBD::File 0.44
-      DBD::File::DataSource::File 0.44
-      DBD::File::DataSource::Stream 0.44
-      DBD::File::Statement 0.44
-      DBD::File::Table 0.44
-      DBD::File::TableSource::FileSystem 0.44
-      DBD::File::db 0.44
-      DBD::File::dr 0.44
-      DBD::File::st 0.44
-      DBD::Gofer 0.015327
-      DBD::Gofer::Policy::Base 0.010088
-      DBD::Gofer::Policy::classic 0.010088
-      DBD::Gofer::Policy::pedantic 0.010088
-      DBD::Gofer::Policy::rush 0.010088
-      DBD::Gofer::Transport::Base 0.014121
-      DBD::Gofer::Transport::corostream undef
-      DBD::Gofer::Transport::null 0.010088
-      DBD::Gofer::Transport::pipeone 0.010088
-      DBD::Gofer::Transport::stream 0.014599
-      DBD::Gofer::db 0.015327
-      DBD::Gofer::dr 0.015327
-      DBD::Gofer::st 0.015327
-      DBD::Mem 0.001
-      DBD::Mem::DataSource 0.001
-      DBD::Mem::Statement 0.001
-      DBD::Mem::Table 0.001
-      DBD::Mem::db 0.001
-      DBD::Mem::dr 0.001
-      DBD::Mem::st 0.001
-      DBD::NullP 12.014715
-      DBD::NullP::db 12.014715
-      DBD::NullP::dr 12.014715
-      DBD::NullP::st 12.014715
-      DBD::Proxy 0.2004
-      DBD::Proxy::RPC::PlClient 0.2004
-      DBD::Proxy::db 0.2004
-      DBD::Proxy::dr 0.2004
-      DBD::Proxy::st 0.2004
-      DBD::Sponge 12.010003
-      DBD::Sponge::db 12.010003
-      DBD::Sponge::dr 12.010003
-      DBD::Sponge::st 12.010003
-      DBDI 12.015129
-      DBI 1.643
-      DBI::Const::GetInfo::ANSI 2.008697
-      DBI::Const::GetInfo::ODBC 2.011374
-      DBI::Const::GetInfoReturn 2.008697
-      DBI::Const::GetInfoType 2.008697
-      DBI::DBD 12.015129
-      DBI::DBD::Metadata 2.014214
-      DBI::DBD::SqlEngine 0.06
-      DBI::DBD::SqlEngine::DataSource 0.06
-      DBI::DBD::SqlEngine::Statement 0.06
-      DBI::DBD::SqlEngine::Table 0.06
-      DBI::DBD::SqlEngine::TableSource 0.06
-      DBI::DBD::SqlEngine::TieMeta 0.06
-      DBI::DBD::SqlEngine::TieTables 0.06
-      DBI::DBD::SqlEngine::db 0.06
-      DBI::DBD::SqlEngine::dr 0.06
-      DBI::DBD::SqlEngine::st 0.06
-      DBI::Gofer::Execute 0.014283
-      DBI::Gofer::Request 0.012537
-      DBI::Gofer::Response 0.011566
-      DBI::Gofer::Serializer::Base 0.009950
-      DBI::Gofer::Serializer::DataDumper 0.009950
-      DBI::Gofer::Serializer::Storable 0.015586
-      DBI::Gofer::Transport::Base 0.012537
-      DBI::Gofer::Transport::pipeone 0.012537
-      DBI::Gofer::Transport::stream 0.012537
-      DBI::Profile 2.015065
-      DBI::ProfileData 2.010008
-      DBI::ProfileDumper 2.015325
-      DBI::ProfileDumper::Apache 2.014121
-      DBI::ProfileSubs 0.009396
-      DBI::ProxyServer 0.3005
-      DBI::ProxyServer::db 0.3005
-      DBI::ProxyServer::dr 0.3005
-      DBI::ProxyServer::st 0.3005
-      DBI::SQL::Nano 1.015544
-      DBI::SQL::Nano::Statement_ 1.015544
-      DBI::SQL::Nano::Table_ 1.015544
-      DBI::Util::CacheMemory 0.010315
-      DBI::Util::_accessor 0.009479
-      DBI::common 1.643
-    requirements:
-      ExtUtils::MakeMaker 6.48
-      Test::Simple 0.90
-      perl 5.008001
   Dancer2-0.300004
     pathname: C/CR/CROMEDOME/Dancer2-0.300004.tar.gz
     provides:
@@ -499,18 +289,6 @@ DISTRIBUTIONS
       URI::Escape 0
       YAML 0.86
       parent 0
-  Dancer2-Plugin-Auth-Tiny-0.008
-    pathname: X/XS/XSAWYERX/Dancer2-Plugin-Auth-Tiny-0.008.tar.gz
-    provides:
-      Dancer2::Plugin::Auth::Tiny 0.008
-    requirements:
-      Carp 0
-      Dancer2 0.154000
-      Dancer2::Plugin 0
-      ExtUtils::MakeMaker 6.17
-      perl 5.008001
-      strict 0
-      warnings 0
   Data-OptList-0.110
     pathname: R/RJ/RJBS/Data-OptList-0.110.tar.gz
     provides:
@@ -615,22 +393,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       File::Spec 0
       IO::Dir 0
-      perl 5.006
-      strict 0
-      warnings 0
-  File-pushd-1.016
-    pathname: D/DA/DAGOLDEN/File-pushd-1.016.tar.gz
-    provides:
-      File::pushd 1.016
-    requirements:
-      Carp 0
-      Cwd 0
-      Exporter 0
-      ExtUtils::MakeMaker 6.17
-      File::Path 0
-      File::Spec 0
-      File::Temp 0
-      overload 0
       perl 5.006
       strict 0
       warnings 0
@@ -928,125 +690,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Mojolicious-8.67
-    pathname: S/SR/SRI/Mojolicious-8.67.tar.gz
-    provides:
-      Mojo undef
-      Mojo::Asset undef
-      Mojo::Asset::File undef
-      Mojo::Asset::Memory undef
-      Mojo::Base undef
-      Mojo::ByteStream undef
-      Mojo::Cache undef
-      Mojo::Collection undef
-      Mojo::Content undef
-      Mojo::Content::MultiPart undef
-      Mojo::Content::Single undef
-      Mojo::Cookie undef
-      Mojo::Cookie::Request undef
-      Mojo::Cookie::Response undef
-      Mojo::DOM undef
-      Mojo::DOM::CSS undef
-      Mojo::DOM::HTML undef
-      Mojo::Date undef
-      Mojo::DynamicMethods undef
-      Mojo::EventEmitter undef
-      Mojo::Exception undef
-      Mojo::File undef
-      Mojo::Headers undef
-      Mojo::HelloWorld undef
-      Mojo::Home undef
-      Mojo::IOLoop undef
-      Mojo::IOLoop::Client undef
-      Mojo::IOLoop::Delay undef
-      Mojo::IOLoop::Server undef
-      Mojo::IOLoop::Stream undef
-      Mojo::IOLoop::Subprocess undef
-      Mojo::IOLoop::TLS undef
-      Mojo::JSON undef
-      Mojo::JSON::Pointer undef
-      Mojo::Loader undef
-      Mojo::Log undef
-      Mojo::Message undef
-      Mojo::Message::Request undef
-      Mojo::Message::Response undef
-      Mojo::Parameters undef
-      Mojo::Path undef
-      Mojo::Promise undef
-      Mojo::Reactor undef
-      Mojo::Reactor::EV undef
-      Mojo::Reactor::Poll undef
-      Mojo::Server undef
-      Mojo::Server::CGI undef
-      Mojo::Server::Daemon undef
-      Mojo::Server::Hypnotoad undef
-      Mojo::Server::Morbo undef
-      Mojo::Server::Morbo::Backend undef
-      Mojo::Server::Morbo::Backend::Poll undef
-      Mojo::Server::PSGI undef
-      Mojo::Server::Prefork undef
-      Mojo::Template undef
-      Mojo::Transaction undef
-      Mojo::Transaction::HTTP undef
-      Mojo::Transaction::WebSocket undef
-      Mojo::URL undef
-      Mojo::Upload undef
-      Mojo::UserAgent undef
-      Mojo::UserAgent::CookieJar undef
-      Mojo::UserAgent::Proxy undef
-      Mojo::UserAgent::Server undef
-      Mojo::UserAgent::Transactor undef
-      Mojo::Util undef
-      Mojo::WebSocket undef
-      Mojolicious 8.67
-      Mojolicious::Command undef
-      Mojolicious::Command::Author::cpanify undef
-      Mojolicious::Command::Author::generate undef
-      Mojolicious::Command::Author::generate::app undef
-      Mojolicious::Command::Author::generate::dockerfile undef
-      Mojolicious::Command::Author::generate::lite_app undef
-      Mojolicious::Command::Author::generate::makefile undef
-      Mojolicious::Command::Author::generate::plugin undef
-      Mojolicious::Command::Author::inflate undef
-      Mojolicious::Command::cgi undef
-      Mojolicious::Command::daemon undef
-      Mojolicious::Command::eval undef
-      Mojolicious::Command::get undef
-      Mojolicious::Command::prefork undef
-      Mojolicious::Command::psgi undef
-      Mojolicious::Command::routes undef
-      Mojolicious::Command::version undef
-      Mojolicious::Commands undef
-      Mojolicious::Controller undef
-      Mojolicious::Lite undef
-      Mojolicious::Plugin undef
-      Mojolicious::Plugin::Config undef
-      Mojolicious::Plugin::DefaultHelpers undef
-      Mojolicious::Plugin::EPLRenderer undef
-      Mojolicious::Plugin::EPRenderer undef
-      Mojolicious::Plugin::HeaderCondition undef
-      Mojolicious::Plugin::JSONConfig undef
-      Mojolicious::Plugin::Mount undef
-      Mojolicious::Plugin::NotYAMLConfig undef
-      Mojolicious::Plugin::TagHelpers undef
-      Mojolicious::Plugins undef
-      Mojolicious::Renderer undef
-      Mojolicious::Routes undef
-      Mojolicious::Routes::Match undef
-      Mojolicious::Routes::Pattern undef
-      Mojolicious::Routes::Route undef
-      Mojolicious::Sessions undef
-      Mojolicious::Static undef
-      Mojolicious::Types undef
-      Mojolicious::Validator undef
-      Mojolicious::Validator::Validation undef
-      Test::Mojo undef
-      ojo undef
-    requirements:
-      ExtUtils::MakeMaker 0
-      IO::Socket::IP 0.37
-      Sub::Util 1.41
-      perl 5.016
   Moo-2.004004
     pathname: H/HA/HAARG/Moo-2.004004.tar.gz
     provides:
@@ -1302,71 +945,6 @@ DISTRIBUTIONS
     requirements:
       Exporter 5.57
       perl 5.006
-  SQL-Statement-1.414
-    pathname: R/RE/REHSACK/SQL-Statement-1.414.tar.gz
-    provides:
-      SQL::Dialects::ANSI 1.414
-      SQL::Dialects::AnyData 1.414
-      SQL::Dialects::CSV 1.414
-      SQL::Dialects::Role 1.414
-      SQL::Eval 1.414
-      SQL::Eval::Table 1.414
-      SQL::Parser 1.414
-      SQL::Statement 1.414
-      SQL::Statement::Aggregate 1.414
-      SQL::Statement::ColumnValue 1.414
-      SQL::Statement::ConstantTerm 1.414
-      SQL::Statement::Function 1.414
-      SQL::Statement::Function::NumericEval 1.414
-      SQL::Statement::Function::StrConcat 1.414
-      SQL::Statement::Function::SubString 1.414
-      SQL::Statement::Function::Trim 1.414
-      SQL::Statement::Function::UserFunc 1.414
-      SQL::Statement::Functions 1.414
-      SQL::Statement::GetInfo 1.414
-      SQL::Statement::Group 1.414
-      SQL::Statement::Limit 1.414
-      SQL::Statement::Operation 1.414
-      SQL::Statement::Operation::ANSI::Is 1.414
-      SQL::Statement::Operation::And 1.414
-      SQL::Statement::Operation::Between 1.414
-      SQL::Statement::Operation::Clike 1.414
-      SQL::Statement::Operation::Contains 1.414
-      SQL::Statement::Operation::Equal 1.414
-      SQL::Statement::Operation::Equality 1.414
-      SQL::Statement::Operation::Greater 1.414
-      SQL::Statement::Operation::GreaterEqual 1.414
-      SQL::Statement::Operation::Is 1.414
-      SQL::Statement::Operation::Like 1.414
-      SQL::Statement::Operation::Lower 1.414
-      SQL::Statement::Operation::LowerEqual 1.414
-      SQL::Statement::Operation::Neg 1.414
-      SQL::Statement::Operation::NotEqual 1.414
-      SQL::Statement::Operation::Or 1.414
-      SQL::Statement::Operation::Regexp 1.414
-      SQL::Statement::Operation::Rlike 1.414
-      SQL::Statement::Order 1.414
-      SQL::Statement::Param 1.414
-      SQL::Statement::Placeholder 1.414
-      SQL::Statement::RAM 1.414
-      SQL::Statement::RAM::Table 1.414
-      SQL::Statement::Table 1.414
-      SQL::Statement::TempTable 1.414
-      SQL::Statement::Term 1.414
-      SQL::Statement::TermFactory 1.414
-      SQL::Statement::Util 1.414
-      SQL::Statement::Util::Column 1.414
-      SQL::Statement::Util::Function 1.414
-    requirements:
-      Carp 0
-      Clone 0.30
-      Data::Dumper 0
-      ExtUtils::MakeMaker 0
-      Module::Runtime 0
-      Params::Util 1.00
-      Scalar::Util 1.0
-      Text::Balanced 0
-      perl 5.008
   Safe-Isa-1.000010
     pathname: E/ET/ETHER/Safe-Isa-1.000010.tar.gz
     provides:
@@ -1409,12 +987,6 @@ DISTRIBUTIONS
       Sub::Install 0.92
       strict 0
       warnings 0
-  Sub-Exporter-Progressive-0.001013
-    pathname: F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz
-    provides:
-      Sub::Exporter::Progressive 0.001013
-    requirements:
-      ExtUtils::MakeMaker 0
   Sub-Install-0.928
     pathname: R/RJ/RJBS/Sub-Install-0.928.tar.gz
     provides:
@@ -1424,17 +996,6 @@ DISTRIBUTIONS
       Carp 0
       ExtUtils::MakeMaker 6.30
       Scalar::Util 0
-      strict 0
-      warnings 0
-  Sub-Name-0.26
-    pathname: E/ET/ETHER/Sub-Name-0.26.tar.gz
-    provides:
-      Sub::Name 0.26
-    requirements:
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      XSLoader 0
-      perl 5.006
       strict 0
       warnings 0
   Sub-Quote-2.006006
@@ -1853,25 +1414,6 @@ DISTRIBUTIONS
       strict 0
       utf8 0
       warnings 0
-  Variable-Magic-0.62
-    pathname: V/VP/VPIT/Variable-Magic-0.62.tar.gz
-    provides:
-      Variable::Magic 0.62
-    requirements:
-      Carp 0
-      Config 0
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      IO::Handle 0
-      IO::Select 0
-      IPC::Open3 0
-      POSIX 0
-      Socket 0
-      Test::More 0
-      XSLoader 0
-      base 0
-      lib 0
-      perl 5.008
   WWW-Form-UrlEncoded-0.26
     pathname: K/KA/KAZEBURO/WWW-Form-UrlEncoded-0.26.tar.gz
     provides:
@@ -1908,13 +1450,4 @@ DISTRIBUTIONS
       yaml_sequence undef
     requirements:
       ExtUtils::MakeMaker 0
-      perl 5.008001
-  namespace-clean-0.27
-    pathname: R/RI/RIBASUSHI/namespace-clean-0.27.tar.gz
-    provides:
-      namespace::clean 0.27
-    requirements:
-      B::Hooks::EndOfScope 0.12
-      ExtUtils::MakeMaker 0
-      Package::Stash 0.23
       perl 5.008001
