@@ -5,7 +5,10 @@ use VWJL::Infrastructure::Database;
 sub get {
     my %args = @_;
 
-    return VWJL::Infrastructure::Database::get( user => $args{'user'} );
+    my $athlete = VWJL::Infrastructure::Database::get_athlete(
+        user => $args{'user'} );
+
+    return $athlete;
 }
 
 true;

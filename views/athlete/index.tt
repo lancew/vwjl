@@ -34,20 +34,71 @@
         </div>
 
         <div>
-          <h2>[% athlete.name %]</h2>
-          <h3>Physical Attributes</h3>
-          <ul>
-            <li> Left Arm: 
-              <ul>
-                <li> Strength: [% athlete.physical.left_arm.strength %]
-              </ul>  
-          </ul>
+          
+<table>
+<thead>
+  <tr>
+    <th colspan="3">[% athlete.name %]</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>
+        Left Arm: [% athlete.physical.left_arm.strength %]/
+                  [% athlete.physical.left_arm.fatigue %]/
+                  [% athlete.physical.left_arm.injury %]
+        <br /> (Strength/Fatigue/Injury)
+    </td>
+    <td rowspan="2">
+        <img src=/images/gi.svg width=130 height=300>
+        <p>
+          Fitness: [% athlete.physical.fitness %] <br/>
+          Fatigue: [% athlete.physical.fatigue %] <br/>
+          Form: [% athlete.physical.form %] <br/>
+        </p>
+    </td>
+    <td>
+      Right Arm: [% athlete.physical.right_arm.strength %]/
+                  [% athlete.physical.right_arm.fatigue %]/
+                  [% athlete.physical.right_arm.injury %]
+        <br /> (Strength/Fatigue/Injury)
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+	  Left Leg: [% athlete.physical.left_leg.strength %]/
+                  [% athlete.physical.left_leg.fatigue %]/
+                  [% athlete.physical.left_leg.injury %]
+        <br /> (Strength/Fatigue/Injury)
+
+
+	</td>
+    <td>
+	  Right Leg: [% athlete.physical.right_leg.strength %]/
+                  [% athlete.physical.right_leg.fatigue %]/
+                  [% athlete.physical.right_leg.injury %]
+        <br /> (Strength/Fatigue/Injury)
+
+
+	</td>
+  </tr>
+  <tr>
+    <td colspan="3"></td>
+  </tr>
+</tbody>
+</table>
+
+
+
+
           <h3>Waza</h3>
+          <p>(Attack/Defense)</p>
           <ul>
-            <li> Ippon Seoi Nage
-              <ul>
-                <li> Attack : [% athlete.waza.ippon_seoi_nage.attack %]
-              </ul>
+            [% USE Dumper %]
+            [% FOREACH w IN athlete.waza %]
+              <li> [% w.key.replace('_','-').ucfirst %]: [% w.value.attack %] / [% w.value.defense %]
+            [% END%]
           </ul>
         </div>
       </div>
