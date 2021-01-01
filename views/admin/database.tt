@@ -33,9 +33,14 @@
           <h2>Virtual World Judo League</h2>
         </div>
 
+          <h1>Users ([% total_users %])</h1>
           <ul>
-            <li> <a href="/admin/users">Users</a>
-            <li> <a href="/admin/database">Database</a>
+            [% FOREACH user IN users %]
+              <li> [% user.username %]
+            [% END %]  
           </ul>
+          <pre>
+            [% outputref %]
+          </pre>
       </div>
     </div>

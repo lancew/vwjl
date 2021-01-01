@@ -17,11 +17,6 @@ get '/login' => sub {
     template 'login' => { return_url => params->{return_url} };
 };
 
-get '/logout' => sub {
-    app->destroy_session;
-    redirect '/';
-};
-
 post '/login' => sub {
     if ( _is_valid( params->{user}, params->{password} ) ) {
         warn "Logging in " . params->{user};
@@ -35,6 +30,15 @@ post '/login' => sub {
     else {
         template 'login' => { error => "invalid username or password" };
     }
+};
+
+get '/logout' => sub {
+    app->destroy_session;
+    redirect '/';
+};
+
+get '/register' => sub {
+    template 'register';
 };
 
 sub _is_valid {
