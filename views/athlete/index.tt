@@ -38,46 +38,46 @@
 <table>
 <thead>
   <tr>
-    <th colspan="3">[% athlete.name %]</th>
+    <th colspan="3">[% athlete.username %]</th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td>
-        Left Arm: [% athlete.physical.left_arm.strength %]/
-                  [% athlete.physical.left_arm.fatigue %]/
-                  [% athlete.physical.left_arm.injury %]
+        Left Arm: [% athlete.physical_left_arm_strength %]/
+                  [% athlete.physical_left_arm_fatigue %]/
+                  [% athlete.physical_left_arm_injury %]
         <br /> (Strength/Fatigue/Injury)
     </td>
     <td rowspan="2">
         <img src=/images/gi.svg width=130 height=300>
         <p>
-          Fitness: [% athlete.physical.fitness %] <br/>
-          Fatigue: [% athlete.physical.fatigue %] <br/>
-          Form: [% athlete.physical.form %] <br/>
+          Fitness: [% athlete.physical_fitness %] <br/>
+          Fatigue: [% athlete.physical_fatigue %] <br/>
+          Form: [% athlete.physical_form %] <br/>
         </p>
     </td>
     <td>
-      Right Arm: [% athlete.physical.right_arm.strength %]/
-                  [% athlete.physical.right_arm.fatigue %]/
-                  [% athlete.physical.right_arm.injury %]
+      Right Arm: [% athlete.physical_right_arm_strength %]/
+                  [% athlete.physical_right_arm_fatigue %]/
+                  [% athlete.physical_right_arm_injury %]
         <br /> (Strength/Fatigue/Injury)
 
     </td>
   </tr>
   <tr>
     <td>
-	  Left Leg: [% athlete.physical.left_leg.strength %]/
-                  [% athlete.physical.left_leg.fatigue %]/
-                  [% athlete.physical.left_leg.injury %]
+	  Left Leg: [% athlete.physical_left_leg_strength %]/
+                  [% athlete.physical_left_leg_fatigue %]/
+                  [% athlete.physical_left_leg_injury %]
         <br /> (Strength/Fatigue/Injury)
 
 
 	</td>
     <td>
-	  Right Leg: [% athlete.physical.right_leg.strength %]/
-                  [% athlete.physical.right_leg.fatigue %]/
-                  [% athlete.physical.right_leg.injury %]
+	  Right Leg: [% athlete.physical_right_leg_strength %]/
+                  [% athlete.physical_right_leg_fatigue %]/
+                  [% athlete.physical_right_leg_injury %]
         <br /> (Strength/Fatigue/Injury)
 
 
@@ -95,10 +95,8 @@
           <h3>Waza</h3>
           <p>(Attack/Defense)</p>
           <ul>
-            [% USE Dumper %]
-            [% FOREACH w IN athlete.waza %]
-              <li> [% w.key.replace('_','-').ucfirst %]: [% w.value.attack %] / [% w.value.defense %]
-            [% END%]
+            <li> Ippon Seoi Nage: [% athlete.waza_ippon_seoi_nage_attack %] / [% athlete.waza_ippon_seoi_nage_defense %] 
+            <li> Uchi Mata: [% athlete.waza_uchi_mata_attack %] / [% athlete.waza_uchi_mata_defense %] 
           </ul>
         </div>
       </div>

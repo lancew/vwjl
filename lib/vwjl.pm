@@ -61,10 +61,9 @@ post '/register' => sub {
     }
 
     $inf->add_user(
-        username => params->{user}, 
+        username   => params->{user},
         passphrase => $phrase->rfc2307
     );
-
 
     redirect '/login';
 };
@@ -72,10 +71,8 @@ post '/register' => sub {
 sub _is_valid {
     my ( $user, $password ) = @_;
 
-
-    my $inf = VWJL::Infrastructure->new;
+    my $inf       = VWJL::Infrastructure->new;
     my $user_data = $inf->get_user_data($user);
-
 
     return false unless $user_data;
 
@@ -87,5 +84,4 @@ sub _is_valid {
     }
 }
 
-
-true;
+1;

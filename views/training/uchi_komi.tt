@@ -29,24 +29,15 @@
 
       <div id="content">
         <div id="header">
-          <h1>VWJL Admin</h1>
+          <h1>VWJL</h1>
           <h2>Virtual World Judo League</h2>
+          <h3>Uchi Komi Training</h3>
         </div>
-
-          <h1>Users ([% total_users %])</h1>
+          <p>[% message %]</p>  
+          <p>Increase attack by 1, increase fatigue by 1 (Your risk of injury increases as your fatigue does). If fatugue reaches 100 you will not be able to train.</p>
           <ul>
-            [% FOREACH user IN users %]
-              <li> [% user.username %]
-            [% END %]  
+            <li> <a href="/training/uchi_komi/ippon_seoi_nage">Ippon Seoi Nage</a>
+            <li> <a href="/training/uchi_komi/uchi_mata">Uchi Mata</a>
           </ul>
-          <h1>Athletes</h1>
-          <ul>
-            [% FOREACH athlete IN athletes %]
-              <li> [% user.username %]
-            [% END %]  
-          </ul>
-          <pre>
-            [% outputref %]
-          </pre>
       </div>
     </div>

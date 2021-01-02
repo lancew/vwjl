@@ -35,10 +35,12 @@
         </div>
 
           <ul>
+            <li> <a href="/training/uchi_komi">Uchi Komi</a>
+            <li> -+-
+            <li> To implement:
             <li> <a href="#">Strength</a>
             <li> <a href="#">Cardio</a>
             <li> <a href="#">Speed</a>
-            <li> <a href="#">Uchi Komi</a>
             <li> <a href="#">Nage Komi</a>
             <li> <a href="#">Randori</a>
           </ul>
