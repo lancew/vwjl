@@ -89,8 +89,43 @@
 </tbody>
 </table>
 
+<p>Credits: [% athlete.credits %]</p>
 
 
+<table border=1 width=100%>
+ <tr>
+    <td>
+      Te-waza  
+    </td>
+    <td>
+      Koshi-waza  
+    </td>
+    <td>
+      Ashi-waza  
+    </td>
+ </tr>
+ <tr>
+   <td>
+       Ippon-seoi-nage: [% athlete.waza_ippon_seoi_nage_attack %] / [% athlete.waza_ippon_seoi_nage_defense %]
+   </td>
+   <td>-</td>
+   <td>
+       Uchi-mata: [% athlete.waza_uchi_mata_attack %] / [% athlete.waza_uchi_mata_defense %]
+   </td>
+ </tr>
+ <tr>
+    <td>
+      Ma-sutemi-waza  
+    </td>
+    <td>
+    </td>
+    <td>
+      Yuko-sutemi-waza  
+    </td>
+ </tr>
+ <tr><td></td><td></td><td></td></tr>
+
+</table>
 
           <h3>Waza</h3>
           <p>(Attack/Defense)</p>

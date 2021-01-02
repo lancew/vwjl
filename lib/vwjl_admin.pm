@@ -83,9 +83,9 @@ get '/database' => sub {
             waza_ippon_seoi_nage_attack  INTEGER DEFAULT 1,
             waza_ippon_seoi_nage_defense INTEGER DEFAULT 1,
             waza_uchi_mata_attack        INTEGER DEFAULT 1,
-            waza_uchi_mata_defense       INTEGER DEFAULT 1
+            waza_uchi_mata_defense       INTEGER DEFAULT 1,
             weight  DECIMAL,
-            wins    INTEGER DEFAULT 0,
+            wins    INTEGER DEFAULT 0
         )
     ' );
 
