@@ -2,6 +2,7 @@ requires "Dancer2" => "0.300004";
 
 requires "Dancer2::Plugin::Auth::Tiny" => "0.008";
 requires 'Dancer2::Plugin::DBIC' => "0.0100";
+requires "Dancer2::Plugin::Passphrase" => "3.3.4";
 requires "Moo" => "2.004004";
 requires "DBI";
 requires "DBD::Pg" => "3.14.2";

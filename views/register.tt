@@ -18,13 +18,13 @@
         </div>
 
         <div id="getting-started">
-              [% IF error %]<h2>[% error %]</h2>[% END %]
+              [% IF error %]<h2>Error: [% error %]</h2>[% END %]
               <form method=Post>
                       <input type="text" placeholder="Username" name="user" autofocus>
                       <p />
                       
                       <input type="text" placeholder="Password" name="password"><br />
-                      <input type="text" placeholder="Password" name="password22">
+                      <input type="text" placeholder="Password" name="password2">
                       <p />
 
                       <button type="submit">Login</button>

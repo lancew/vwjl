@@ -14,7 +14,11 @@ get '/' => sub {
 get '/users' => sub {
     redirect '/' unless session('admin');
 
-    my $users = [ 'Lance Wicks', 'Joe Bloggs', 'Jane Doe', ];
+    my $dbh = DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
+        'postgres', 'somePassword', { AutoCommit => 1 } );
+    my $users = $dbh->selectall_arrayref( 'SELECT username from accounts',
+        { 'Slice' => {} } );
+    $dbh->disconnect;
 
     my $total_users = 0 + @{$users};
 
@@ -26,7 +30,7 @@ get '/users' => sub {
 };
 
 get '/database' => sub {
-    # redirect '/' unless session('admin');
+    redirect '/' unless session('admin');
 
     my $output;
 
@@ -37,7 +41,7 @@ get '/database' => sub {
    CREATE TABLE accounts (
 	user_id serial PRIMARY KEY,
 	username VARCHAR ( 50 ) UNIQUE NOT NULL,
-	password VARCHAR ( 50 ) NOT NULL,
+	passphrase VARCHAR ( 150 ) NOT NULL,
 	email VARCHAR ( 255 ) UNIQUE NOT NULL,
 	created_on TIMESTAMP NOT NULL,
         last_login TIMESTAMP); 
@@ -45,17 +49,14 @@ get '/database' => sub {
 
     $rv = $dbh->do( "
       INSERT INTO accounts
-      (username,password,email,created_on)
+      (username,passphrase,email,created_on)
       VALUES
-      ( 'lancew', 'lancew', 'lw\@judocoach.com', localtimestamp)
+      ( 'lancew', '{CRYPT}\$2a\$04\$EB5QjLwL8N6.SOLRMqVVGe.r3ObhdFeWUwkM0XQl2nxOCISspH5I6', 'lw\@judocoach.com', localtimestamp)
     
     " );
 
-    my $users = $dbh->selectall_arrayref( 'SELECT username from accounts',
+    my $users = $dbh->selectall_arrayref( 'SELECT * from accounts',
         { 'Slice' => {} } );
-
-    use Data::Dumper;
-    warn Dumper $users;
 
     $dbh->disconnect;
 
