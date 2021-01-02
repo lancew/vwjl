@@ -1,7 +1,8 @@
 package VWJL::Infrastructure::Database;
+use Moo::Role;
 
 sub get_athlete {
-    my %args = @_;
+    my ( $self, %args ) = @_;
 
     my %fake_data = (
         'lancew' => {
@@ -57,5 +58,5 @@ sub get_athlete {
     return $athlete;
 }
 
-true;
+1;
 

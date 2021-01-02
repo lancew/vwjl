@@ -11,6 +11,7 @@ use_ok 'vwjl_training';
 use_ok 'waza';
 
 use_ok 'VWJL::Athlete';
+use_ok 'VWJL::Infrastructure';
 use_ok 'VWJL::Infrastructure::Database';
 use_ok 'VWJL::Waza';
 

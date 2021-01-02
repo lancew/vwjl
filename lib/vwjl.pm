@@ -4,6 +4,8 @@ use Dancer2::Plugin::Auth::Tiny;
 use Dancer2::Plugin::Passphrase;
 use DBI;
 
+use VWJL::Infrastructure;
+
 our $VERSION = '0.1';
 
 get '/' => sub {

@@ -1,12 +1,13 @@
 package VWJL::Athlete;
 
-use VWJL::Infrastructure::Database;
+use VWJL::Infrastructure;
 
 sub get {
     my %args = @_;
 
-    my $athlete = VWJL::Infrastructure::Database::get_athlete(
-        user => $args{'user'} );
+    my $inf = VWJL::Infrastructure->new;
+
+    my $athlete = $inf->get_athlete( user => $args{'user'} );
 
     return $athlete;
 }
