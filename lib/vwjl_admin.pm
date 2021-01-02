@@ -5,6 +5,8 @@ use DBI;
 
 our $VERSION = '0.1';
 
+use VWJL::Infrastructure;
+
 get '/' => sub {
     redirect '/' unless session('admin');
 
@@ -14,11 +16,9 @@ get '/' => sub {
 get '/users' => sub {
     redirect '/' unless session('admin');
 
-    my $dbh = DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
-        'postgres', 'somePassword', { AutoCommit => 1 } );
-    my $users = $dbh->selectall_arrayref( 'SELECT username from accounts',
-        { 'Slice' => {} } );
-    $dbh->disconnect;
+    my $inf = VWJL::Infrastructure->new;
+
+    my $users = $inf->get_users;
 
     my $total_users = 0 + @{$users};
 
@@ -57,7 +57,7 @@ get '/database' => sub {
     $dbh->do( '
         CREATE TABLE athletes (
             athlete_id serial PRIMARY KEY,
-            username varchar(50) NOT NULL,
+            username varchar(50) UNIQUE NOT NULL,
             biography TEXT,
             country VARCHAR(100),
             credits INTEGER DEFAULT 0,
@@ -93,6 +93,7 @@ get '/database' => sub {
 
     my $users = $dbh->selectall_arrayref( 'SELECT * from accounts',
         { 'Slice' => {} } );
+
     my $athletes = $dbh->selectall_arrayref( 'SELECT * from athletes',
         { 'Slice' => {} } );
 

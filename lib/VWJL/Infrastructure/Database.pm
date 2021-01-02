@@ -22,6 +22,16 @@ sub is_username_in_db {
     return undef unless $user_data;
 }
 
+sub get_users {
+    my $self = shift;
+
+    my $users
+        = $self->dbh->selectall_arrayref(
+        'SELECT * FROM accounts', {Slice=>{}} );
+
+    return $users;
+}
+
 sub get_user_data {
     my ( $self, $user ) = @_;
 
@@ -43,6 +53,12 @@ sub add_user {
       ( ?, ?, localtimestamp)
     ", undef, $args{username}, $args{passphrase} );
 
+    $self->dbh->do( "
+      INSERT INTO athletes
+      (username)
+      VALUES
+      (?)
+    ", undef, $args{username} );
 }
 
 sub get_athlete_data {
