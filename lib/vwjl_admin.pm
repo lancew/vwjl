@@ -30,7 +30,7 @@ get '/users' => sub {
 };
 
 get '/database' => sub {
-    redirect '/' unless session('admin');
+    #redirect '/' unless session('admin');
 
     my $output;
 
@@ -42,16 +42,15 @@ get '/database' => sub {
 	user_id serial PRIMARY KEY,
 	username VARCHAR ( 50 ) UNIQUE NOT NULL,
 	passphrase VARCHAR ( 150 ) NOT NULL,
-	email VARCHAR ( 255 ) UNIQUE NOT NULL,
 	created_on TIMESTAMP NOT NULL,
         last_login TIMESTAMP); 
     ' );
 
     $rv = $dbh->do( "
       INSERT INTO accounts
-      (username,passphrase,email,created_on)
+      (username,passphrase,created_on)
       VALUES
-      ( 'lancew', '{CRYPT}\$2a\$04\$EB5QjLwL8N6.SOLRMqVVGe.r3ObhdFeWUwkM0XQl2nxOCISspH5I6', 'lw\@judocoach.com', localtimestamp)
+      ( 'lancew', '{CRYPT}\$2a\$04\$EB5QjLwL8N6.SOLRMqVVGe.r3ObhdFeWUwkM0XQl2nxOCISspH5I6', localtimestamp)
     
     " );
 

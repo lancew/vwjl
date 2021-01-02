@@ -43,6 +43,8 @@ get '/register' => sub {
 };
 
 post '/register' => sub {
+    my $inf = VWJL::Infrastructure->new;
+
     my $phrase = passphrase( params->{'password'} )->generate;
 
     unless ( params->{user} && params->{password} && params->{password2} ) {
@@ -56,23 +58,21 @@ post '/register' => sub {
         return template 'register' => { error => "Passwords must match" };
     }
 
-    if ( _is_username_in_db( params->{user} ) ) {
+    if ( $inf->is_username_in_db( params->{user} ) ) {
         warn 'Username already exists';
         return template 'register' =>
             { error => "This user name already exists in the system" };
     }
-
-    warn '----------------------+++++++++++', $phrase->rfc2307;
 
     my $dbh = DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
         'postgres', 'somePassword', { AutoCommit => 1 } );
 
     $dbh->do( "
       INSERT INTO accounts
-      (username,email,passphrase,created_on)
+      (username,passphrase,created_on)
       VALUES
-      ( ?, ?,? , localtimestamp)
-    ", undef, params->{user}, '-', $phrase->rfc2307 );
+      ( ?, ?, localtimestamp)
+    ", undef, params->{user}, $phrase->rfc2307 );
 
     $dbh->disconnect;
 
@@ -100,18 +100,5 @@ sub _is_valid {
     }
 }
 
-sub _is_username_in_db {
-    my $user = shift;
-
-    my $dbh = DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
-        'postgres', 'somePassword', { AutoCommit => 1 } );
-    my $user_data
-        = $dbh->selectrow_hashref(
-        'SELECT username FROM accounts WHERE username = ?',
-        undef, $user );
-    $dbh->disconnect;
-
-    return false unless $user_data;
-}
 
 true;

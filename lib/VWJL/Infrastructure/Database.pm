@@ -1,6 +1,27 @@
 package VWJL::Infrastructure::Database;
 use Moo::Role;
 
+use DBI;
+
+has 'dbh' => (
+    is => 'lazy',
+    builder => sub {
+        DBI->connect( "dbi:Pg:dbname=postgres;host=localhost", 'postgres', 'somePassword', { AutoCommit => 1 } );
+    },
+);
+
+
+sub is_username_in_db {
+    my ($self,$user) = @_;
+
+    my $user_data
+        = $self->dbh->selectrow_hashref(
+        'SELECT username FROM accounts WHERE username = ?',
+        undef, $user );
+
+    return undef unless $user_data;
+}
+
 sub get_athlete {
     my ( $self, %args ) = @_;
 
