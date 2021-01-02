@@ -22,6 +22,29 @@ sub is_username_in_db {
     return undef unless $user_data;
 }
 
+sub get_user_data {
+    my ($self,$user) = @_;
+
+    my $user_data
+        = $self->dbh->selectrow_hashref(
+        'SELECT * FROM accounts WHERE username = ?',
+        undef, $user );
+
+    return $user_data;    
+}
+
+sub add_user {
+    my ($self, %args) = @_;
+
+    $self->dbh->do( "
+      INSERT INTO accounts
+      (username,passphrase,created_on)
+      VALUES
+      ( ?, ?, localtimestamp)
+    ", undef, $args{username}, $args{passphrase} );
+
+}
+
 sub get_athlete {
     my ( $self, %args ) = @_;
 

@@ -19,7 +19,6 @@ get '/login' => sub {
 
 post '/login' => sub {
     if ( _is_valid( params->{user}, params->{password} ) ) {
-        warn "Logging in " . params->{user};
         session 'user' => params->{user};
 
         if ( params->{user} eq 'lancew' ) {
@@ -48,33 +47,24 @@ post '/register' => sub {
     my $phrase = passphrase( params->{'password'} )->generate;
 
     unless ( params->{user} && params->{password} && params->{password2} ) {
-        warn 'Missing Fields';
         return template 'register' =>
             { error => "All fields must be filled" };
     }
 
     unless ( params->{password} eq params->{password2} ) {
-        warn 'Passwords must match';
         return template 'register' => { error => "Passwords must match" };
     }
 
     if ( $inf->is_username_in_db( params->{user} ) ) {
-        warn 'Username already exists';
         return template 'register' =>
             { error => "This user name already exists in the system" };
     }
 
-    my $dbh = DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
-        'postgres', 'somePassword', { AutoCommit => 1 } );
+    $inf->add_user(
+        username => params->{user}, 
+        passphrase => $phrase->rfc2307
+    );
 
-    $dbh->do( "
-      INSERT INTO accounts
-      (username,passphrase,created_on)
-      VALUES
-      ( ?, ?, localtimestamp)
-    ", undef, params->{user}, $phrase->rfc2307 );
-
-    $dbh->disconnect;
 
     redirect '/login';
 };
@@ -82,13 +72,10 @@ post '/register' => sub {
 sub _is_valid {
     my ( $user, $password ) = @_;
 
-    my $dbh = DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
-        'postgres', 'somePassword', { AutoCommit => 1 } );
-    my $user_data
-        = $dbh->selectrow_hashref(
-        'SELECT * FROM accounts WHERE username = ?',
-        undef, $user );
-    $dbh->disconnect;
+
+    my $inf = VWJL::Infrastructure->new;
+    my $user_data = $inf->get_user_data($user);
+
 
     return false unless $user_data;
 
