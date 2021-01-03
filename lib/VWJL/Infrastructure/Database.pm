@@ -34,10 +34,10 @@ sub get_users {
 sub get_competitions {
     my $self = shift;
 
-    my $users = $self->dbh->selectall_arrayref( 'SELECT * FROM competitions',
+    my $competitions = $self->dbh->selectall_arrayref( 'SELECT * FROM competitions',
         { Slice => {} } );
 
-    return $users;
+    return $competitions;
 }
 
 sub get_competition {
