@@ -35,7 +35,12 @@
         </div>
           <ul>
             [% FOREACH c IN competitions %]
-                <li> [% c.name %] - <a href=/competition/[% c.id %]/register>Register for this event</a> 
+                <li> [% c.name %] - 
+                    [% IF comps_entered.${c.id} %]
+                        [% c.id %] - Registered to compete.
+                    [% ELSE %]    
+                        <a href=/competition/[% c.id %]/register>Register for this event</a> 
+                    [% END %]    
             [% END %]
           </ul>
       </div>

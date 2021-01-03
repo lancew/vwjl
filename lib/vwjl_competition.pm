@@ -11,8 +11,18 @@ get '/' => sub {
 
     my $inf          = VWJL::Infrastructure->new;
     my $competitions = $inf->get_competitions;
+    my $athlete = $inf->get_athlete_data( user => session('user') );
 
-    template 'competition/index' => { competitions => $competitions, };
+    my $comps_entered;
+    for my $c ( @{$athlete->{competition_entries}}) {
+        $comps_entered->{$c->{id}}++;
+    }
+
+    template 'competition/index' => { 
+        competitions => $competitions, 
+        athlete     => $athlete,
+        comps_entered => $comps_entered,
+    };
 };
 
 get '/:competition_id/register' => sub {
