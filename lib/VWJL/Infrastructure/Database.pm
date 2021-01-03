@@ -43,12 +43,32 @@ sub get_competitions {
 sub get_competition {
     my ( $self, %args ) = @_;
 
-    my $user_data
+    my $competition_data
         = $self->dbh->selectrow_hashref(
         'SELECT * FROM competitions WHERE id = ?',
         undef, $args{competition_id} );
 
-    return $user_data;
+    my $entries = $self->dbh->selectall_arrayref(
+        'SELECT athlete_id from competitions_athletes WHERE competition_id = ?',
+        { Slice => {} },
+        $args{competition_id}
+    );
+
+    my $athletes
+        = $self->dbh->selectall_hashref( 'SELECT * FROM athletes', 'id' );
+
+    use Data::Dumper;
+    warn Dumper $athletes;
+    for my $entry (@$entries) {
+        warn '-------------------------', Dumper $entry;
+        my $entry_id = $entry->{'athlete_id'};
+        warn '----- ENTRY ID: ', $entry_id;
+        my $athlete = $athletes->{$entry_id};
+        warn Dumper $athlete;
+        $competition_data->{'entries'}{ $athlete->{id} } = $athlete;
+    }
+
+    return $competition_data;
 }
 
 sub get_user_data {

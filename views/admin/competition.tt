@@ -32,12 +32,11 @@
           <h1>VWJL Admin</h1>
           <h2>Virtual World Judo League</h2>
         </div>
-
+          <h2>[% competition.name %]</h2>
           <ul>
-            <li> <a href="/admin/users">Users</a>
-            <li> <a href="/admin/competitions">Competitions</a>
-            <li> -+-
-            <li> <a href="/admin/database">iInitialise Database</a>
+            [% FOREACH e IN competition.entries.values %]
+                <li> [% e.username %]
+            [% END %]
           </ul>
       </div>
     </div>
