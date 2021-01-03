@@ -25,11 +25,30 @@ sub is_username_in_db {
 sub get_users {
     my $self = shift;
 
-    my $users
-        = $self->dbh->selectall_arrayref(
-        'SELECT * FROM accounts', {Slice=>{}} );
+    my $users = $self->dbh->selectall_arrayref( 'SELECT * FROM accounts',
+        { Slice => {} } );
 
     return $users;
+}
+
+sub get_competitions {
+    my $self = shift;
+
+    my $users = $self->dbh->selectall_arrayref( 'SELECT * FROM competitions',
+        { Slice => {} } );
+
+    return $users;
+}
+
+sub get_competition {
+    my ( $self, %args ) = @_;
+
+    my $user_data
+        = $self->dbh->selectrow_hashref(
+        'SELECT * FROM competitions WHERE id = ?',
+        undef, $args{competition_id} );
+
+    return $user_data;
 }
 
 sub get_user_data {
@@ -64,12 +83,18 @@ sub add_user {
 sub get_athlete_data {
     my ( $self, %args ) = @_;
 
-    my $user_data
+    my $athlete_data
         = $self->dbh->selectrow_hashref(
         'SELECT * FROM athletes WHERE username = ?',
         undef, $args{user} );
 
-    return $user_data;
+    my $entries = $self->dbh->selectall_arrayref( '
+        SELECT id FROM competitions_athletes WHERE athlete_id = ?
+    ', { Slice => {} }, $athlete_data->{id} );
+
+    $athlete_data->{competition_entries} = $entries;
+
+    return $athlete_data;
 }
 
 sub update_athlete {
@@ -81,6 +106,16 @@ sub update_athlete {
             . " = ? WHERE athletes.username = ?",
         undef, $args{'value'}, $args{'user'}
     );
+}
+
+sub add_user_to_competition {
+    my ( $self, %args ) = @_;
+
+    $self->dbh->do( "
+        INSERT INTO competitions_athletes
+                    (athlete_id, competition_id,added_on)
+             VALUES (?,?, localtimestamp)
+    ", undef, $args{athlete_id}, $args{competition_id} );
 }
 
 1;

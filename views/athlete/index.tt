@@ -91,7 +91,16 @@
 
 <p>Credits: [% athlete.credits %]</p>
 
+<h2>Competitions entered</h2>
+<ul>
+    [% FOREACH c IN athlete.competition_entries %]
+        <li> [% competitions.${c.id} %]
+    [% END %]
+</ul>
 
+
+
+<h2>Waza</h2>
 <table border=1 width=100%>
  <tr>
     <td>
@@ -127,12 +136,6 @@
 
 </table>
 
-          <h3>Waza</h3>
-          <p>(Attack/Defense)</p>
-          <ul>
-            <li> Ippon Seoi Nage: [% athlete.waza_ippon_seoi_nage_attack %] / [% athlete.waza_ippon_seoi_nage_defense %] 
-            <li> Uchi Mata: [% athlete.waza_uchi_mata_attack %] / [% athlete.waza_uchi_mata_defense %] 
-          </ul>
         </div>
       </div>
     </div>

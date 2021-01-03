@@ -56,11 +56,11 @@ get '/database' => sub {
 
     $dbh->do( '
         CREATE TABLE athletes (
-            athlete_id serial PRIMARY KEY,
+            id serial PRIMARY KEY,
             username varchar(50) UNIQUE NOT NULL,
             biography TEXT,
             country VARCHAR(100),
-            credits INTEGER DEFAULT 0,
+            credits INTEGER DEFAULT 100,
             dojo    VARCHAR(100),
             left_arm_fatigue   INTEGER DEFAULT 1,
             left_arm_injury    INTEGER DEFAULT 1, 
@@ -91,18 +91,47 @@ get '/database' => sub {
 
     $dbh->do("INSERT INTO athletes (username) VALUES ('lancew')");
 
+    $dbh->do( '
+        CREATE TABLE competitions (
+            id serial PRIMARY KEY,
+            name VARCHAR(100) UNIQUE NOT NULL,
+            description TEXT,
+            owner_username VARCHAR(50) NOT NULL,
+            entry_fee INTEGER DEFAULT 1,
+            created_on TIMESTAMP NOT NULL
+        )
+    ' );
+
+    $dbh->do(
+        "INSERT INTO competitions (name,description,owner_username,created_on) VALUES ('Novice League', 'A starter league', 'lancew', localtimestamp)"
+    );
+
+    $dbh->do( '
+        CREATE TABLE competitions_athletes (
+            id serial PRIMARY KEY,
+            competition_id INTEGER NOT NULL,
+            athlete_id INTEGER NOT NULL,
+            added_on TIMESTAMP NOT NULL,
+            UNIQUE(athlete_id,competition_id)
+        )
+    ' );
+
     my $users = $dbh->selectall_arrayref( 'SELECT * from accounts',
         { 'Slice' => {} } );
 
     my $athletes = $dbh->selectall_arrayref( 'SELECT * from athletes',
         { 'Slice' => {} } );
 
+    my $competitions = $dbh->selectall_arrayref( 'SELECT * from competitions',
+        { 'Slice' => {} } );
+
     $dbh->disconnect;
 
     template 'admin/database' => {
-        users    => $users,
-        athletes => $athletes,
-        output   => $output,
+        users        => $users,
+        athletes     => $athletes,
+        competitions => $competitions,
+        output       => $output,
     };
 };
 

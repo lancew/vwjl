@@ -35,14 +35,20 @@
 
           <h1>Users ([% total_users %])</h1>
           <ul>
-            [% FOREACH user IN users %]
-              <li> [% user.username %]
+            [% FOREACH u IN users %]
+              <li> [% u.username %]
             [% END %]  
           </ul>
           <h1>Athletes</h1>
           <ul>
-            [% FOREACH athlete IN athletes %]
-              <li> [% user.username %]
+            [% FOREACH a IN athletes %]
+              <li> [% a.username %]
+            [% END %]  
+          </ul>
+          <h1>Competitions</h1>
+          <ul>
+            [% FOREACH c IN competitions %]
+              <li> [% c.name %], [% c.entry_fee %], [% c.description %]
             [% END %]  
           </ul>
           <pre>
