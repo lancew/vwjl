@@ -33,14 +33,8 @@
           <h2>Virtual World Judo League</h2>
         </div>
           <h2>SIMULATE: [% competition.name %]</h2>
-          <ul>
-            [% FOREACH e IN competition.entries.values %]
-                <li> [% e.username %]
-            [% END %]
-          </ul>
 
-
-          <h2>Rounds ([% tournament.rounds %])</h2>
+          <h3>Rounds ([% tournament.rounds %])</h3>
           [% FOREACH round IN tournament.wholeSchedule %]
             <p>[% loop.count %] of [% loop.size %]
                <ul>  
