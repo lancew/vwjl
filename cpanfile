@@ -6,6 +6,7 @@ requires "Dancer2::Plugin::Passphrase" => "3.3.4";
 requires "Moo" => "2.004004";
 requires "DBI";
 requires "DBD::Pg" => "3.14.2";
+requires "Games::Tournament";
 
 recommends "YAML"             => "0";
 recommends "URL::Encode::XS"  => "0";

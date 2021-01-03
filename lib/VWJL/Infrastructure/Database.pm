@@ -57,14 +57,9 @@ sub get_competition {
     my $athletes
         = $self->dbh->selectall_hashref( 'SELECT * FROM athletes', 'id' );
 
-    use Data::Dumper;
-    warn Dumper $athletes;
     for my $entry (@$entries) {
-        warn '-------------------------', Dumper $entry;
         my $entry_id = $entry->{'athlete_id'};
-        warn '----- ENTRY ID: ', $entry_id;
         my $athlete = $athletes->{$entry_id};
-        warn Dumper $athlete;
         $competition_data->{'entries'}{ $athlete->{id} } = $athlete;
     }
 

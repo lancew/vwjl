@@ -32,12 +32,28 @@
           <h1>VWJL Admin</h1>
           <h2>Virtual World Judo League</h2>
         </div>
-          <h2>[% competition.name %]</h2>
+          <h2>SIMULATE: [% competition.name %]</h2>
           <ul>
             [% FOREACH e IN competition.entries.values %]
                 <li> [% e.username %]
             [% END %]
           </ul>
-          <a href=/admin/competition/[% competition.id %]/simulate>Simulate this event</a>
+
+
+          <h2>Rounds ([% tournament.rounds %])</h2>
+          [% FOREACH round IN tournament.wholeSchedule %]
+            <p>[% loop.count %] of [% loop.size %]
+               <ul>  
+               [% FOREACH contest IN round %]
+                 <li> [% contest.0 %] [% IF contest.1 == 'Bye' %] &nbsp; [% ELSE %] - [% END %] [% contest.1 %]
+               [% END %]
+               </ul>
+            </p>
+          [% END %]
+
+        
+          <form method=post>
+            <button type="submit">Simulate</button>
+          </form>
       </div>
     </div>

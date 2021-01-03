@@ -1241,6 +1241,37 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008001
+  Games-Tournament-RoundRobin-0.03
+    pathname: D/DR/DRBEAN/Games-Tournament-RoundRobin-0.03.tar.gz
+    provides:
+      Games::League::Member 0.01
+      Games::Tournament::RoundRobin 0.02
+    requirements:
+      Module::Build 0.28
+      overload 0
+      strict 0
+      warnings 0
+  Games-Tournament-Swiss-0.21
+    pathname: D/DR/DRBEAN/Games-Tournament-Swiss-0.21.tar.gz
+    provides:
+      Games::Tournament 0.21
+      Games::Tournament::Card 0.21
+      Games::Tournament::Contestant 0.21
+      Games::Tournament::Contestant::Swiss 0.21
+      Games::Tournament::Contestant::Swiss::Preference 0.21
+      Games::Tournament::Swiss 0.21
+      Games::Tournament::Swiss::Bracket 0.21
+      Games::Tournament::Swiss::Config 0.21
+      Games::Tournament::Swiss::Procedure 0.21
+      Games::Tournament::Swiss::Procedure::Dummy 0.21
+      Games::Tournament::Swiss::Procedure::FIDE 0.21
+    requirements:
+      IO::All 0
+      List::MoreUtils 0
+      Parse::RecDescent 0
+      Test::Base 0
+      Test::More 0
+      YAML 0
   Getopt-Long-Descriptive-0.105
     pathname: R/RJ/RJBS/Getopt-Long-Descriptive-0.105.tar.gz
     provides:
@@ -1409,6 +1440,27 @@ DISTRIBUTIONS
       Hash::MultiValue 0.16
     requirements:
       ExtUtils::MakeMaker 0
+      perl 5.008001
+  IO-All-0.87
+    pathname: F/FR/FREW/IO-All-0.87.tar.gz
+    provides:
+      IO::All 0.87
+      IO::All::Base undef
+      IO::All::DBM undef
+      IO::All::Dir undef
+      IO::All::File undef
+      IO::All::Filesys undef
+      IO::All::Link undef
+      IO::All::MLDBM undef
+      IO::All::Pipe undef
+      IO::All::STDIO undef
+      IO::All::Socket undef
+      IO::All::String undef
+      IO::All::Temp undef
+    requirements:
+      Cwd 0
+      ExtUtils::MakeMaker 0
+      Scalar::Util 0
       perl 5.008001
   IO-HTML-1.004
     pathname: C/CJ/CJM/IO-HTML-1.004.tar.gz
@@ -3049,6 +3101,13 @@ DISTRIBUTIONS
       Lingua::Stem::Snowball::Se 1.2
     requirements:
       Test::More 0.42
+  Spiffy-0.46
+    pathname: I/IN/INGY/Spiffy-0.46.tar.gz
+    provides:
+      Spiffy 0.46
+      Spiffy::mixin undef
+    requirements:
+      ExtUtils::MakeMaker 6.30
   Stream-Buffered-0.03
     pathname: D/DO/DOY/Stream-Buffered-0.03.tar.gz
     provides:
@@ -3232,6 +3291,20 @@ DISTRIBUTIONS
       File::Spec 0.8
       File::Temp 0.12
       Scalar::Util 0
+  Test-Base-0.89
+    pathname: I/IN/INGY/Test-Base-0.89.tar.gz
+    provides:
+      Test::Base 0.89
+      Test::Base::Block 0.89
+      Test::Base::Filter undef
+      Test::Base::Handle 0.89
+    requirements:
+      ExtUtils::MakeMaker 0
+      Filter::Util::Call 0
+      Scalar::Util 1.07
+      Spiffy 0.40
+      Test::More 0.88
+      perl 5.008001
   Test-CPAN-Meta-0.25
     pathname: B/BA/BARBIE/Test-CPAN-Meta-0.25.tar.gz
     provides:
