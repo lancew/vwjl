@@ -94,7 +94,7 @@
 <h2>Competitions entered</h2>
 <ul>
     [% FOREACH c IN athlete.competition_entries %]
-        <li> [% competitions.${c.id} %]
+        <li> [% competitions.${c.competition_id} %]
     [% END %]
 </ul>
 

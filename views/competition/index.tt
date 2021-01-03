@@ -36,7 +36,7 @@
           <ul>
             [% FOREACH c IN competitions %]
                 <li> [% c.name %] - 
-                    [% IF comps_entered.${c.id} %]
+                    [% IF comps_entered.${competition.id} %]
                         [% c.id %] - Registered to compete.
                     [% ELSE %]    
                         <a href=/competition/[% c.id %]/register>Register for this event</a> 

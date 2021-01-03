@@ -89,7 +89,7 @@ sub get_athlete_data {
         undef, $args{user} );
 
     my $entries = $self->dbh->selectall_arrayref( '
-        SELECT id FROM competitions_athletes WHERE athlete_id = ?
+        SELECT competition_id FROM competitions_athletes WHERE athlete_id = ?
     ', { Slice => {} }, $athlete_data->{id} );
 
     $athlete_data->{competition_entries} = $entries;
