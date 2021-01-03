@@ -1,6 +1,7 @@
 # Virtual World Judo League (VWJL).
 
 ![screenshot of athlete view](2020-12-31.png "Screenshot of athlete view")
+![screenshot of simulation view](2021-01-03.png "Screenshot of simulation view")
 
 
 ## Install dependencies:
