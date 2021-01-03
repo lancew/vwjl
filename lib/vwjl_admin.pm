@@ -57,22 +57,22 @@ get '/competition/:competition_id/simulate' => sub {
     my $comp = $inf->get_competition(
         competition_id => route_parameters->get('competition_id'), );
 
-    use Data::Dumper;
-
     my @athletes;
     my $athletes = $comp->{entries};
 
-    for my $key (keys %$athletes){
+    for my $key ( keys %$athletes ) {
         push @athletes, $athletes->{$key}{username};
     }
 
-    my $schedule = Games::Tournament::RoundRobin->new(
-        league => \@athletes,
-    );
+    my $schedule
+        = Games::Tournament::RoundRobin->new( league => \@athletes, );
 
-    template 'admin/competition_sim' => { competition => $comp, schedule=> $schedule->wholeSchedule, tournament => $schedule };
+    template 'admin/competition_sim' => {
+        competition => $comp,
+        schedule    => $schedule->wholeSchedule,
+        tournament  => $schedule
+    };
 };
-
 
 # -----------------------------------------------------
 #  TODO: This needs doing properly
