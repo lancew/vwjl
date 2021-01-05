@@ -6,6 +6,7 @@ use DBI;
 our $VERSION = '0.1';
 
 use VWJL::Infrastructure;
+use VWJL::Simulator;
 use Games::Tournament::RoundRobin;
 
 get '/' => sub {
@@ -19,7 +20,7 @@ get '/users' => sub {
 
     my $inf = VWJL::Infrastructure->new;
 
-    my $users = $inf->get_users;
+    my $users = $inf->get_athletes;
 
     my $total_users = 0 + @{$users};
 
@@ -67,12 +68,53 @@ get '/competition/:competition_id/simulate' => sub {
     my $schedule
         = Games::Tournament::RoundRobin->new( league => \@athletes, );
 
+    session 'tournament' => $schedule;
+
     template 'admin/competition_sim' => {
         competition => $comp,
         schedule    => $schedule->wholeSchedule,
-        tournament  => $schedule
+        tournament  => $schedule,
+        status      => 'planning',
     };
 };
+
+post '/competition/:competition_id/simulate' => sub {
+    my $inf = VWJL::Infrastructure->new;
+
+    use Data::Dumper;
+    $Data::Dumper::Sortkeys = 1;
+
+    my $comp = $inf->get_competition(
+        competition_id => route_parameters->get('competition_id'), );
+
+    my $tournament = session('tournament');
+    my $simulator = VWJL::Simulator->new;
+
+    my @results;
+    my $round_count = 0;
+    for my $round (@{$tournament->byelessSchedule}) {
+        $round_count++;
+        for my $contest (@$round) {
+            push @results, $simulator->simulate(
+                competition_id => route_parameters->get('competition_id'),
+                athlete_white  => $contest->[0],
+                athlete_blue   => $contest->[1],
+                round          => $round_count,
+            );
+        }
+    }
+
+    template 'admin/competition_sim' => {
+        competition => $comp,
+        schedule    => $tournament->wholeSchedule,
+        tournament  => $tournament,
+        status      => 'ran',
+        results     => \@results,
+    };
+};
+
+
+
 
 # -----------------------------------------------------
 #  TODO: This needs doing properly

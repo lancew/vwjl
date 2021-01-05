@@ -36,7 +36,7 @@
           <h1>Users ([% total_users %])</h1>
           <ul>
             [% FOREACH user IN users %]
-              <li> [% user.username %]
+              <li> [% user.username %]: ([% user.wins %]/[% user.losses %])
             [% END %]  
           </ul>
       </div>

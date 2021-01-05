@@ -7,7 +7,7 @@ has 'dbh' => (
     is      => 'lazy',
     builder => sub {
         DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
-            'postgres', 'somePassword', { AutoCommit => 1 } );
+            'postgres', 'somePassword', { AutoCommit => 1, RaiseError => 1 } );
     },
 );
 
@@ -29,6 +29,15 @@ sub get_users {
         { Slice => {} } );
 
     return $users;
+}
+
+sub get_athletes {
+    my $self = shift;
+
+    my $athletes = $self->dbh->selectall_arrayref( 'SELECT * FROM athletes',
+        { Slice => {} } );
+
+    return $athletes;
 }
 
 sub get_competitions {

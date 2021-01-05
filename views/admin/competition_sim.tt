@@ -33,8 +33,10 @@
           <h2>Virtual World Judo League</h2>
         </div>
           <h2>SIMULATE: [% competition.name %]</h2>
-
+          <p>(Refresh this page to create a different draw)</p>
           <h3>Rounds ([% tournament.rounds %])</h3>
+
+          [% IF status == 'planning' %] 
           [% FOREACH round IN tournament.wholeSchedule %]
             <p>[% loop.count %] of [% loop.size %]
                <ul>  
@@ -45,9 +47,74 @@
             </p>
           [% END %]
 
-        
-          <form method=post>
-            <button type="submit">Simulate</button>
-          </form>
+            <form method=post>
+                <button type="submit">Simulate</button>
+            </form>
+          [% END %]
+
+
+          [% IF results %]
+           <ul>
+            [% FOREACH r IN results %]
+              <li> ROUND: [% r.round %] - 
+                <b>[% r.scoreboard.white.athlete %]</b> 
+                vs. 
+                <b>[% r.scoreboard.blue.athlete %]</b>
+              <br />
+              <ul>
+                 <li> Winner: <b>[% r.winner %]</b>
+                 <li> Scoreboard:
+                     <br />
+                     <table border=1>
+                       <tr>
+                         <td>
+                           WHITE: [% r.scoreboard.white.athlete %]
+                         </td>
+                         <td>
+                           BLUE: [% r.scoreboard.blue.athlete %]
+                         </td>
+                       </tr>
+                       <tr>
+                        <td>
+                         <Table>
+                         <tr>
+                          <td>Ippon</td>
+                          <td>Wazari</td>
+                          <td>(Shido)</td>
+                         <tr>
+                         <tr>
+                          <td>[% r.scoreboard.white.ippon %]</td>
+                          <td>[% r.scoreboard.white.wazari %]</td>
+                          <td>([% r.scoreboard.white.shido %])</td>
+                         <tr>
+                         </table>
+                        </td>
+                        <td>
+                         <Table>
+                         <tr>
+                          <td>Ippon</td>
+                          <td>Wazari</td>
+                          <td>(Shido)</td>
+                         <tr>
+                         <tr>
+                          <td>[% r.scoreboard.blue.ippon %]</td>
+                          <td>[% r.scoreboard.blue.wazari %]</td>
+                          <td>([% r.scoreboard.blue.shido %])</td>
+                         <tr>
+                         </table>
+                        </td>
+                       </tr>
+                       <tr>
+                        <td>Duration:</td>
+                        <td>[% r.scoreboard.clock.minutes %]:[% r.scoreboard.clock.seconds %]</td>
+                       </tr>
+                     </table>
+                 <li> Commentary:<br />
+                   [% r.commentary %]
+              </ul>
+              <hr>  
+            [% END %]
+           </ul>  
+          [% END %]
       </div>
     </div>
