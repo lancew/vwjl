@@ -52,7 +52,7 @@ get '/competition/:competition_id' => sub {
 };
 
 get '/competition/:competition_id/simulate' => sub {
-    #redirect '/' unless session('admin');
+    redirect '/' unless session('admin');
     my $inf = VWJL::Infrastructure->new;
 
     my $comp = $inf->get_competition(
@@ -79,6 +79,7 @@ get '/competition/:competition_id/simulate' => sub {
 };
 
 post '/competition/:competition_id/simulate' => sub {
+    redirect '/' unless session('admin');
     my $inf = VWJL::Infrastructure->new;
 
     use Data::Dumper;
