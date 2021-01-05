@@ -90,7 +90,7 @@
 </table>
 
 <p>Credits: [% athlete.credits %]</p>
-<p>Wins/Losses: [% athlete.wins %] / [% athlete.losses %]</p>
+<p>Wins/Losses: [% athlete.wins %] / [% athlete.losses %] (Win percentage: [% athlete.win_percentage %]% )</p>
 
 <h2>Competitions entered</h2>
 <ul>

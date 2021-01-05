@@ -15,6 +15,8 @@ sub get {
 
     my $athlete = $self->inf->get_athlete_data( user => $args{'user'} );
 
+    $athlete->{win_percentage} = int(100 * ($athlete->{wins} / ($athlete->{wins} + $athlete->{losses})));
+
     return $athlete;
 }
 
