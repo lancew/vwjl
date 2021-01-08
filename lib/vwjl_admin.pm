@@ -8,6 +8,7 @@ our $VERSION = '0.1';
 use VWJL::Infrastructure;
 use VWJL::Simulator;
 use Games::Tournament::RoundRobin;
+use Sort::Rank 'rank_sort';
 
 get '/' => sub {
     redirect '/' unless session('admin');
@@ -89,21 +90,44 @@ post '/competition/:competition_id/simulate' => sub {
         competition_id => route_parameters->get('competition_id'), );
 
     my $tournament = session('tournament');
-    my $simulator = VWJL::Simulator->new;
+    my $simulator  = VWJL::Simulator->new;
 
     my @results;
     my $round_count = 0;
-    for my $round (@{$tournament->byelessSchedule}) {
+    for my $round ( @{ $tournament->byelessSchedule } ) {
         $round_count++;
         for my $contest (@$round) {
-            push @results, $simulator->simulate(
+            push @results,
+                $simulator->simulate(
                 competition_id => route_parameters->get('competition_id'),
                 athlete_white  => $contest->[0],
                 athlete_blue   => $contest->[1],
                 round          => $round_count,
-            );
+                );
         }
     }
+
+    # ------------------------------
+    # TODO: this should be in the Simulator or perhaps in
+    # Games::Tournament::RoundRobin code
+
+    my %ranking;
+    for my $r (@results) {
+        $ranking{ $r->{winner} }++;
+        $ranking{ $r->{loser} } = 0 unless defined $ranking{ $r->{loser} };
+    }
+
+    my @scores;
+    for my $r ( keys %ranking ) {
+        push @scores,
+            {
+            name  => $r,
+            score => $ranking{$r},
+            };
+    }
+
+    my @ranks = rank_sort( \@scores );
+    # --------------------------
 
     template 'admin/competition_sim' => {
         competition => $comp,
@@ -111,11 +135,9 @@ post '/competition/:competition_id/simulate' => sub {
         tournament  => $tournament,
         status      => 'ran',
         results     => \@results,
+        ranking     => \@ranks,
     };
 };
-
-
-
 
 # -----------------------------------------------------
 #  TODO: This needs doing properly

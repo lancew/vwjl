@@ -54,6 +54,19 @@
 
 
           [% IF results %]
+            <center>
+          <h2>Results</h2>
+            <table border = 1>
+            [% FOREACH r IN ranking %]
+              <tr>
+                    <td>[% r.0 %] [% IF r.1; r.1; END %]</td>
+                    <td>[% r.2.name %]</td>
+                    <td>[% r.2.score %] wins</td>
+              </tr>  
+            [% END %]
+            </table>
+            </center>
+           <h2>Contests</h2> 
            <ul>
             [% FOREACH r IN results %]
               <li> ROUND: [% r.round %] - 

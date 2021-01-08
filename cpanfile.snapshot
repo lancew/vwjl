@@ -3101,6 +3101,13 @@ DISTRIBUTIONS
       Lingua::Stem::Snowball::Se 1.2
     requirements:
       Test::More 0.42
+  Sort-Rank-v0.0.2
+    pathname: A/AN/ANDYA/Sort-Rank-v0.0.2.tar.gz
+    provides:
+      Sort::Rank 0.000002
+    requirements:
+      Test::More 0
+      version 0
   Spiffy-0.46
     pathname: I/IN/INGY/Spiffy-0.46.tar.gz
     provides:
