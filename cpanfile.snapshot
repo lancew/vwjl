@@ -1086,6 +1086,17 @@ DISTRIBUTIONS
       strict 0
       utf8 0
       warnings 0
+  Digest-HMAC-1.03
+    pathname: G/GA/GAAS/Digest-HMAC-1.03.tar.gz
+    provides:
+      Digest::HMAC 1.03
+      Digest::HMAC_MD5 1.01
+      Digest::HMAC_SHA1 1.03
+    requirements:
+      Digest::MD5 2
+      Digest::SHA 1
+      ExtUtils::MakeMaker 0
+      perl 5.004
   Dist-CheckConflicts-0.11
     pathname: D/DO/DOY/Dist-CheckConflicts-0.11.tar.gz
     provides:
@@ -1472,6 +1483,23 @@ DISTRIBUTIONS
       Exporter 5.57
       ExtUtils::MakeMaker 0
       perl 5.008
+  IO-Socket-SSL-2.068
+    pathname: S/SU/SULLR/IO-Socket-SSL-2.068.tar.gz
+    provides:
+      IO::Socket::SSL 2.068
+      IO::Socket::SSL::Intercept 2.056
+      IO::Socket::SSL::OCSP_Cache 2.068
+      IO::Socket::SSL::OCSP_Resolver 2.068
+      IO::Socket::SSL::PublicSuffix undef
+      IO::Socket::SSL::SSL_Context 2.068
+      IO::Socket::SSL::SSL_HANDLE 2.068
+      IO::Socket::SSL::Session_Cache 2.068
+      IO::Socket::SSL::Utils 2.014
+    requirements:
+      ExtUtils::MakeMaker 0
+      Mozilla::CA 0
+      Net::SSLeay 1.46
+      Scalar::Util 0
   IO-String-1.08
     pathname: G/GA/GAAS/IO-String-1.08.tar.gz
     provides:
@@ -1970,6 +1998,23 @@ DISTRIBUTIONS
       Sub::Defer 2.006006
       Sub::Quote 2.006006
       perl 5.006
+  Mozilla-CA-20200520
+    pathname: A/AB/ABH/Mozilla-CA-20200520.tar.gz
+    provides:
+      Mozilla::CA 20200520
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test 0
+      perl 5.006
+  Net-SSLeay-1.88
+    pathname: C/CH/CHRISN/Net-SSLeay-1.88.tar.gz
+    provides:
+      Net::SSLeay 1.88
+      Net::SSLeay::Handle 1.88
+    requirements:
+      ExtUtils::MakeMaker 0
+      MIME::Base64 0
+      perl 5.008001
   POSIX-strftime-Compiler-0.44
     pathname: K/KA/KAZEBURO/POSIX-strftime-Compiler-0.44.tar.gz
     provides:
@@ -2788,6 +2833,26 @@ DISTRIBUTIONS
       parent 0
       strict 0
       warnings 0
+  Plack-Middleware-Session-0.33
+    pathname: M/MI/MIYAGAWA/Plack-Middleware-Session-0.33.tar.gz
+    provides:
+      Plack::Middleware::Session 0.33
+      Plack::Middleware::Session::Cookie undef
+      Plack::Session 0.33
+      Plack::Session::Cleanup 0.33
+      Plack::Session::State 0.33
+      Plack::Session::State::Cookie 0.33
+      Plack::Session::Store 0.33
+      Plack::Session::Store::Cache 0.33
+      Plack::Session::Store::DBI 0.33
+      Plack::Session::Store::File 0.33
+      Plack::Session::Store::Null 0.33
+    requirements:
+      Cookie::Baker 0.10
+      Digest::HMAC_SHA1 1.03
+      Digest::SHA 0
+      Module::Build::Tiny 0.034
+      Plack 0.9910
   Pod-Parser-1.63
     pathname: M/MA/MAREKR/Pod-Parser-1.63.tar.gz
     provides:
