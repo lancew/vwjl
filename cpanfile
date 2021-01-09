@@ -7,6 +7,7 @@ requires "Moo" => "2.004004";
 requires "DBI";
 requires "DBD::Pg" => "3.14.2";
 requires "Games::Tournament";
+requires "Games::Tournament::RoundRobin";
 requires "Sort::Rank";
 
 recommends "YAML"             => "0";

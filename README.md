@@ -21,19 +21,24 @@
 
 
 ## Datbase
-
-See: https://hub.docker.com/_/postgres
-
-* ```docker pull postgres``` - To get a postgres DB docker image.
-* ```docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres``` to start the instance
-
-
 second attempt by following:
 * https://dev.to/shree_j/how-to-install-and-run-psql-using-docker-41j2
 * docker run --name postgresql-container -p 5432:5432 -e POSTGRES_PASSWORD=somePassword -d postgres
 
-## NB
- Currently there is no DB
+## Installation (ubuntu server)
+* Perl obviously
+* make (nneded for some modules): ```apt install make```
+* gcc: ``apt install gcc```
+* postgres libs: ```apt-get install libpq-dev```
+* cpanm ```apt update; apt install cpanminus```
+* carton ```cpanm Carton```
+* clone the repo: ```git clone https://github.com/lancew/vwjl.git```
+* ```cd vwjl```
+* Install modules: ```carton install```
+
+
+
+
 
 ## TODO
 
