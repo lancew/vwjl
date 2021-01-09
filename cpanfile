@@ -9,6 +9,7 @@ requires "DBD::Pg" => "3.14.2";
 requires "Games::Tournament";
 requires "Games::Tournament::RoundRobin";
 requires "Sort::Rank";
+requires "IO::Socket::SSL";
 
 recommends "YAML"             => "0";
 recommends "URL::Encode::XS"  => "0";
