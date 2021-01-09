@@ -6,8 +6,17 @@ use DBI;
 has 'dbh' => (
     is      => 'lazy',
     builder => sub {
-        DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
-            'postgres', 'somePassword', { AutoCommit => 1, RaiseError => 1 } );
+      DBI->connect(
+        $ENV{DB_SOURCE},
+        $ENV{DB_USERNAME},
+        $ENV{DB_PASSWORD},
+        {
+            AutoCommit => 1,
+            RaiseError => $ENV{DB_RAISEERROR},
+        }
+      );  
+      #  DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
+      #      'postgres', 'somePassword', { AutoCommit => 1, RaiseError => 1 } );
     },
 );
 

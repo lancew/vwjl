@@ -148,8 +148,13 @@ get '/database' => sub {
 
     my $output;
 
-    my $dbh = DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
-        'postgres', 'somePassword', { AutoCommit => 1 } );
+    #my $dbh = DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
+    #    'postgres', 'somePassword', { AutoCommit => 1 } );
+
+
+    my $inf = VWJL::Infrastructure->new;
+    my $dbh = $inf->dbh;
+
 
     $dbh->do( '
    CREATE TABLE accounts (
