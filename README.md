@@ -30,6 +30,8 @@ second attempt by following:
 * make (nneded for some modules): ```apt install make```
 * gcc: ``apt install gcc```
 * postgres libs: ```apt-get install libpq-dev```
+* ssl stuff: ```apt-get install zlib1g-dev```
+* more ssl: ```apt-get install libssl-dev```
 * cpanm ```apt update; apt install cpanminus```
 * carton ```cpanm Carton```
 * clone the repo: ```git clone https://github.com/lancew/vwjl.git```
@@ -37,7 +39,15 @@ second attempt by following:
 * Install modules: ```carton install```
 
 
+## DO Hacks while building it up
 
+I've hacked up a script to redirect, call it on DO with:
+
+```carton exec plackup bin/redirect.psgi --port 80```
+
+Running with SSL on DO:
+
+```carton exec plackup -R lib,views bin/app.psgi --enable-ssl --ssl-key-file=/etc/letsencrypt/live/www.vwjl.net/privkey.pem --ssl-cert-file=/etc/letsencrypt/live/www.vwjl.net/fullchain.pem --port 443```
 
 
 ## TODO
