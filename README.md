@@ -47,7 +47,7 @@ I've hacked up a script to redirect, call it on DO with:
 
 Running with SSL on DO:
 
-```DB_RAISEERROR=0 DB_SOURCE="dbi:Pg:dbname=xxxxxxxx;xxxxxxxx" DB_USERNAME=xxxxxxx DB_PASSWORD="xxxxxxxx" carton exec plackup -R lib,views bin/app.psgi --enable-ssl --ssl-key-file=/etc/letsencrypt/live/www.vwjl.net/privkey.pem --ssl-cert-file=/etc/letsencrypt/live/www.vwjl.net/fullchain.pem --port 443```
+```DB_RAISEERROR=0 DB_SOURCE="dbi:Pg:dbname=xxxxxxxx;host=xxxxxxxx;port=xxxxx" DB_USERNAME=xxxxxxx DB_PASSWORD="xxxxxxxx" carton exec plackup -R lib,views bin/app.psgi --enable-ssl --ssl-key-file=/etc/letsencrypt/live/www.vwjl.net/privkey.pem --ssl-cert-file=/etc/letsencrypt/live/www.vwjl.net/fullchain.pem --port 443```
 
 
 ## TODO
