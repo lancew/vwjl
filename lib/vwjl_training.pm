@@ -1,8 +1,11 @@
 package vwjl_training;
 use Dancer2;
 use Dancer2::Plugin::Auth::Tiny;
+use waza;
 
 our $VERSION = '0.1';
+
+use VWJL::Athlete;
 
 get '/' => sub {
     redirect '/' unless session('user');
@@ -12,8 +15,16 @@ get '/' => sub {
 
 get '/uchi_komi' => sub {
     redirect '/' unless session('user');
+    
+    my $waza = waza::all();
 
-    template 'training/uchi_komi';
+    my $athlete_srv = VWJL::Athlete->new;
+    my $athlete      = $athlete_srv->get( user => session('user') );
+
+    template 'training/uchi_komi' => {
+        athlete => $athlete,
+        waza    => $waza,
+    };
 };
 
 get '/uchi_komi/:waza' => sub {

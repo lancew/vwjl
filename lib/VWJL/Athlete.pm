@@ -2,6 +2,7 @@ package VWJL::Athlete;
 
 use Moo;
 use VWJL::Infrastructure;
+use waza;
 
 has 'inf' => (
     is      => 'lazy',
@@ -27,16 +28,13 @@ sub uchi_komi {
 
     my $athlete = $self->inf->get_athlete_data( user => $args{'user'} );
 
-    return if $athlete->{'physical_fatigue'} >= 5;
-
-    my $key   = 'waza_' . $args{waza} . '_attack';
-    my $value = $athlete->{$key} + 1;
-
-    $self->inf->update_athlete(
-        user  => $args{'user'},
-        field => $key,
-        value => $value,
+    $self->inf->update_athlete_waza(
+        athlete_id    => $athlete->{'id'},
+        waza          => $args{'waza'},
+        attack_delta  => 1,
+        defence_delta => 0,
     );
+
     $self->inf->update_athlete(
         user  => $args{'user'},
         field => 'physical_fatigue',

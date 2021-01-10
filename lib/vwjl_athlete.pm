@@ -22,9 +22,6 @@ get '/' => sub {
         $comps->{ $comp->{id} } = $comp->{name};
     }
 
-    use Data::Dumper;
-    warn Dumper $athlete;
-
     template 'athlete/index' => {
         'title'        => 'VWJL Athlete',
         'athlete'      => $athlete,

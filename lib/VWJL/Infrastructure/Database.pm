@@ -127,6 +127,17 @@ sub get_athlete_data {
 
     $athlete_data->{competition_entries} = $entries;
 
+    my $waza_levels = $self->dbh->selectall_hashref(
+        'SELECT * FROM waza_level WHERE athlete_id = ?',
+        'waza',
+        undef,
+        $athlete_data->{id},
+    );
+
+
+    $athlete_data->{waza_levels} = $waza_levels;
+
+
     return $athlete_data;
 }
 
@@ -139,6 +150,38 @@ sub update_athlete {
             . " = ? WHERE athletes.username = ?",
         undef, $args{'value'}, $args{'user'}
     );
+}
+
+sub update_athlete_waza {
+    my ( $self, %args ) = @_;
+
+    my $rv = $self->dbh->do(
+        "UPDATE waza_level 
+            SET attack = attack + ?,
+                defence = defence + ?
+          WHERE athlete_id = ? AND waza = ?",
+        undef, 
+        $args{attack_delta},
+        $args{defence_delta},
+        $args{athlete_id},
+        $args{waza},
+    );
+    use Data::Dumper;
+    warn '--------', Dumper $rv;
+
+    if ($rv eq '0E0') {
+        $self->dbh->do(
+        'INSERT INTO waza_level 
+            (athlete_id,waza,attack,defence)
+         VALUES
+         (?,?,?,?)',
+        undef, 
+        $args{athlete_id},
+        $args{waza},
+        $args{attack_delta},
+        $args{defence_delta},
+        );
+    }
 }
 
 sub add_user_to_competition {

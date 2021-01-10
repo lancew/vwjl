@@ -116,11 +116,11 @@
  </tr>
  <tr>
    <td>
-       Ippon-seoi-nage: [% athlete.waza_ippon_seoi_nage_attack %] / [% athlete.waza_ippon_seoi_nage_defense %]
+       Ippon-seoi-nage: [% athlete.waza_levels.ippon_seoi_nage.attack %] / [% athlete.waza_levels.ippon_seoi_nage.defence %]
    </td>
    <td>-</td>
    <td>
-       Uchi-mata: [% athlete.waza_uchi_mata_attack %] / [% athlete.waza_uchi_mata_defense %]
+       Uchi-mata: [% athlete.waza_levels.uchi_mata.attack %] / [% athlete.waza_levels.uchi_mata.defence %]
    </td>
  </tr>
  <tr>

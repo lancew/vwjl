@@ -211,6 +211,17 @@ get '/database' => sub {
     $dbh->do("INSERT INTO athletes (username) VALUES ('lancew')");
 
     $dbh->do( '
+        CREATE TABLE waza_level (
+            id serial PRIMARY KEY,
+            athlete_id INT NOT NULL,
+            waza VARCHAR(100) NOT NULL,
+            attack INT DEFAULT 0,
+            defence INT DEFAULT 0,
+            UNIQUE( athlete_id, waza )
+        )
+    ' );
+
+    $dbh->do( '
         CREATE TABLE competitions (
             id serial PRIMARY KEY,
             name VARCHAR(100) UNIQUE NOT NULL,
