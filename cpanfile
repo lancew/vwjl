@@ -21,4 +21,5 @@ on "test" => sub {
     requires "HTTP::Request::Common" => "0";
     requires "Perl::Tidy"            => "0";
     requires "Perl::Critic"          => "0";
+    requires "Test::MockModule"      => "0";
 };

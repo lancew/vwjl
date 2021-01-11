@@ -215,6 +215,15 @@ DISTRIBUTIONS
       overload 0
       perl 5.006
       strict 0
+  Class-Accessor-0.51
+    pathname: K/KA/KASEI/Class-Accessor-0.51.tar.gz
+    provides:
+      Class::Accessor 0.51
+      Class::Accessor::Fast 0.51
+      Class::Accessor::Faster 0.51
+    requirements:
+      ExtUtils::MakeMaker 0
+      base 1.01
   Class-Accessor-Grouped-0.10014
     pathname: H/HA/HAARG/Class-Accessor-Grouped-0.10014.tar.gz
     provides:
@@ -1190,6 +1199,23 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  File-Listing-6.14
+    pathname: P/PL/PLICEASE/File-Listing-6.14.tar.gz
+    provides:
+      File::Listing 6.14
+      File::Listing::apache 6.14
+      File::Listing::dosftp 6.14
+      File::Listing::netware 6.14
+      File::Listing::unix 6.14
+      File::Listing::vms 6.14
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      HTTP::Date 0
+      Time::Local 0
+      base 0
+      perl 5.006
   File-Share-0.25
     pathname: I/IN/INGY/File-Share-0.25.tar.gz
     provides:
@@ -1330,6 +1356,39 @@ DISTRIBUTIONS
       HTML::Tagset 3.20
     requirements:
       ExtUtils::MakeMaker 0
+  HTTP-Cookies-6.10
+    pathname: O/OA/OALDERS/HTTP-Cookies-6.10.tar.gz
+    provides:
+      HTTP::Cookies 6.10
+      HTTP::Cookies::Microsoft 6.10
+      HTTP::Cookies::Netscape 6.10
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      HTTP::Date 6
+      HTTP::Headers::Util 6
+      HTTP::Request 0
+      locale 0
+      perl 5.008001
+      strict 0
+  HTTP-Daemon-6.12
+    pathname: O/OA/OALDERS/HTTP-Daemon-6.12.tar.gz
+    provides:
+      HTTP::Daemon 6.12
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      HTTP::Date 6
+      HTTP::Request 6
+      HTTP::Response 6
+      HTTP::Status 6
+      IO::Socket::IP 0.25
+      LWP::MediaTypes 6
+      Module::Build::Tiny 0.034
+      Socket 0
+      perl 5.006
+      strict 0
+      warnings 0
   HTTP-Date-6.05
     pathname: O/OA/OALDERS/HTTP-Date-6.05.tar.gz
     provides:
@@ -1426,6 +1485,14 @@ DISTRIBUTIONS
       Scalar::Util 0
       Test::Deep 0
       Test::More 0.88
+      perl 5.008001
+  HTTP-Negotiate-6.01
+    pathname: G/GA/GAAS/HTTP-Negotiate-6.01.tar.gz
+    provides:
+      HTTP::Negotiate 6.01
+    requirements:
+      ExtUtils::MakeMaker 0
+      HTTP::Headers 6
       perl 5.008001
   Hash-Merge-0.302
     pathname: H/HE/HERMES/Hash-Merge-0.302.tar.gz
@@ -2006,6 +2073,24 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test 0
       perl 5.006
+  Net-HTTP-6.20
+    pathname: O/OA/OALDERS/Net-HTTP-6.20.tar.gz
+    provides:
+      Net::HTTP 6.20
+      Net::HTTP::Methods 6.20
+      Net::HTTP::NB 6.20
+      Net::HTTPS 6.20
+    requirements:
+      Carp 0
+      Compress::Raw::Zlib 0
+      ExtUtils::MakeMaker 0
+      IO::Socket::INET 0
+      IO::Uncompress::Gunzip 0
+      URI 0
+      base 0
+      perl 5.006002
+      strict 0
+      warnings 0
   Net-SSLeay-1.88
     pathname: C/CH/CHRISN/Net-SSLeay-1.88.tar.gz
     provides:
@@ -2809,6 +2894,47 @@ DISTRIBUTIONS
       WWW::Form::UrlEncoded 0.23
       parent 0
       perl 5.008001
+  Plack-Middleware-Debug-0.18
+    pathname: M/MI/MIYAGAWA/Plack-Middleware-Debug-0.18.tar.gz
+    provides:
+      Plack::Middleware::Debug 0.18
+      Plack::Middleware::Debug::Base 0.18
+      Plack::Middleware::Debug::CatalystLog 0.18
+      Plack::Middleware::Debug::DBITrace 0.18
+      Plack::Middleware::Debug::Environment 0.18
+      Plack::Middleware::Debug::Memory 0.18
+      Plack::Middleware::Debug::ModuleVersions 0.18
+      Plack::Middleware::Debug::Panel undef
+      Plack::Middleware::Debug::Parameters undef
+      Plack::Middleware::Debug::PerlConfig 0.18
+      Plack::Middleware::Debug::Response 0.18
+      Plack::Middleware::Debug::Session undef
+      Plack::Middleware::Debug::Timer 0.18
+      Plack::Middleware::Debug::TrackObjects undef
+    requirements:
+      Class::Method::Modifiers 1.05
+      Data::Dump 0
+      Data::Dumper::Concise 0
+      Encode 2.23
+      File::ShareDir 1.00
+      Module::Build::Tiny 0.034
+      Plack 0
+      Text::MicroTemplate 0.15
+      parent 0
+      perl 5.008001
+  Plack-Middleware-Debug-W3CValidate-0.04
+    pathname: J/JJ/JJNAPIORK/Plack-Middleware-Debug-W3CValidate-0.04.tar.gz
+    provides:
+      Plack::Middleware::Debug::W3CValidate 0.04
+    requirements:
+      ExtUtils::MakeMaker 6.42
+      Plack 0
+      Plack::Middleware::Debug 0
+      Test::More 0.96
+      WebService::Validator::HTML::W3C 0
+      XML::XPath 0
+      parent 0
+      perl 5.008
   Plack-Middleware-FixMissingBodyInRedirect-0.12
     pathname: S/SW/SWEETKID/Plack-Middleware-FixMissingBodyInRedirect-0.12.tar.gz
     provides:
@@ -3137,6 +3263,15 @@ DISTRIBUTIONS
       Sub::Quote 0
       Try::Tiny 0.04
       perl 5.008001
+  SUPER-1.20190531
+    pathname: C/CH/CHROMATIC/SUPER-1.20190531.tar.gz
+    provides:
+      SUPER 1.20190531
+    requirements:
+      Scalar::Util 1.20
+      Sub::Identify 0.03
+      Test::Simple 0.61
+      perl v5.6.2
   Safe-Isa-1.000010
     pathname: E/ET/ETHER/Safe-Isa-1.000010.tar.gz
     provides:
@@ -3242,6 +3377,13 @@ DISTRIBUTIONS
       Sub::Exporter::Progressive 0.001013
     requirements:
       ExtUtils::MakeMaker 0
+  Sub-Identify-0.14
+    pathname: R/RG/RGARCIA/Sub-Identify-0.14.tar.gz
+    provides:
+      Sub::Identify 0.14
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   Sub-Install-0.928
     pathname: R/RJ/RJBS/Sub-Install-0.928.tar.gz
     provides:
@@ -3474,6 +3616,35 @@ DISTRIBUTIONS
       perl 5.006001
       strict 0
       warnings 0
+  Test-MockModule-v0.176.0
+    pathname: G/GF/GFRANKS/Test-MockModule-v0.176.0.tar.gz
+    provides:
+      Test::MockModule v0.176.0
+    requirements:
+      Carp 0
+      Module::Build 0.38
+      SUPER 1.20
+      Scalar::Util 0
+      Test::More 0.88
+      Test::Warnings 0
+      perl 5.006
+  Test-MockObject-1.20200122
+    pathname: C/CH/CHROMATIC/Test-MockObject-1.20200122.tar.gz
+    provides:
+      Test::MockObject 1.20200122
+      Test::MockObject::Extends 1.20200122
+    requirements:
+      Carp 0
+      Devel::Peek 0
+      ExtUtils::MakeMaker 0
+      Scalar::Util 0
+      Test::Builder 0
+      UNIVERSAL::can 1.20110617
+      UNIVERSAL::isa 1.20110614
+      constant 0
+      perl 5.008
+      strict 0
+      warnings 0
   Test-Most-0.37
     pathname: O/OV/OVID/Test-Most-0.37.tar.gz
     provides:
@@ -3527,6 +3698,19 @@ DISTRIBUTIONS
       Test::Builder 0.13
       Test::Builder::Tester 1.02
       perl 5.006
+  Test-Warnings-0.030
+    pathname: E/ET/ETHER/Test-Warnings-0.030.tar.gz
+    provides:
+      Test::Warnings 0.030
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Test::Builder 0
+      parent 0
+      perl 5.006
+      strict 0
+      warnings 0
   Text-Diff-1.45
     pathname: N/NE/NEILB/Text-Diff-1.45.tar.gz
     provides:
@@ -3553,6 +3737,17 @@ DISTRIBUTIONS
       Text::German::Vorsilbe undef
     requirements:
       ExtUtils::MakeMaker 0
+  Text-MicroTemplate-0.24
+    pathname: K/KA/KAZUHO/Text-MicroTemplate-0.24.tar.gz
+    provides:
+      Text::MicroTemplate 0.24
+      Text::MicroTemplate::EncodedString 0.24
+      Text::MicroTemplate::File undef
+    requirements:
+      ExtUtils::MakeMaker 6.59
+      File::Temp 0
+      Test::More 0
+      perl 5.00800
   Text-Unidecode-1.30
     pathname: S/SB/SBURKE/Text-Unidecode-1.30.tar.gz
     provides:
@@ -3662,6 +3857,28 @@ DISTRIBUTIONS
       Exporter::Tiny 1.000000
       ExtUtils::MakeMaker 6.17
       perl 5.006001
+  UNIVERSAL-can-1.20140328
+    pathname: C/CH/CHROMATIC/UNIVERSAL-can-1.20140328.tar.gz
+    provides:
+      UNIVERSAL::can 1.20140328
+    requirements:
+      ExtUtils::MakeMaker 6.30
+      Scalar::Util 0
+      strict 0
+      vars 0
+      warnings 0
+      warnings::register 0
+  UNIVERSAL-isa-1.20171012
+    pathname: E/ET/ETHER/UNIVERSAL-isa-1.20171012.tar.gz
+    provides:
+      UNIVERSAL::isa 1.20171012
+    requirements:
+      ExtUtils::MakeMaker 0
+      Scalar::Util 0
+      perl 5.006002
+      strict 0
+      warnings 0
+      warnings::register 0
   URI-5.05
     pathname: O/OA/OALDERS/URI-5.05.tar.gz
     provides:
@@ -3754,6 +3971,75 @@ DISTRIBUTIONS
       Exporter 0
       Module::Build 0.4005
       perl 5.008001
+  WWW-RobotRules-6.02
+    pathname: G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
+    provides:
+      WWW::RobotRules 6.02
+      WWW::RobotRules::AnyDBM_File 6.00
+      WWW::RobotRules::InCore 6.02
+    requirements:
+      AnyDBM_File 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      URI 1.10
+      perl 5.008001
+  WebService-Validator-HTML-W3C-0.28
+    pathname: S/ST/STRUAN/WebService-Validator-HTML-W3C-0.28.tar.gz
+    provides:
+      WebService::Validator::HTML::W3C 0.28
+      WebService::Validator::HTML::W3C::Error 0
+      WebService::Validator::HTML::W3C::Warning 0
+    requirements:
+      Class::Accessor 0
+      LWP 0
+      Test::More 0
+  XML-Parser-2.46
+    pathname: T/TO/TODDR/XML-Parser-2.46.tar.gz
+    provides:
+      XML::Parser 2.46
+      XML::Parser::Expat 2.46
+      XML::Parser::Style::Debug undef
+      XML::Parser::Style::Objects undef
+      XML::Parser::Style::Stream undef
+      XML::Parser::Style::Subs undef
+      XML::Parser::Style::Tree undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      LWP::UserAgent 0
+      perl 5.00405
+  XML-XPath-1.44
+    pathname: M/MA/MANWAR/XML-XPath-1.44.tar.gz
+    provides:
+      XML::XPath 1.44
+      XML::XPath::Boolean 1.44
+      XML::XPath::Builder 1.44
+      XML::XPath::Expr 1.44
+      XML::XPath::Function 1.44
+      XML::XPath::Literal 1.44
+      XML::XPath::LocationPath 1.44
+      XML::XPath::Node 1.44
+      XML::XPath::Node::Attribute 1.44
+      XML::XPath::Node::AttributeImpl 1.44
+      XML::XPath::Node::Comment 1.44
+      XML::XPath::Node::Element 1.44
+      XML::XPath::Node::Namespace 1.44
+      XML::XPath::Node::PI 1.44
+      XML::XPath::Node::Text 1.44
+      XML::XPath::NodeSet 1.44
+      XML::XPath::Number 1.44
+      XML::XPath::Parser 1.44
+      XML::XPath::PerlSAX 1.44
+      XML::XPath::Root 1.44
+      XML::XPath::Step 1.44
+      XML::XPath::Variable 1.44
+      XML::XPath::XMLParser 1.44
+    requirements:
+      ExtUtils::MakeMaker 0
+      Path::Tiny 0.076
+      Scalar::Util 1.45
+      Test::More 0
+      XML::Parser 2.23
+      perl 5.006
   YAML-1.30
     pathname: T/TI/TINITA/YAML-1.30.tar.gz
     provides:
@@ -3822,6 +4108,68 @@ DISTRIBUTIONS
       XSLoader 0
       lib 0
       perl 5.008001
+  libwww-perl-6.52
+    pathname: O/OA/OALDERS/libwww-perl-6.52.tar.gz
+    provides:
+      LWP 6.52
+      LWP::Authen::Basic 6.52
+      LWP::Authen::Digest 6.52
+      LWP::Authen::Ntlm 6.52
+      LWP::ConnCache 6.52
+      LWP::Debug 6.52
+      LWP::Debug::TraceHTTP 6.52
+      LWP::DebugFile 6.52
+      LWP::MemberMixin 6.52
+      LWP::Protocol 6.52
+      LWP::Protocol::cpan 6.52
+      LWP::Protocol::data 6.52
+      LWP::Protocol::file 6.52
+      LWP::Protocol::ftp 6.52
+      LWP::Protocol::gopher 6.52
+      LWP::Protocol::http 6.52
+      LWP::Protocol::loopback 6.52
+      LWP::Protocol::mailto 6.52
+      LWP::Protocol::nntp 6.52
+      LWP::Protocol::nogo 6.52
+      LWP::RobotUA 6.52
+      LWP::Simple 6.52
+      LWP::UserAgent 6.52
+      libwww::perl undef
+    requirements:
+      CPAN::Meta::Requirements 2.120620
+      Digest::MD5 0
+      Encode 2.12
+      Encode::Locale 0
+      ExtUtils::MakeMaker 0
+      File::Copy 0
+      File::Listing 6
+      Getopt::Long 0
+      HTML::Entities 0
+      HTML::HeadParser 0
+      HTTP::Cookies 6
+      HTTP::Daemon 6
+      HTTP::Date 6
+      HTTP::Negotiate 6
+      HTTP::Request 6
+      HTTP::Request::Common 6
+      HTTP::Response 6
+      HTTP::Status 6.18
+      IO::Select 0
+      IO::Socket 0
+      LWP::MediaTypes 6
+      MIME::Base64 2.1
+      Module::Metadata 0
+      Net::FTP 2.58
+      Net::HTTP 6.18
+      Scalar::Util 0
+      Try::Tiny 0
+      URI 1.10
+      URI::Escape 0
+      WWW::RobotRules 6
+      base 0
+      perl 5.008001
+      strict 0
+      warnings 0
   multidimensional-0.014
     pathname: I/IL/ILMARI/multidimensional-0.014.tar.gz
     provides:

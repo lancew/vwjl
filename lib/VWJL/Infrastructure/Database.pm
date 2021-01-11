@@ -15,8 +15,6 @@ has 'dbh' => (
             RaiseError => $ENV{DB_RAISEERROR},
         }
       );  
-      #  DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
-      #      'postgres', 'somePassword', { AutoCommit => 1, RaiseError => 1 } );
     },
 );
 

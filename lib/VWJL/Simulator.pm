@@ -2,7 +2,7 @@ package VWJL::Simulator;
 
 use Moo;
 
-use VWJL::Infrastructure::Database;
+use VWJL::Infrastructure;
 use Time::Piece;
 use Time::Seconds;
 
