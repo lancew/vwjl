@@ -100,42 +100,25 @@
 </ul>
 
 
-
 <h2>Waza</h2>
-<table border=1 width=100%>
- <tr>
-    <td>
-      Te-waza  
-    </td>
-    <td>
-      Koshi-waza  
-    </td>
-    <td>
-      Ashi-waza  
-    </td>
- </tr>
- <tr>
-   <td>
-       Ippon-seoi-nage: [% athlete.waza_levels.ippon_seoi_nage.attack %] / [% athlete.waza_levels.ippon_seoi_nage.defence %]
-   </td>
-   <td>-</td>
-   <td>
-       Uchi-mata: [% athlete.waza_levels.uchi_mata.attack %] / [% athlete.waza_levels.uchi_mata.defence %]
-   </td>
- </tr>
- <tr>
-    <td>
-      Ma-sutemi-waza  
-    </td>
-    <td>
-    </td>
-    <td>
-      Yuko-sutemi-waza  
-    </td>
- </tr>
- <tr><td></td><td></td><td></td></tr>
-
+<table border=1>
+<tr>
+ <td>Waza</td>
+ <td>Attack</td>
+ <td>Defence</td>
+</tr>
+[% FOREACH w IN waza %]
+   [% waza_key = w.lower.replace('-','_') %]
+   <tr>
+    <td>[% w %]</td> 
+    <td>[% athlete.waza_levels.$waza_key.attack || 0 %]</td>
+    <td>[% athlete.waza_levels.$waza_key.attack || 0 %]</td>
+   </tr> 
+[% END %]
 </table>
+
+
+
 
         </div>
       </div>
