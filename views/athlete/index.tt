@@ -44,40 +44,40 @@
 <tbody>
   <tr>
     <td>
-        Left Arm: [% athlete.physical_left_arm_strength %]/
-                  [% athlete.physical_left_arm_fatigue %]/
-                  [% athlete.physical_left_arm_injury %]
+        Left Arm: [% athlete.physical_left_arm_strength || 0 %] /
+                  [% athlete.physical_left_arm_fatigue || 0 %] /
+                  [% athlete.physical_left_arm_injury || 0 %]
         <br /> (Strength/Fatigue/Injury)
     </td>
     <td rowspan="2">
         <img src=/images/gi.svg width=130 height=300>
         <p>
-          Fitness: [% athlete.physical_fitness %] <br/>
-          Fatigue: [% athlete.physical_fatigue %] <br/>
-          Form: [% athlete.physical_form %] <br/>
+          Fitness: [% athlete.physical_fitness || 0 %]<br/>
+          Fatigue: [% athlete.physical_fatigue || 0 %]<br/>
+          Form: [% athlete.physical_form || 0 %]<br/>
         </p>
     </td>
     <td>
-      Right Arm: [% athlete.physical_right_arm_strength %]/
-                  [% athlete.physical_right_arm_fatigue %]/
-                  [% athlete.physical_right_arm_injury %]
+      Right Arm: [% athlete.physical_right_arm_strength || 0 %] /
+                  [% athlete.physical_right_arm_fatigue || 0 %] /
+                  [% athlete.physical_right_arm_injury || 0 %]
         <br /> (Strength/Fatigue/Injury)
 
     </td>
   </tr>
   <tr>
     <td>
-	  Left Leg: [% athlete.physical_left_leg_strength %]/
-                  [% athlete.physical_left_leg_fatigue %]/
-                  [% athlete.physical_left_leg_injury %]
+	  Left Leg: [% athlete.physical_left_leg_strength || 0 %] /
+                  [% athlete.physical_left_leg_fatigue || 0 %] /
+                  [% athlete.physical_left_leg_injury || 0 %]
         <br /> (Strength/Fatigue/Injury)
 
 
 	</td>
     <td>
-	  Right Leg: [% athlete.physical_right_leg_strength %]/
-                  [% athlete.physical_right_leg_fatigue %]/
-                  [% athlete.physical_right_leg_injury %]
+	  Right Leg: [% athlete.physical_right_leg_strength || 0 %] /
+                  [% athlete.physical_right_leg_fatigue || 0 %] /
+                  [% athlete.physical_right_leg_injury || 0 %]
         <br /> (Strength/Fatigue/Injury)
 
 
@@ -89,8 +89,8 @@
 </tbody>
 </table>
 
-<p>Credits: [% athlete.credits %]</p>
-<p>Wins/Losses: [% athlete.wins %] / [% athlete.losses %] (Win percentage: [% athlete.win_percentage %]% )</p>
+<p>Credits: [% athlete.credits || 0 %]</p>
+<p>Wins/Losses: [% athlete.wins || 0 %] / [% athlete.losses || 0 %] (Win percentage: [% athlete.win_percentage %]% )</p>
 
 <h2>Competitions entered</h2>
 <ul>
@@ -111,8 +111,8 @@
    [% waza_key = w.lower.replace('-','_') %]
    <tr>
     <td>[% w %]</td> 
-    <td>[% athlete.waza_levels.$waza_key.attack || 0 %]</td>
-    <td>[% athlete.waza_levels.$waza_key.attack || 0 %]</td>
+    <td>[% athlete.waza_levels.$waza_key.attack %]</td>
+    <td>[% athlete.waza_levels.$waza_key.attack %]</td>
    </tr> 
 [% END %]
 </table>
