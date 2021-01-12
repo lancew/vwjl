@@ -7,6 +7,6 @@ use_ok 'VWJL::Infrastructure';
 
 my $inf = VWJL::Infrastructure->new;
 
-can_ok( $inf, 'get_athlete'); 
+can_ok( $inf, 'get_athlete_data' );
 
 done_testing;

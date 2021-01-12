@@ -61,7 +61,7 @@ use Data::Dumper;
 
     cmp_deeply $result,
         {
-        'commentary' => 'Some stuff happened',
+        'commentary' => ignore(),
         'round'      => 1,
         'scoreboard' => {
             'clock' => {
