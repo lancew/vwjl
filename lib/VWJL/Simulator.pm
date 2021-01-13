@@ -6,10 +6,15 @@ use VWJL::Infrastructure;
 use Time::Piece;
 use Time::Seconds;
 
+has 'inf' => (
+    is      => 'lazy',
+    builder => sub {
+        VWJL::Infrastructure->new;
+    },
+);
+
 sub simulate {
     my ( $self, %args ) = @_;
-
-    my $inf = VWJL::Infrastructure->new;
 
     my @athletes = ( $args{athlete_white}, $args{athlete_blue} );
     my $first    = int( rand(2) );
@@ -17,9 +22,11 @@ sub simulate {
     my ( $won, $lost );
     my $winning_waza = "shido";
 
-    $athletes[0] = $inf->get_athlete_data( user => $args{athlete_white}, );
+    $athletes[0]
+        = $self->inf->get_athlete_data( user => $args{athlete_white}, );
 
-    $athletes[1] = $inf->get_athlete_data( user => $args{athlete_blue}, );
+    $athletes[1]
+        = $self->inf->get_athlete_data( user => $args{athlete_blue}, );
 
     for my $waza ( keys %{ $athletes[$first]->{waza_levels} } ) {
         my $first = $athletes[$first]->{waza_levels}{$waza}{attack};
@@ -41,13 +48,13 @@ sub simulate {
     if ( $winner == 1 ) {
         $won  = $athletes[1]->{'username'};
         $lost = $athletes[0]->{'username'};
-        $inf->update_athlete(
+        $self->inf->update_athlete(
             field => 'wins',
             user  => $won,
             value => $athletes[1]->{'wins'} + 1,
         );
 
-        $inf->update_athlete(
+        $self->inf->update_athlete(
             field => 'losses',
             user  => $lost,
             value => $athletes[0]->{'losses'} + 1,
@@ -56,13 +63,13 @@ sub simulate {
     elsif ( $winner == 0 ) {
         $won  = $athletes[0]->{'username'};
         $lost = $athletes[1]->{'username'};
-        $inf->update_athlete(
+        $self->inf->update_athlete(
             field => 'wins',
             user  => $won,
             value => $athletes[0]->{'wins'} + 1,
         );
 
-        $inf->update_athlete(
+        $self->inf->update_athlete(
             field => 'losses',
             user  => $lost,
             value => $athletes[1]->{'losses'} + 1,
@@ -101,6 +108,34 @@ sub simulate {
     };
 
     return $result;
+}
+
+sub store_results {
+    my ( $self, %args ) = @_;
+
+    my $comp    = $args{competition};
+    my $results = $args{results};
+
+    for my $result ( @{ $args{results} } ) {
+        $self->inf->store_result(
+            competition_id => $comp->{id},
+            round          => $result->{round},
+            winner         => $result->{winner},
+            loser          => $result->{loser},
+            commentary     => $result->{commentary},
+            clock_minutes  => $result->{scoreboard}{clock}{minutes},
+            clock_seconds  => $result->{scoreboard}{clock}{seconds},
+            white_athlete  => $result->{scoreboard}{white}{athlete},
+            white_ippon    => $result->{scoreboard}{white}{ippon},
+            white_wazari   => $result->{scoreboard}{white}{wazari},
+            white_shido    => $result->{scoreboard}{white}{shido},
+            blue_athlete   => $result->{scoreboard}{blue}{athlete},
+            blue_ippon     => $result->{scoreboard}{blue}{ippon},
+            blue_wazari    => $result->{scoreboard}{blue}{wazari},
+            blue_shido     => $result->{scoreboard}{blue}{shido},
+        );
+    }
+
 }
 
 1;

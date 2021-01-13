@@ -107,6 +107,11 @@ post '/competition/:competition_id/simulate' => sub {
         }
     }
 
+    $simulator->store_results(
+        competition => $comp,
+        results     => \@results,
+    );
+
     # ------------------------------
     # TODO: this should be in the Simulator or perhaps in
     # Games::Tournament::RoundRobin code
@@ -151,10 +156,36 @@ get '/database' => sub {
     #my $dbh = DBI->connect( "dbi:Pg:dbname=postgres;host=localhost",
     #    'postgres', 'somePassword', { AutoCommit => 1 } );
 
-
     my $inf = VWJL::Infrastructure->new;
     my $dbh = $inf->dbh;
 
+    $dbh->do( '
+            CREATE TABLE results (
+                id serial      PRIMARY KEY,
+                competition    INT,
+                round          INT,
+                winner         VARCHAR(100),
+                loser          VARCHAR(100),
+                scoreboard_id  INT,
+                commentary     TEXT
+            );
+
+            CREATE TABLE scoreboard (
+                id serial      PRIMARY KEY,
+                result_id      INT,
+                clock_minutes  INT,
+                clock_seconds  INT,
+                white_athlete  VARCHAR(100),
+                white_ippon    INT,
+                white_wazari   INT,
+                white_shido    INT,
+                blue_athlete   VARCHAR(100),
+                blue_ippon     INT,
+                blue_wazari    INT,
+                blue_shido     INT
+            );
+        '
+    );
 
     $dbh->do( '
    CREATE TABLE accounts (

@@ -6,15 +6,14 @@ use DBI;
 has 'dbh' => (
     is      => 'lazy',
     builder => sub {
-      DBI->connect(
-        $ENV{DB_SOURCE},
-        $ENV{DB_USERNAME},
-        $ENV{DB_PASSWORD},
-        {
-            AutoCommit => 1,
-            RaiseError => $ENV{DB_RAISEERROR},
-        }
-      );  
+        DBI->connect(
+            $ENV{DB_SOURCE},
+            $ENV{DB_USERNAME},
+            $ENV{DB_PASSWORD},
+            {   AutoCommit => 1,
+                RaiseError => $ENV{DB_RAISEERROR},
+            }
+        );
     },
 );
 
@@ -50,7 +49,8 @@ sub get_athletes {
 sub get_competitions {
     my $self = shift;
 
-    my $competitions = $self->dbh->selectall_arrayref( 'SELECT * FROM competitions',
+    my $competitions
+        = $self->dbh->selectall_arrayref( 'SELECT * FROM competitions',
         { Slice => {} } );
 
     return $competitions;
@@ -75,7 +75,7 @@ sub get_competition {
 
     for my $entry (@$entries) {
         my $entry_id = $entry->{'athlete_id'};
-        my $athlete = $athletes->{$entry_id};
+        my $athlete  = $athletes->{$entry_id};
         $competition_data->{'entries'}{ $athlete->{id} } = $athlete;
     }
 
@@ -125,16 +125,12 @@ sub get_athlete_data {
 
     $athlete_data->{competition_entries} = $entries;
 
-    my $waza_levels = $self->dbh->selectall_hashref(
+    my $waza_levels
+        = $self->dbh->selectall_hashref(
         'SELECT * FROM waza_level WHERE athlete_id = ?',
-        'waza',
-        undef,
-        $athlete_data->{id},
-    );
-
+        'waza', undef, $athlete_data->{id}, );
 
     $athlete_data->{waza_levels} = $waza_levels;
-
 
     return $athlete_data;
 }
@@ -158,7 +154,7 @@ sub update_athlete_waza {
             SET attack = attack + ?,
                 defence = defence + ?
           WHERE athlete_id = ? AND waza = ?",
-        undef, 
+        undef,
         $args{attack_delta},
         $args{defence_delta},
         $args{athlete_id},
@@ -167,17 +163,17 @@ sub update_athlete_waza {
     use Data::Dumper;
     warn '--------', Dumper $rv;
 
-    if ($rv eq '0E0') {
+    if ( $rv eq '0E0' ) {
         $self->dbh->do(
-        'INSERT INTO waza_level 
+            'INSERT INTO waza_level 
             (athlete_id,waza,attack,defence)
          VALUES
          (?,?,?,?)',
-        undef, 
-        $args{athlete_id},
-        $args{waza},
-        $args{attack_delta},
-        $args{defence_delta},
+            undef,
+            $args{athlete_id},
+            $args{waza},
+            $args{attack_delta},
+            $args{defence_delta},
         );
     }
 }
@@ -190,6 +186,14 @@ sub add_user_to_competition {
                     (athlete_id, competition_id,added_on)
              VALUES (?,?, localtimestamp)
     ", undef, $args{athlete_id}, $args{competition_id} );
+}
+
+sub store_result {
+    my ( $self, %args ) = @_;
+    use Data::Dumper;
+    $Data::Dumper::Sortkeys = 1;
+    warn Dumper \%args;
+
 }
 
 1;
