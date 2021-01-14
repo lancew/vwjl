@@ -160,8 +160,6 @@ sub update_athlete_waza {
         $args{athlete_id},
         $args{waza},
     );
-    use Data::Dumper;
-    warn '--------', Dumper $rv;
 
     if ( $rv eq '0E0' ) {
         $self->dbh->do(
@@ -190,9 +188,95 @@ sub add_user_to_competition {
 
 sub store_result {
     my ( $self, %args ) = @_;
-    use Data::Dumper;
-    $Data::Dumper::Sortkeys = 1;
-    warn Dumper \%args;
+
+    $self->dbh->do( '
+            INSERT INTO scoreboard
+            (
+                clock_minutes,
+                clock_seconds,
+                white_athlete,
+                white_ippon,
+                white_wazari,
+                white_shido,
+                blue_athlete,
+                blue_ippon,
+                blue_wazari,
+                blue_shido
+            )
+            VALUES
+            (?,?,?,?,?,?,?,?,?,?)
+            RETURNING id;
+        ',
+        undef,
+        $args{clock_minutes},
+        $args{clock_seconds},
+        $args{white_athlete},
+        $args{white_ippon},
+        $args{white_wazari},
+        $args{white_shido},
+        $args{blue_athlete},
+        $args{blue_ippon},
+        $args{blue_wazari},
+        $args{blue_shido},
+    );
+
+    my $scoreboard_id
+        = $self->dbh->last_insert_id( undef, undef, 'scoreboard' );
+
+    $self->dbh->do( '
+            INSERT INTO results
+            (
+                competition,
+                round,
+                winner,
+                loser,
+                scoreboard_id,
+                commentary
+            )
+            VALUES
+            ( ?, ?, ?, ?, ?, ? )
+            RETURNING id;
+        ',
+        undef,
+        $args{competition_id},
+        $args{round},
+        $args{winner},
+        $args{loser},
+        $scoreboard_id,
+        $args{commentary},
+    );
+
+    my $result_id = $self->dbh->last_insert_id( undef, undef, 'results' );
+
+    $self->dbh->do( '
+            UPDATE scoreboard
+               SET result_id = ?
+             WHERE id = ?  
+        ',
+        undef,
+        $result_id,
+        $scoreboard_id,
+    );
+
+    $self->dbh->do( '
+            UPDATE results
+               SET scoreboard_id = ?
+             WHERE id = ?  
+        ',
+        undef,
+        $scoreboard_id,
+        $result_id,
+    );
+
+    $self->dbh->do( "
+            UPDATE competitions
+               SET status = 'Complete'
+             WHERE id = ? 
+        ",
+        undef,
+        $args{competition_id},
+
+    );
 
 }
 

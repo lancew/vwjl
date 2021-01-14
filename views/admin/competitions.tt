@@ -34,7 +34,11 @@
         </div>
           <ul>
             [% FOREACH c IN competitions %]
-                <li> <a href=/admin/competition/[% c.id %]>[% c.name %]</a>  
+                [% IF c.status == 'Complete' %]
+                    <li> [% c.name %] - [% c.status %]  
+                [% ELSE %]
+                    <li> <a href=/admin/competition/[% c.id %]>[% c.name %]</a> - [% c.status %]  
+                [% END%]
             [% END %]
           </ul>
       </div>

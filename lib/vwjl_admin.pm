@@ -159,6 +159,12 @@ get '/database' => sub {
     my $inf = VWJL::Infrastructure->new;
     my $dbh = $inf->dbh;
 
+    $dbh->do(
+        'ALTER TABLE competitions
+          ADD COLUMN status VARCHAR(20);  
+        '
+    );
+
     $dbh->do( '
             CREATE TABLE results (
                 id serial      PRIMARY KEY,
