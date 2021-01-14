@@ -5,6 +5,7 @@ use Moo;
 use VWJL::Infrastructure;
 use Time::Piece;
 use Time::Seconds;
+use Sort::Rank 'rank_sort';
 
 has 'inf' => (
     is      => 'lazy',
@@ -137,5 +138,29 @@ sub store_results {
     }
 
 }
+
+sub calculate_ranking {
+    my ( $self, $results ) = @_;
+
+    my %ranking;
+    for my $r (@$results) {
+        $ranking{ $r->{winner} }++;
+        $ranking{ $r->{loser} } = 0 unless defined $ranking{ $r->{loser} };
+    }
+
+    my @scores;
+    for my $r ( keys %ranking ) {
+        push @scores,
+            {
+            name  => $r,
+            score => $ranking{$r},
+            };
+    }
+
+    my @ranks = rank_sort( \@scores );
+    # --------------------------
+    return \@ranks;
+}
+
 
 1;

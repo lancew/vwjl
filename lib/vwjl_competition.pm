@@ -5,23 +5,43 @@ use Dancer2::Plugin::Auth::Tiny;
 our $VERSION = '0.1';
 
 use VWJL::Infrastructure;
+use VWJL::Simulator;
 
 get '/' => sub {
     redirect '/' unless session('user');
 
     my $inf          = VWJL::Infrastructure->new;
     my $competitions = $inf->get_competitions;
-    my $athlete = $inf->get_athlete_data( user => session('user') );
+    my $athlete      = $inf->get_athlete_data( user => session('user') );
 
     my $comps_entered;
-    for my $c ( @{$athlete->{competition_entries}}) {
-        $comps_entered->{$c->{id}}++;
+    for my $c ( @{ $athlete->{competition_entries} } ) {
+        $comps_entered->{ $c->{id} }++;
     }
 
-    template 'competition/index' => { 
-        competitions => $competitions, 
-        athlete     => $athlete,
+    template 'competition/index' => {
+        competitions  => $competitions,
+        athlete       => $athlete,
         comps_entered => $comps_entered,
+    };
+};
+
+get '/:competition_id/results' => sub {
+    redirect '/' unless session('user');
+
+    my $inf = VWJL::Infrastructure->new;
+    my $sim = VWJL::Simulator->new;
+
+    my $results = $inf->get_competition_results(
+        competition_id => route_parameters->get('competition_id') );
+    my $athlete = $inf->get_athlete_data( user => session('user') );
+
+    my $rankings = $sim->calculate_ranking($results);
+
+    template 'competition/results' => {
+        results  => $results,
+        athlete  => $athlete,
+        rankings => $rankings
     };
 };
 

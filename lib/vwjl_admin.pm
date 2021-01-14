@@ -112,27 +112,7 @@ post '/competition/:competition_id/simulate' => sub {
         results     => \@results,
     );
 
-    # ------------------------------
-    # TODO: this should be in the Simulator or perhaps in
-    # Games::Tournament::RoundRobin code
-
-    my %ranking;
-    for my $r (@results) {
-        $ranking{ $r->{winner} }++;
-        $ranking{ $r->{loser} } = 0 unless defined $ranking{ $r->{loser} };
-    }
-
-    my @scores;
-    for my $r ( keys %ranking ) {
-        push @scores,
-            {
-            name  => $r,
-            score => $ranking{$r},
-            };
-    }
-
-    my @ranks = rank_sort( \@scores );
-    # --------------------------
+    my $ranks = $simulator->calculate_ranking( \@results );
 
     template 'admin/competition_sim' => {
         competition => $comp,
@@ -140,7 +120,7 @@ post '/competition/:competition_id/simulate' => sub {
         tournament  => $tournament,
         status      => 'ran',
         results     => \@results,
-        ranking     => \@ranks,
+        ranking     => $ranks,
     };
 };
 

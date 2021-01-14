@@ -82,6 +82,21 @@ sub get_competition {
     return $competition_data;
 }
 
+sub get_competition_results {
+    my ( $self, %args ) = @_;
+
+    my $results = $self->dbh->selectall_arrayref(
+        'SELECT results.*, scoreboard.* 
+           FROM results
+           JOIN scoreboard ON (results.id = scoreboard.result_id)
+          WHERE competition = ?',
+        { Slice => {} },
+        $args{competition_id}
+    );
+
+    return $results;
+}
+
 sub get_user_data {
     my ( $self, $user ) = @_;
 
