@@ -21,7 +21,7 @@ sub get_competitions {
     my $self = shift;
 
     my $competitions
-        = $self->dbh->selectall_arrayref( 'SELECT * FROM competitions',
+        = $self->dbh->selectall_arrayref( 'SELECT * FROM competitions ORDER BY id',
         { Slice => {} } );
 
     return $competitions;

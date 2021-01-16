@@ -109,18 +109,25 @@ sub simulate {
     };
 
     if ( $won eq $args{athlete_white} ) {
-        $result->{'scoreboard'}{'white'}{$winning_waza}
-            = $winning_waza eq 'shido' ? 3 : 1;
+        if ($winning_waza eq 'shido') {
+            $result->{'scoreboard'}{'white'}{'shido'} = 3;
+        } else {
+            $result->{'scoreboard'}{'white'}{'ippon'} = 1;
+        }
     }
     else {
-        $result->{'scoreboard'}{'blue'}{$winning_waza}
-            = $winning_waza eq 'shido' ? 3 : 1;
+        if ($winning_waza eq 'shido') {
+            $result->{'scoreboard'}{'blue'}{'shido'} = 3;
+        } else {
+            $result->{'scoreboard'}{'blue'}{'ippon'} = 1;
+        }
     }
 
     $result->{'scoreboard'}{'clock'}{'minutes'} = int( rand(4) );
     if ( $winning_waza eq 'shido' ) {
         $result->{'scoreboard'}{'clock'}{'minutes'} = 3;
     }
+
     $result->{'scoreboard'}{'clock'}{'seconds'} = int( rand(59) );
 
     return $result;
