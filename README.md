@@ -28,6 +28,16 @@ second attempt by following:
 ### Formatting
 * Currently using http://www.dpriver.com/pp/sqlformat.htm to get consistent SQL formatting.
 
+### Killing the DB
+(This is a bit rubbish and a better docker setup required)
+
+* docker ps
+* docker kil xxxxxxxxx
+* docker system prune -f
+
+Then you can start with docker run as above.
+
+
 
 ## Installation (ubuntu server)
 * Perl obviously
@@ -56,9 +66,11 @@ Running with SSL on DO:
 
 ## TODO
 
-* [ ] Database
-* [ ] the rest
-
-
+* [ ] /ranking - Athletes by wins
+* [ ] email sending?
+* [ ] extend the simulator to be more of a sequence of hajime-mate 
+* [ ] extend the traning options (specifically we need some recovery for fatigue
+* [ ] prize money for top 3 (top 5) ?
+* [ ] trash talking?
 
 
