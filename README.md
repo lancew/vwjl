@@ -20,16 +20,20 @@
  ```carton exec perltidy lib/vwjl.pm```
 
 
-## Datbase
+## Database
 second attempt by following:
 * https://dev.to/shree_j/how-to-install-and-run-psql-using-docker-41j2
 * docker run --name postgresql-container -p 5432:5432 -e POSTGRES_PASSWORD=somePassword -d postgres
+
+### Formatting
+* Currently using http://www.dpriver.com/pp/sqlformat.htm to get consistent SQL formatting.
+
 
 ## Installation (ubuntu server)
 * Perl obviously
 * make (nneded for some modules): ```apt install make```
 * gcc: ``apt install gcc```
-* postgres libs: ```apt-get install libpq-dev```
+* postgres libs: ```apt-get install libpq-dev``` or extra/postgresql-libs on Arch/Manjaro
 * ssl stuff: ```apt-get install zlib1g-dev```
 * more ssl: ```apt-get install libssl-dev```
 * cpanm ```apt update; apt install cpanminus```

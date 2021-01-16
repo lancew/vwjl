@@ -32,6 +32,12 @@
           <h1>VWJL Admin</h1>
           <h2>Virtual World Judo League</h2>
         </div>
+          <h1>Database</h1>
+          <h2>Migration Level</h2>
+          [% db_migration_level %]
+          <form method=post>
+            <button type=submit>Run Migration</button>
+          </form>  
 
           <h1>Users ([% total_users %])</h1>
           <ul>
@@ -39,12 +45,7 @@
               <li> [% u.username %]
             [% END %]  
           </ul>
-          <h1>Athletes</h1>
-          <ul>
-            [% FOREACH a IN athletes %]
-              <li> [% a.username %]
-            [% END %]  
-          </ul>
+
           <h1>Competitions</h1>
           <ul>
             [% FOREACH c IN competitions %]
