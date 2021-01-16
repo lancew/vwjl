@@ -150,10 +150,15 @@ get '/database' => sub {
 
     };
 
+    my @file_list = $inf->get_migration_files;
+    $file_list[-1] =~ /^(\d{3})/;
+    my $file_migration_level = $1;
+
     template 'admin/database' => {
-        users              => $users,
-        competitions       => $competitions,
-        db_migration_level => $db_migration_level,
+        users                => $users,
+        competitions         => $competitions,
+        db_migration_level   => $db_migration_level,
+        file_migration_level => $file_migration_level,
     };
 };
 
@@ -167,14 +172,11 @@ post '/database' => sub {
             'SELECT db_migration_level FROM system');
     };
 
-    my $dir = "$FindBin::Bin/../db";
-    opendir my $dh, $dir or die "Could not open '$dir' for reading '$!'\n";
-    my @migration_files = readdir $dh;
-    closedir $dh;
+    my @migration_files = $inf->get_migration_files;
+    my $dir             = "$FindBin::Bin/../db";
 
     for my $file ( sort @migration_files ) {
-
-        next unless $file =~ /(\d{3})/;
+        $file =~ /(\d{3})/;
         my $migration = $1;
 
         if ( $db_migration_level < $migration ) {

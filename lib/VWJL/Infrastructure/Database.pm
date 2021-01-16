@@ -2,6 +2,7 @@ package VWJL::Infrastructure::Database;
 use Moo::Role;
 
 use DBI;
+use FindBin;
 
 has 'dbh' => (
     is      => 'lazy',
@@ -16,6 +17,20 @@ has 'dbh' => (
         );
     },
 );
+
+sub get_migration_files {
+    my $dir = "$FindBin::Bin/../db";
+    opendir my $dh, $dir or die "Could not open '$dir' for reading '$!'\n";
+    my @migration_files = readdir $dh;
+    closedir $dh;
+
+    my @files;
+    for my $file ( sort @migration_files ) {
+        push @files, $file if $file =~ /\d{3}/;
+    }
+
+    return @files;
+}
 
 sub is_username_in_db {
     my ( $self, $user ) = @_;

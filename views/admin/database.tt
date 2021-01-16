@@ -33,8 +33,11 @@
           <h2>Virtual World Judo League</h2>
         </div>
           <h1>Database</h1>
-          <h2>Migration Level</h2>
-          [% db_migration_level %]
+          <h2>Migration</h2>
+          <ul>
+            <li> DB level:[% db_migration_level %]
+            <li> Migration file level: [% file_migration_level %]
+          </ul>
           <form method=post>
             <button type=submit>Run Migration</button>
           </form>  
