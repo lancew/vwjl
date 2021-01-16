@@ -10,6 +10,7 @@ requires "Games::Tournament";
 requires "Games::Tournament::RoundRobin";
 requires "Sort::Rank";
 requires "IO::Socket::SSL";
+requires "DateTime";
 
 recommends "YAML"             => "0";
 recommends "URL::Encode::XS"  => "0";
