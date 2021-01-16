@@ -68,6 +68,28 @@ sub get_competition_results {
     return $results;
 }
 
+sub add_competition {
+    my ( $self, %args ) = @_;
+
+    use Data::Dumper;
+    warn '+++++++++', Dumper \%args;
+
+    my $rv = $self->dbh->do(
+        "INSERT INTO competitions
+        ( name, description, owner_username, entry_fee, created_on )
+        VALUES
+        (?, ?, ?, ?, localtimestamp )",
+        undef,
+        $args{name},
+        $args{description},
+        $args{username},
+        $args{entry_fee}
+    );
+
+    warn '----------- DB:', $rv;
+
+}
+
 sub add_user_to_competition {
     my ( $self, %args ) = @_;
 

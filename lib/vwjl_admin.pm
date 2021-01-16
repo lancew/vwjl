@@ -10,6 +10,7 @@ use VWJL::Infrastructure;
 use VWJL::Simulator;
 use Games::Tournament::RoundRobin;
 use Sort::Rank 'rank_sort';
+use DateTime;
 
 get '/' => sub {
     redirect '/' unless session('admin');
@@ -41,6 +42,36 @@ get '/competitions' => sub {
     my $competitions = $inf->get_competitions;
 
     template 'admin/competitions' => { competitions => $competitions, };
+};
+
+get '/competition/add' => sub {
+    redirect '/' unless session('admin');
+
+    template 'admin/competition/add';
+};
+
+post 'competition/add' => sub {
+    redirect '/' unless session('admin');
+
+    my $inf = VWJL::Infrastructure->new;
+
+    my $dt = DateTime->now;
+    $dt->add( days => 1 );
+
+    my $name
+        = 'Daily Round Robin (' . $dt->ymd . ' ' . int( rand(999) ) . ' )';
+
+    my $description = 'Regular ' . $name;
+    my $entry_fee   = 1;
+
+    $inf->add_competition(
+        name        => $name,
+        description => $description,
+        username    => session('user'),
+        entry_fee   => $entry_fee,
+    );
+
+    redirect '/admin/competitions';
 };
 
 get '/competition/:competition_id' => sub {

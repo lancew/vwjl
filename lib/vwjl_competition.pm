@@ -16,7 +16,8 @@ get '/' => sub {
 
     my $comps_entered;
     for my $c ( @{ $athlete->{competition_entries} } ) {
-        $comps_entered->{ $c->{id} }++;
+
+        $comps_entered->{ $c->{competition_id} }++;
     }
 
     template 'competition/index' => {

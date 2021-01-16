@@ -32,8 +32,11 @@
           <h1>VWJL Admin</h1>
           <h2>Virtual World Judo League</h2>
         </div>
+          <p>
+            <a href=/admin/competition/add>Add new daily event</a>
+          </p>
           <ul>
-            [% FOREACH c IN competitions %]
+            [% FOREACH c IN competitions.sort %]
                 [% IF c.status == 'Complete' %]
                     <li> [% c.name %] - [% c.status %]  
                 [% ELSE %]
