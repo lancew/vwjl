@@ -87,15 +87,15 @@ sub simulate {
         scoreboard => {
             white => {
                 athlete => $args{athlete_white},
-                ippon   => 1,
-                wazari  => 1,
+                ippon   => 0,
+                wazari  => 0,
                 shido   => 0,
             },
             blue => {
                 athlete => $args{athlete_blue},
                 ippon   => 0,
-                wazari  => 1,
-                shido   => 2,
+                wazari  => 0,
+                shido   => 0,
             },
             clock => {
                 total_elapsed_seconds => 240,
@@ -107,6 +107,21 @@ sub simulate {
         ? "$lost lost to $won by $winning_waza"
         : "$won threw $lost with $winning_waza"
     };
+
+    if ( $won eq $args{athlete_white} ) {
+        $result->{'scoreboard'}{'white'}{$winning_waza}
+            = $winning_waza eq 'shido' ? 3 : 1;
+    }
+    else {
+        $result->{'scoreboard'}{'blue'}{$winning_waza}
+            = $winning_waza eq 'shido' ? 3 : 1;
+    }
+
+    $result->{'scoreboard'}{'clock'}{'minutes'} = int( rand(4) );
+    if ( $winning_waza eq 'shido' ) {
+        $result->{'scoreboard'}{'clock'}{'minutes'} = 3;
+    }
+    $result->{'scoreboard'}{'clock'}{'seconds'} = int( rand(59) );
 
     return $result;
 }
@@ -161,6 +176,5 @@ sub calculate_ranking {
     # --------------------------
     return \@ranks;
 }
-
 
 1;
