@@ -19,7 +19,7 @@ get '/' => sub {
 
     my $comps;
     for my $comp (@$competitions) {
-        $comps->{ $comp->{id} } = $comp->{name};
+        $comps->{ $comp->{id} } = $comp;
     }
 
     template 'athlete/index' => {

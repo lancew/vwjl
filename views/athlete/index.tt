@@ -95,7 +95,10 @@
 <h2>Competitions entered</h2>
 <ul>
     [% FOREACH c IN athlete.competition_entries %]
-        <li> [% competitions.${c.competition_id} %]
+        <li> [% competitions.${c.competition_id}.name %]
+           [% IF competitions.${c.competition_id}.status == 'Complete' %]
+            ( <a href=/competition/[% c.competition_id %]/results>Results</a> )
+           [% END %]
     [% END %]
 </ul>
 
