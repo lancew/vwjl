@@ -30,13 +30,13 @@ sub simulate {
         = $self->inf->get_athlete_data( user => $args{athlete_blue}, );
 
     for my $waza ( keys %{ $athletes[$first]->{waza_levels} } ) {
-        my $first = $athletes[$first]->{waza_levels}{$waza}{attack};
-        my $second
+        my $first_attack = $athletes[$first]->{waza_levels}{$waza}{attack};
+        my $second_attack
             = (
             $athletes[ $first == 1 ? 0 : 1 ]->{waza_levels}{$waza}{defence} )
             || 0;
 
-        if ( $first > $second ) {
+        if ( $first_attack > $second_attack ) {
             $winner = 1;
         }
         else {
@@ -76,9 +76,6 @@ sub simulate {
             value => $athletes[1]->{'losses'} + 1,
         );
     }
-    else {
-        die 'SERIOUSLY WTF?? ', $winner;
-    }
 
     my $result = {
         winner     => $won,
@@ -109,16 +106,18 @@ sub simulate {
     };
 
     if ( $won eq $args{athlete_white} ) {
-        if ($winning_waza eq 'shido') {
+        if ( $winning_waza eq 'shido' ) {
             $result->{'scoreboard'}{'white'}{'shido'} = 3;
-        } else {
+        }
+        else {
             $result->{'scoreboard'}{'white'}{'ippon'} = 1;
         }
     }
     else {
-        if ($winning_waza eq 'shido') {
+        if ( $winning_waza eq 'shido' ) {
             $result->{'scoreboard'}{'blue'}{'shido'} = 3;
-        } else {
+        }
+        else {
             $result->{'scoreboard'}{'blue'}{'ippon'} = 1;
         }
     }
@@ -159,6 +158,7 @@ sub store_results {
         );
     }
 
+    return 1;
 }
 
 sub calculate_ranking {
