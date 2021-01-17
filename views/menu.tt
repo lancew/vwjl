@@ -1,0 +1,30 @@
+      <div id="sidebar">
+        <ul id="sidebar-items">
+          <li>
+            <h3>Menu</h3>
+            <ul class="links">
+                 [% IF session.user %]
+                        [% session.user %]<p />
+                           <li><a href="/athlete">Athlete</a>
+                           <li><a href="/training">Training</a>
+                           <li><a href="/competition">Competitions</a>
+                           <li><a href="/ranking">Rankings</a>
+                           [% IF session.admin %]
+                             <hr>
+                             <li><a href="/admin">Admin</a>
+                           [% END %]
+                             <hr>
+                            <li><a href="/logout">Logout</a>
+                        <hr>
+                 [% ELSE %]
+                       <li> <a href="/login" autofocus>Login</a>
+                       <li> or <a href="/register">Register</a>
+                 [% END %]
+            </ul>
+          </li>
+
+
+        </ul>
+
+      </div>
+
