@@ -26,7 +26,7 @@ sub get_migration_files {
 
     my @files;
     for my $file ( sort @migration_files ) {
-        push @files, $file if $file =~ /\d{3}/;
+        push @files, $file if $file =~ /^\d{3}/x;
     }
 
     return @files;
@@ -40,7 +40,8 @@ sub is_username_in_db {
         'SELECT username FROM accounts WHERE username = ?',
         undef, $user );
 
-    return undef unless $user_data;
+    my $status = $user_data ? 1 : 0;
+    return $status;
 }
 
 sub get_users {
@@ -66,19 +67,21 @@ sub get_user_data {
 sub add_user {
     my ( $self, %args ) = @_;
 
-    $self->dbh->do( "
+    $self->dbh->do( << 'SQL', undef, $args{username}, $args{passphrase} );
       INSERT INTO accounts
       (username,passphrase,created_on)
       VALUES
       ( ?, ?, localtimestamp)
-    ", undef, $args{username}, $args{passphrase} );
+SQL
 
-    $self->dbh->do( "
+    $self->dbh->do( << 'SQL', undef, $args{username} );
       INSERT INTO athletes
       (username)
       VALUES
       (?)
-    ", undef, $args{username} );
+SQL
+
+    return 1;
 }
 
 1;
