@@ -1,0 +1,29 @@
+      <div id="content">
+        <div id="header">
+          <h1>VWJL</h1>
+          <h2>Virtual World Judo League</h2>
+          <h3>Rankings</h3>
+        </div>
+
+            <center>
+          <h2>Athlete Rankings</h2>
+            <table border = 1>
+            <tr>
+              <td>Rank</td>
+              <td>Name</td>
+              <td>Wins</td>
+            </tr>
+
+            [% FOREACH r IN rankings %]
+              <tr>
+                    <td>[% r.0 %][% r.1 %]</td>
+                    <td>[% r.2.name %]</td>
+                    <td>[% r.2.score %]</td>
+              </tr>  
+            [% END %]
+            </table>
+            </center>
+
+
+      </div>
+    </div>

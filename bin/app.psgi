@@ -10,6 +10,7 @@ use vwjl_admin;
 use vwjl_athlete;
 use vwjl_training;
 use vwjl_competition;
+use vwjl_ranking;
 
 use Plack::Builder;
 
@@ -19,5 +20,6 @@ builder {
     mount '/athlete'     => vwjl_athlete->to_app;
     mount '/training'    => vwjl_training->to_app;
     mount '/competition' => vwjl_competition->to_app;
+    mount '/ranking'     => vwjl_ranking->to_app;
 }
 

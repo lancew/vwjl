@@ -3,6 +3,8 @@
           <li>
             <h3>Menu</h3>
             <ul class="links">
+                 <li><a href=/>VWJL Home</a>
+                 <hr>
                  [% IF session.user %]
                         [% session.user %]<p />
                            <li><a href="/athlete">Athlete</a>
