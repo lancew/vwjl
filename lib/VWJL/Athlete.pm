@@ -40,6 +40,8 @@ sub uchi_komi {
         field => 'physical_fatigue',
         value => $athlete->{'physical_fatigue'} + 1,
     );
+
+    return 1;
 }
 
 1;
