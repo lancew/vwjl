@@ -35,6 +35,8 @@ second attempt by following:
 * docker kil xxxxxxxxx
 * docker system prune -f
 
+You can restart the postgres container (day after a reboot) with: ```docker restart postgresql-container```
+
 Then you can start with docker run as above.
 
 
