@@ -1,4 +1,4 @@
-package vwjl_direct;
+package vwjl_redirect;
 use Dancer2;
 
 get '/' => sub {
