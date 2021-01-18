@@ -15,7 +15,7 @@ get '/' => sub {
 
 get '/uchi_komi' => sub {
     redirect '/' unless session('user');
-    
+
     my $waza = waza::all();
 
     my $athlete_srv = VWJL::Athlete->new;
@@ -40,5 +40,5 @@ get '/uchi_komi/:waza' => sub {
     redirect '/training/uchi_komi';
 };
 
-true;
+1;
 

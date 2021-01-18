@@ -97,5 +97,5 @@ post '/:competition_id/register' => sub {
     }
 };
 
-true;
+1;
 
