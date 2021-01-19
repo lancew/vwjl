@@ -68,11 +68,13 @@ Running with SSL on DO:
 
 ## TODO
 
-* [ ] /ranking - Athletes by wins
-* [ ] email sending?
-* [ ] extend the simulator to be more of a sequence of hajime-mate 
-* [ ] extend the traning options (specifically we need some recovery for fatigue
-* [ ] prize money for top 3 (top 5) ?
-* [ ] trash talking?
+* [X] /ranking - Athletes by wins
+* [ ] Email sending?
+* [ ] Password reset
+* [ ] Extend the simulator to be more of a sequence of hajime-mate 
+* [ ] Extend the traning options (specifically we need some recovery for fatigue
+* [ ] Prize money for top 3 (top 5) ?
+* [ ] Trash talking?
+* [ ] Ladder competitions
 
 
