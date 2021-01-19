@@ -6,6 +6,7 @@ use FindBin;
 
 our $VERSION = '0.1';
 
+use VWJL::Admin;
 use VWJL::Infrastructure;
 use VWJL::Simulator;
 use Games::Tournament::RoundRobin;
@@ -156,44 +157,15 @@ post '/competition/:competition_id/simulate' => sub {
     };
 };
 
-# -----------------------------------------------------
-#  TODO: This needs doing properly
-# -----------------------------------------------------
 
 get '/database' => sub {
     #redirect '/' unless session('admin');
 
-    my $inf = VWJL::Infrastructure->new;
-
-    my ( $db_migration_level, $users, $competitions );
-
-    eval {
-        $db_migration_level
-            = $inf->dbh->selectrow_array(
-            'SELECT db_migration_level FROM system');
-
-        $users = $inf->dbh->selectall_arrayref( 'SELECT * from accounts',
-            { 'Slice' => {} } );
-
-        $competitions
-            = $inf->dbh->selectall_arrayref( 'SELECT * from competitions',
-            { 'Slice' => {} } );
-
-    };
-
-    my $file_migration_level;
-    my @file_list = $inf->get_migration_files;
-    $file_list[-1] =~ /^(\d{3})/;
-
-    if ($1) {
-        $file_migration_level = $1 if $1;
-    }
+    my $admin = VWJL::Admin->new;
+    my %data  = $admin->get_migration_data;
 
     template 'admin/database' => {
-        users                => $users,
-        competitions         => $competitions,
-        db_migration_level   => $db_migration_level,
-        file_migration_level => $file_migration_level,
+        data => \%data
     };
 };
 

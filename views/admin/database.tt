@@ -6,28 +6,25 @@
           <h1>Database</h1>
           <h2>Migration</h2>
           <ul>
-            <li> DB level:[% db_migration_level %]
-            <li> Migration file level: [% file_migration_level %]
+            <li> DB level:[% data.db_migration_level %]
+            <li> Migration file level: [% data.file_migration_level %]
           </ul>
           <form method=post>
             <button type=submit>Run Migration</button>
           </form>  
 
-          <h1>Users ([% total_users %])</h1>
+          <h1>Users ([% data.total_users %])</h1>
           <ul>
-            [% FOREACH u IN users %]
+            [% FOREACH u IN data.users %]
               <li> [% u.username %]
             [% END %]  
           </ul>
 
           <h1>Competitions</h1>
           <ul>
-            [% FOREACH c IN competitions %]
+            [% FOREACH c IN data.competitions %]
               <li> [% c.name %], [% c.entry_fee %], [% c.description %]
             [% END %]  
           </ul>
-          <pre>
-            [% outputref %]
-          </pre>
       </div>
     </div>
