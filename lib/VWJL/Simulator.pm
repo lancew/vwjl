@@ -26,11 +26,7 @@ sub simulate {
     $athletes[1]
         = $self->inf->get_athlete_data( user => $args{athlete_blue}, );
 
-
-    my ($winner,$winning_waza) = $self->_decide_winner(
-        @athletes
-    );
-
+    my ( $winner, $winning_waza ) = $self->_decide_winner(@athletes);
 
     if ( $winner == 1 ) {
         $won  = $athletes[1]->{'username'};
@@ -173,8 +169,8 @@ sub calculate_ranking {
 sub _decide_winner {
     my ( $self, @athletes ) = @_;
 
-    my $first    = int( rand(2) );
-    my $winner = 0;
+    my $first        = int( rand(2) );
+    my $winner       = 0;
     my $winning_waza = 'shido';
 
     for my $waza ( keys %{ $athletes[$first]->{waza_levels} } ) {
@@ -193,10 +189,8 @@ sub _decide_winner {
         $winning_waza = $waza;
         last;
     }
-   
+
     return $winner, $winning_waza;
 }
-
-
 
 1;

@@ -157,16 +157,13 @@ post '/competition/:competition_id/simulate' => sub {
     };
 };
 
-
 get '/database' => sub {
     #redirect '/' unless session('admin');
 
     my $admin = VWJL::Admin->new;
     my %data  = $admin->get_migration_data;
 
-    template 'admin/database' => {
-        data => \%data
-    };
+    template 'admin/database' => { data => \%data };
 };
 
 post '/database' => sub {

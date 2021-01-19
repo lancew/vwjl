@@ -19,7 +19,7 @@ get '/uchi_komi' => sub {
     my $waza = waza::all();
 
     my $athlete_srv = VWJL::Athlete->new;
-    my $athlete      = $athlete_srv->get( user => session('user') );
+    my $athlete     = $athlete_srv->get( user => session('user') );
 
     template 'training/uchi_komi' => {
         athlete => $athlete,

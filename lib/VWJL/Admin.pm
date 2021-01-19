@@ -13,7 +13,8 @@ sub get_migration_data {
             = $inf->dbh->selectrow_array(
             'SELECT db_migration_level FROM system');
 
-        $data{'users'} = $inf->dbh->selectall_arrayref( 'SELECT * from accounts',
+        $data{'users'}
+            = $inf->dbh->selectall_arrayref( 'SELECT * from accounts',
             { 'Slice' => {} } );
 
         $data{'competitions'}
@@ -69,7 +70,5 @@ sub run_migrations {
 
     }
 }
-
-
 
 1;
