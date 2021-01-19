@@ -3,8 +3,6 @@ package VWJL::Simulator;
 use Moo;
 
 use VWJL::Infrastructure;
-use Time::Piece;
-use Time::Seconds;
 use Sort::Rank 'rank_sort';
 
 has 'inf' => (
