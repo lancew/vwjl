@@ -181,11 +181,13 @@ get '/database' => sub {
 
     };
 
+    my $file_migration_level;
     my @file_list = $inf->get_migration_files;
     $file_list[-1] =~ /^(\d{3})/;
 
-    my $file_migration_level;
-    $file_migration_level = $1 if $1;
+    if ($1) {
+        $file_migration_level = $1 if $1;
+    }
 
     template 'admin/database' => {
         users                => $users,
