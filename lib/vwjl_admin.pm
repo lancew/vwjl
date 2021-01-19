@@ -170,6 +170,9 @@ get '/database' => sub {
 };
 
 post '/database' => sub {
+    my $admin = VWJL::Admin->new;
+    $admin->run_migrations;
+
     redirect '/admin/database';
 };
 
