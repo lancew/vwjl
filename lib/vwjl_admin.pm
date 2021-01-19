@@ -211,9 +211,12 @@ post '/database' => sub {
     my $dir             = "$FindBin::Bin/../db";
 
     for my $file ( sort @migration_files ) {
-        $file =~ /(\d{3})/;
+        my $migration;
 
-        my $migration = $1 if $1;
+        $file =~ /(\d{3})/;
+        if ($1) {
+            $migration = $1;
+        }
 
         if ( $db_migration_level < $migration ) {
 
