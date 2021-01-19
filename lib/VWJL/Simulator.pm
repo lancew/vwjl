@@ -18,10 +18,7 @@ sub simulate {
     my ( $self, %args ) = @_;
 
     my @athletes = ( $args{athlete_white}, $args{athlete_blue} );
-    my $first    = int( rand(2) );
-    my $winner   = 0;
     my ( $won, $lost );
-    my $winning_waza = "shido";
 
     $athletes[0]
         = $self->inf->get_athlete_data( user => $args{athlete_white}, );
@@ -29,22 +26,11 @@ sub simulate {
     $athletes[1]
         = $self->inf->get_athlete_data( user => $args{athlete_blue}, );
 
-    for my $waza ( keys %{ $athletes[$first]->{waza_levels} } ) {
-        my $first_attack = $athletes[$first]->{waza_levels}{$waza}{attack};
-        my $second_attack
-            = (
-            $athletes[ $first == 1 ? 0 : 1 ]->{waza_levels}{$waza}{defence} )
-            || 0;
 
-        if ( $first_attack > $second_attack ) {
-            $winner = 1;
-        }
-        else {
-            $winner = 0;
-        }
-        $winning_waza = $waza;
-        last;
-    }
+    my ($winner,$winning_waza) = $self->_decide_winner(
+        @athletes
+    );
+
 
     if ( $winner == 1 ) {
         $won  = $athletes[1]->{'username'};
@@ -183,5 +169,34 @@ sub calculate_ranking {
     # --------------------------
     return \@ranks;
 }
+
+sub _decide_winner {
+    my ( $self, @athletes ) = @_;
+
+    my $first    = int( rand(2) );
+    my $winner = 0;
+    my $winning_waza = 'shido';
+
+    for my $waza ( keys %{ $athletes[$first]->{waza_levels} } ) {
+        my $first_attack = $athletes[$first]->{waza_levels}{$waza}{attack};
+        my $second_attack
+            = (
+            $athletes[ $first == 1 ? 0 : 1 ]->{waza_levels}{$waza}{defence} )
+            || 0;
+
+        if ( $first_attack > $second_attack ) {
+            $winner = 1;
+        }
+        else {
+            $winner = 0;
+        }
+        $winning_waza = $waza;
+        last;
+    }
+   
+    return $winner, $winning_waza;
+}
+
+
 
 1;
