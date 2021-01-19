@@ -183,9 +183,9 @@ get '/database' => sub {
 
     my @file_list = $inf->get_migration_files;
     $file_list[-1] =~ /^(\d{3})/;
-    die 'File name did not start with 3 digits' unless $1;
 
-    my $file_migration_level = $1;
+    my $file_migration_level;
+    $file_migration_level = $1 if $1;
 
     template 'admin/database' => {
         users                => $users,
@@ -210,9 +210,8 @@ post '/database' => sub {
 
     for my $file ( sort @migration_files ) {
         $file =~ /(\d{3})/;
-        next unless $1;
 
-        my $migration = $1;
+        my $migration = $1 if $1;
 
         if ( $db_migration_level < $migration ) {
 
