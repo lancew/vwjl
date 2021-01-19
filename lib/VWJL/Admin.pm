@@ -1,36 +1,39 @@
 package VWJL::Admin;
+require 5.00808;
 
+use utf8;
+use Carp qw/carp croak/;
 use Moo;
 use VWJL::Infrastructure;
 
 sub get_migration_data {
     my $inf = VWJL::Infrastructure->new;
 
-    my %data;
+    my %migration_data;
 
     eval {
-        $data{'db_migration_level'}
+        $migration_data{'db_migration_level'}
             = $inf->dbh->selectrow_array(
             'SELECT db_migration_level FROM system');
 
-        $data{'users'}
+        $migration_data{'users'}
             = $inf->dbh->selectall_arrayref( 'SELECT * from accounts',
             { 'Slice' => {} } );
 
-        $data{'competitions'}
+        $migration_data{'competitions'}
             = $inf->dbh->selectall_arrayref( 'SELECT * from competitions',
             { 'Slice' => {} } );
 
-    };
+    } or carp 'NO DATABASE APPEARS TO BE PRESENT';
 
     my @file_list = $inf->get_migration_files;
-    $file_list[-1] =~ /^(\d{3})/;
+    $file_list[-1] =~ /^(\d{3})/x;
 
     if ($1) {
-        $data{'file_migration_level'} = $1 if $1;
+        $migration_data{'file_migration_level'} = $1 if $1;
     }
 
-    return %data;
+    return %migration_data;
 }
 
 sub run_migrations {
@@ -41,7 +44,7 @@ sub run_migrations {
         $db_migration_level
             = $inf->dbh->selectrow_array(
             'SELECT db_migration_level FROM system');
-    };
+    } or carp 'UNABLE TO FIND MIGRATION LEVEL IN DB';
 
     my @migration_files = $inf->get_migration_files;
     my $dir             = "$FindBin::Bin/../db";
@@ -49,7 +52,7 @@ sub run_migrations {
     for my $file ( sort @migration_files ) {
         my $migration;
 
-        $file =~ /(\d{3})/;
+        $file =~ /(\d{3})/x;
         if ($1) {
             $migration = $1;
         }
@@ -57,9 +60,9 @@ sub run_migrations {
         if ( $db_migration_level < $migration ) {
 
             my $filename = $dir . '/' . $file;
-            $/ = undef;
+            local $/ = undef;
             open( my $fh, '<:encoding(UTF-8)', $filename )
-                or die "Could not open file '$filename' $!";
+                or croak "Could not open file '$filename' $!";
             my $sql = <$fh>;
             close $fh;
 
@@ -69,6 +72,7 @@ sub run_migrations {
         }
 
     }
+    return 1;
 }
 
 1;

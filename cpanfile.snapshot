@@ -1549,6 +1549,16 @@ DISTRIBUTIONS
     requirements:
       Devel::StackTrace 0
       ExtUtils::MakeMaker 0
+  Devel-Symdump-2.18
+    pathname: A/AN/ANDK/Devel-Symdump-2.18.tar.gz
+    provides:
+      Devel::Symdump 2.18
+      Devel::Symdump::Export undef
+    requirements:
+      Compress::Zlib 0
+      ExtUtils::MakeMaker 0
+      Test::More 0
+      perl 5.004
   Digest-Bcrypt-1.209
     pathname: C/CA/CAPOEIRAB/Digest-Bcrypt-1.209.tar.gz
     provides:
@@ -1698,6 +1708,15 @@ DISTRIBUTIONS
       Time::Local 0
       base 0
       perl 5.006
+  File-PathList-1.04
+    pathname: A/AD/ADAMK/File-PathList-1.04.tar.gz
+    provides:
+      File::PathList 1.04
+    requirements:
+      ExtUtils::MakeMaker 7.44
+      File::Spec 0.80
+      Params::Util 0.24
+      Test::More 0.47
   File-Share-0.25
     pathname: I/IN/INGY/File-Share-0.25.tar.gz
     provides:
@@ -2264,6 +2283,58 @@ DISTRIBUTIONS
       IPC::Cmd 0
       XSLoader 0.22
       base 0
+  MCE-1.874
+    pathname: M/MA/MARIOROY/MCE-1.874.tar.gz
+    provides:
+      MCE 1.874
+      MCE::Candy 1.874
+      MCE::Channel 1.874
+      MCE::Channel::Mutex 1.874
+      MCE::Channel::Simple 1.874
+      MCE::Channel::Threads 1.874
+      MCE::Child 1.874
+      MCE::Core::Input::Generator 1.874
+      MCE::Core::Input::Handle 1.874
+      MCE::Core::Input::Iterator 1.874
+      MCE::Core::Input::Request 1.874
+      MCE::Core::Input::Sequence 1.874
+      MCE::Core::Manager 1.874
+      MCE::Core::Validation 1.874
+      MCE::Core::Worker 1.874
+      MCE::Flow 1.874
+      MCE::Grep 1.874
+      MCE::Loop 1.874
+      MCE::Map 1.874
+      MCE::Mutex 1.874
+      MCE::Mutex::Channel 1.874
+      MCE::Mutex::Channel2 1.874
+      MCE::Mutex::Flock 1.874
+      MCE::Queue 1.874
+      MCE::Relay 1.874
+      MCE::Signal 1.874
+      MCE::Step 1.874
+      MCE::Stream 1.874
+      MCE::Subs 1.874
+      MCE::Util 1.874
+    requirements:
+      Carp 0
+      Errno 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      File::Path 0
+      Getopt::Long 0
+      IO::Handle 0
+      Scalar::Util 0
+      Socket 0
+      Storable 2.04
+      Time::HiRes 0
+      base 0
+      bytes 0
+      constant 0
+      open 0
+      perl 5.008001
+      strict 0
+      warnings 0
   MRO-Compat-0.13
     pathname: H/HA/HAARG/MRO-Compat-0.13.tar.gz
     provides:
@@ -2844,6 +2915,20 @@ DISTRIBUTIONS
       base 0
       strict 0
       warnings 0
+  PPIx-Utils-0.003
+    pathname: D/DB/DBOOK/PPIx-Utils-0.003.tar.gz
+    provides:
+      PPIx::Utils 0.003
+      PPIx::Utils::Classification 0.003
+      PPIx::Utils::Language 0.003
+      PPIx::Utils::Traversal 0.003
+    requirements:
+      B::Keywords 1.09
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      PPI 1.250
+      Scalar::Util 0
+      perl 5.006
   Package-Stash-0.39
     pathname: E/ET/ETHER/Package-Stash-0.39.tar.gz
     provides:
@@ -3279,6 +3364,372 @@ DISTRIBUTIONS
       strict 0
       version 0.77
       warnings 0
+  Perl-Critic-Bangs-1.12
+    pathname: P/PE/PETDANCE/Perl-Critic-Bangs-1.12.tar.gz
+    provides:
+      Perl::Critic::Bangs 1.12
+      Perl::Critic::Policy::Bangs::ProhibitBitwiseOperators 1.12
+      Perl::Critic::Policy::Bangs::ProhibitCommentedOutCode 1.12
+      Perl::Critic::Policy::Bangs::ProhibitDebuggingModules 1.12
+      Perl::Critic::Policy::Bangs::ProhibitFlagComments 1.12
+      Perl::Critic::Policy::Bangs::ProhibitNoPlan 1.12
+      Perl::Critic::Policy::Bangs::ProhibitNumberedNames 1.12
+      Perl::Critic::Policy::Bangs::ProhibitRefProtoOrProto 1.12
+      Perl::Critic::Policy::Bangs::ProhibitUselessRegexModifiers 1.12
+      Perl::Critic::Policy::Bangs::ProhibitVagueNames 1.12
+    requirements:
+      ExtUtils::MakeMaker 0
+      PPI::Cache 0
+      PPI::Document 0
+      Perl::Critic 1.122
+      Perl::Critic::Policy 0
+      Perl::Critic::PolicyFactory 0
+      Perl::Critic::PolicyParameter 0
+      Perl::Critic::TestUtils 0
+      Perl::Critic::UserProfile 0
+      Perl::Critic::Utils 0
+      Perl::Critic::Violation 0
+      Readonly 0
+      Test::More 0.96
+      Test::Perl::Critic 1.01
+  Perl-Critic-Compatibility-1.001
+    pathname: E/EL/ELLIOTJS/Perl-Critic-Compatibility-1.001.tar.gz
+    provides:
+      Perl::Critic::Compatibility 1.001
+      Perl::Critic::Policy::Compatibility::ProhibitThreeArgumentOpen 1.001
+    requirements:
+      Perl::Critic 1.083_001
+      Test::More 0
+      version 0
+  Perl-Critic-Dynamic-0.05
+    pathname: T/TH/THALJEF/Perl-Critic-Dynamic-0.05.tar.gz
+    provides:
+      Perl::Critic::Dynamic 0.05
+      Perl::Critic::DynamicPolicy 0.05
+      Perl::Critic::Policy::Dynamic::ValidateAgainstSymbolTable 0.05
+    requirements:
+      Devel::Symdump 2.07
+      Perl::Critic::Policy 1.108
+      Perl::Critic::Utils 1.108
+      Readonly 0
+      Storable 2.16
+      Test::More 0
+  Perl-Critic-Freenode-0.033
+    pathname: D/DB/DBOOK/Perl-Critic-Freenode-0.033.tar.gz
+    provides:
+      Perl::Critic::Freenode 0.033
+      Perl::Critic::Freenode::Utils 0.033
+      Perl::Critic::Policy::Freenode::AmpersandSubCalls 0.033
+      Perl::Critic::Policy::Freenode::ArrayAssignAref 0.033
+      Perl::Critic::Policy::Freenode::BarewordFilehandles 0.033
+      Perl::Critic::Policy::Freenode::ConditionalDeclarations 0.033
+      Perl::Critic::Policy::Freenode::ConditionalImplicitReturn 0.033
+      Perl::Critic::Policy::Freenode::DeprecatedFeatures 0.033
+      Perl::Critic::Policy::Freenode::DiscouragedModules 0.033
+      Perl::Critic::Policy::Freenode::DollarAB 0.033
+      Perl::Critic::Policy::Freenode::Each 0.033
+      Perl::Critic::Policy::Freenode::EmptyReturn 0.033
+      Perl::Critic::Policy::Freenode::IndirectObjectNotation 0.033
+      Perl::Critic::Policy::Freenode::LexicalForeachIterator 0.033
+      Perl::Critic::Policy::Freenode::LoopOnHash 0.033
+      Perl::Critic::Policy::Freenode::ModPerl 0.033
+      Perl::Critic::Policy::Freenode::MultidimensionalArrayEmulation 0.033
+      Perl::Critic::Policy::Freenode::OpenArgs 0.033
+      Perl::Critic::Policy::Freenode::OverloadOptions 0.033
+      Perl::Critic::Policy::Freenode::POSIXImports 0.033
+      Perl::Critic::Policy::Freenode::PackageMatchesFilename 0.033
+      Perl::Critic::Policy::Freenode::PreferredAlternatives 0.033
+      Perl::Critic::Policy::Freenode::Prototypes 0.033
+      Perl::Critic::Policy::Freenode::StrictWarnings 0.033
+      Perl::Critic::Policy::Freenode::Threads 0.033
+      Perl::Critic::Policy::Freenode::Wantarray 0.033
+      Perl::Critic::Policy::Freenode::WarningsSwitch 0.033
+      Perl::Critic::Policy::Freenode::WhileDiamondDefaultAssignment 0.033
+    requirements:
+      Carp 0
+      Exporter 0
+      List::Util 1.33
+      Module::Build::Tiny 0.034
+      PPI 1.254
+      Path::Tiny 0.101
+      Perl::Critic 1.126
+      Perl::Critic::Policy::Objects::ProhibitIndirectSyntax 1.126
+      Perl::Critic::Policy::Subroutines::ProhibitAmpersandSigils 1.126
+      Perl::Critic::Policy::ValuesAndExpressions::ProhibitArrayAssignAref 90
+      Perl::Critic::Policy::Variables::ProhibitConditionalDeclarations 1.126
+      Perl::Critic::Policy::Variables::ProhibitLoopOnHash 0.005
+      Perl::Critic::Policy::Variables::RequireLexicalLoopIterators 1.126
+      Scalar::Util 0
+      parent 0
+      perl 5.010001
+      version 0
+  Perl-Critic-Itch-0.07
+    pathname: M/MA/MARCELO/Perl-Critic-Itch-0.07.tar.gz
+    provides:
+      Perl::Critic::Itch 0.07
+      Perl::Critic::Policy::CodeLayout::ProhibitHashBarewords 0.07
+    requirements:
+      ExtUtils::MakeMaker 0
+      Perl::Critic 1.052
+      Perl::Critic::TestUtils 1.052
+      Perl::Critic::Utils 1.052
+      Perl::Critic::Violation 1.052
+      Test::More 0
+  Perl-Critic-Lax-0.013
+    pathname: R/RJ/RJBS/Perl-Critic-Lax-0.013.tar.gz
+    provides:
+      Perl::Critic::Lax 0.013
+      Perl::Critic::Policy::Lax::ProhibitComplexMappings::LinesNotStatements 0.013
+      Perl::Critic::Policy::Lax::ProhibitEmptyQuotes::ExceptAsFallback 0.013
+      Perl::Critic::Policy::Lax::ProhibitLeadingZeros::ExceptChmod 0.013
+      Perl::Critic::Policy::Lax::ProhibitStringyEval::ExceptForRequire 0.013
+      Perl::Critic::Policy::Lax::RequireConstantOnLeftSideOfEquality::ExceptEq 0.013
+      Perl::Critic::Policy::Lax::RequireEndWithTrueConst 0.013
+      Perl::Critic::Policy::Lax::RequireExplicitPackage::ExceptForPragmata 0.013
+    requirements:
+      ExtUtils::MakeMaker 0
+      Perl::Critic 1.088
+      Perl::Critic::Policy 0
+      Perl::Critic::Policy::ValuesAndExpressions::ProhibitLeadingZeros 0
+      Perl::Critic::Utils 0
+      Readonly 0
+      parent 0
+      strict 0
+      utf8 0
+      warnings 0
+  Perl-Critic-Moose-1.05
+    pathname: D/DR/DROLSKY/Perl-Critic-Moose-1.05.tar.gz
+    provides:
+      Perl::Critic::Moose 1.05
+      Perl::Critic::Policy::Moose::ProhibitDESTROYMethod 1.05
+      Perl::Critic::Policy::Moose::ProhibitLazyBuild 1.05
+      Perl::Critic::Policy::Moose::ProhibitMultipleWiths 1.05
+      Perl::Critic::Policy::Moose::ProhibitNewMethod 1.05
+      Perl::Critic::Policy::Moose::RequireCleanNamespace 1.05
+      Perl::Critic::Policy::Moose::RequireMakeImmutable 1.05
+    requirements:
+      ExtUtils::MakeMaker 0
+      Perl::Critic::Policy 0
+      Perl::Critic::Utils 0
+      Perl::Critic::Utils::PPI 0
+      Readonly 0
+      base 0
+      namespace::autoclean 0
+      perl 5.008
+      strict 0
+      warnings 0
+  Perl-Critic-More-1.003
+    pathname: T/TH/THALJEF/Perl-Critic-More-1.003.tar.gz
+    provides:
+      Perl::Critic::More 1.003
+      Perl::Critic::Policy::CodeLayout::RequireASCII 1.003
+      Perl::Critic::Policy::Editor::RequireEmacsFileVariables 1.003
+      Perl::Critic::Policy::ErrorHandling::RequireUseOfExceptions 1.003
+      Perl::Critic::Policy::Modules::PerlMinimumVersion 1.003
+      Perl::Critic::Policy::Modules::RequirePerlVersion 1.003
+      Perl::Critic::Policy::ValuesAndExpressions::RequireConstantOnLeftSideOfEquality 1.003
+      Perl::Critic::Policy::ValuesAndExpressions::RestrictLongStrings 1.003
+    requirements:
+      Module::Build 0.4
+      Perl::Critic 1.098
+      Readonly 1.03
+      Test::More 0
+  Perl-Critic-Nits-v1.0.0
+    pathname: K/KC/KCOWGILL/Perl-Critic-Nits-v1.0.0.tar.gz
+    provides:
+      Perl::Critic::Nits 1.000000
+      Perl::Critic::Policy::ValuesAndExpressions::ProhibitAccessOfPrivateData 1.000000
+    requirements:
+      ExtUtils::MakeMaker 0
+      Perl::Critic 1.07
+      Test::More 0
+  Perl-Critic-PetPeeves-JTRAMMELL-0.04
+    pathname: J/JT/JTRAMMELL/Perl-Critic-PetPeeves-JTRAMMELL-0.04.tar.gz
+    provides:
+      Perl::Critic::PetPeeves::JTRAMMELL 0.04
+      Perl::Critic::Policy::Variables::ProhibitUselessInitialization 0.02
+    requirements:
+      Perl::Critic::Config 0
+      Perl::Critic::Policy 0
+      Perl::Critic::Utils 0
+      Test::More 0
+  Perl-Critic-Policy-Variables-ProhibitLoopOnHash-0.008
+    pathname: X/XS/XSAWYERX/Perl-Critic-Policy-Variables-ProhibitLoopOnHash-0.008.tar.gz
+    provides:
+      Perl::Critic::Policy::Variables::ProhibitLoopOnHash 0.008
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      List::Util 1.33
+      Perl::Critic 1.126
+      parent 0
+  Perl-Critic-Pulp-97
+    pathname: K/KR/KRYDE/Perl-Critic-Pulp-97.tar.gz
+    provides:
+      Perl::Critic::PodParser::ProhibitVerbatimMarkup 97
+      Perl::Critic::Policy::CodeLayout::ProhibitFatCommaNewline 97
+      Perl::Critic::Policy::CodeLayout::ProhibitIfIfSameLine 97
+      Perl::Critic::Policy::CodeLayout::RequireFinalSemicolon 97
+      Perl::Critic::Policy::CodeLayout::RequireTrailingCommaAtNewline 97
+      Perl::Critic::Policy::Compatibility::ConstantLeadingUnderscore 97
+      Perl::Critic::Policy::Compatibility::ConstantPragmaHash 97
+      Perl::Critic::Policy::Compatibility::Gtk2Constants 97
+      Perl::Critic::Policy::Compatibility::PerlMinimumVersionAndWhy 97
+      Perl::Critic::Policy::Compatibility::PodMinimumVersion 97
+      Perl::Critic::Policy::Compatibility::ProhibitUnixDevNull 97
+      Perl::Critic::Policy::Documentation::ProhibitAdjacentLinks 97
+      Perl::Critic::Policy::Documentation::ProhibitAdjacentLinks::Parser 97
+      Perl::Critic::Policy::Documentation::ProhibitBadAproposMarkup 97
+      Perl::Critic::Policy::Documentation::ProhibitDuplicateHeadings 97
+      Perl::Critic::Policy::Documentation::ProhibitDuplicateSeeAlso 97
+      Perl::Critic::Policy::Documentation::ProhibitLinkToSelf 97
+      Perl::Critic::Policy::Documentation::ProhibitParagraphEndComma 97
+      Perl::Critic::Policy::Documentation::ProhibitParagraphTwoDots 97
+      Perl::Critic::Policy::Documentation::ProhibitUnbalancedParens 97
+      Perl::Critic::Policy::Documentation::ProhibitVerbatimMarkup 97
+      Perl::Critic::Policy::Documentation::RequireEndBeforeLastPod 97
+      Perl::Critic::Policy::Documentation::RequireFilenameMarkup 97
+      Perl::Critic::Policy::Documentation::RequireFinalCut 97
+      Perl::Critic::Policy::Documentation::RequireLinkedURLs 97
+      Perl::Critic::Policy::Miscellanea::TextDomainPlaceholders 97
+      Perl::Critic::Policy::Miscellanea::TextDomainUnused 97
+      Perl::Critic::Policy::Modules::ProhibitModuleShebang 97
+      Perl::Critic::Policy::Modules::ProhibitPOSIXimport 97
+      Perl::Critic::Policy::Modules::ProhibitUseQuotedVersion 97
+      Perl::Critic::Policy::ValuesAndExpressions::ConstantBeforeLt 97
+      Perl::Critic::Policy::ValuesAndExpressions::NotWithCompare 97
+      Perl::Critic::Policy::ValuesAndExpressions::ProhibitArrayAssignAref 97
+      Perl::Critic::Policy::ValuesAndExpressions::ProhibitBarewordDoubleColon 97
+      Perl::Critic::Policy::ValuesAndExpressions::ProhibitDuplicateHashKeys 97
+      Perl::Critic::Policy::ValuesAndExpressions::ProhibitEmptyCommas 97
+      Perl::Critic::Policy::ValuesAndExpressions::ProhibitFiletest_f 97
+      Perl::Critic::Policy::ValuesAndExpressions::ProhibitNullStatements 97
+      Perl::Critic::Policy::ValuesAndExpressions::ProhibitUnknownBackslash 97
+      Perl::Critic::Policy::ValuesAndExpressions::RequireNumericVersion 97
+      Perl::Critic::Policy::ValuesAndExpressions::UnexpandedSpecialLiteral 97
+      Perl::Critic::Pulp 97
+      Perl::Critic::Pulp::PodMinimumVersionViolation 97
+      Perl::Critic::Pulp::PodParser 97
+      Perl::Critic::Pulp::PodParser::ProhibitBadAproposMarkup 97
+      Perl::Critic::Pulp::PodParser::ProhibitDuplicateHeadings 97
+      Perl::Critic::Pulp::PodParser::ProhibitDuplicateSeeAlso 97
+      Perl::Critic::Pulp::PodParser::ProhibitLinkToSelf 97
+      Perl::Critic::Pulp::PodParser::ProhibitParagraphEndComma 97
+      Perl::Critic::Pulp::PodParser::ProhibitParagraphTwoDots 97
+      Perl::Critic::Pulp::PodParser::ProhibitUnbalancedParens 97
+      Perl::Critic::Pulp::PodParser::RequireFilenameMarkup 97
+      Perl::Critic::Pulp::PodParser::RequireFinalCut 97
+      Perl::Critic::Pulp::PodParser::RequireLinkedURLs 97
+      Perl::Critic::Pulp::ProhibitDuplicateHashKeys::Qword 97
+      Perl::Critic::Pulp::Utils 97
+    requirements:
+      ExtUtils::MakeMaker 0
+      IO::String 1.02
+      List::MoreUtils 0.24
+      List::Util 0
+      PPI 1.220
+      PPI::Document 0
+      PPI::Dumper 0
+      Perl::Critic 1.084
+      Perl::Critic::Policy 1.084
+      Perl::Critic::Utils 1.100
+      Perl::Critic::Utils::PPI 0
+      Perl::Critic::Violation 0
+      Pod::Escapes 0
+      Pod::MinimumVersion 50
+      Pod::ParseLink 0
+      Pod::Parser 0
+      Scalar::Util 0
+      Test::More 0
+      perl 5.006
+      version 0
+  Perl-Critic-Storable-0.01
+    pathname: M/MA/MATTD/Perl-Critic-Storable-0.01.tar.gz
+    provides:
+      Perl::Critic::Policy::Storable::ProhibitStoreOrFreeze 0.01
+      Perl::Critic::Storable 0.01
+    requirements:
+      ExtUtils::MakeMaker 0
+      Perl::Critic 0
+      Test::More 0
+  Perl-Critic-StricterSubs-0.05
+    pathname: T/TH/THALJEF/Perl-Critic-StricterSubs-0.05.tar.gz
+    provides:
+      Perl::Critic::Policy::Modules::RequireExplicitInclusion 0.05
+      Perl::Critic::Policy::Subroutines::ProhibitCallsToUndeclaredSubs 0.05
+      Perl::Critic::Policy::Subroutines::ProhibitCallsToUnexportedSubs 0.05
+      Perl::Critic::Policy::Subroutines::ProhibitExportingUndeclaredSubs 0.05
+      Perl::Critic::Policy::Subroutines::ProhibitQualifiedSubDeclarations 0.05
+      Perl::Critic::StricterSubs 0.05
+      Perl::Critic::StricterSubs::Utils 0.05
+    requirements:
+      Carp 0
+      English 0
+      Exporter 0
+      File::PathList 0
+      List::MoreUtils 0
+      Module::Build 0.4
+      PPI::Document 0
+      Perl::Critic::Policy 1.082
+      Perl::Critic::Utils 1.082
+      base 0
+      strict 0
+      warnings 0
+  Perl-Critic-Swift-v1.0.3
+    pathname: E/EL/ELLIOTJS/Perl-Critic-Swift-v1.0.3.tar.gz
+    provides:
+      Perl::Critic::Policy::CodeLayout::RequireUseUTF8 1.000003
+      Perl::Critic::Policy::Documentation::RequirePODUseEncodingUTF8 1.000003
+      Perl::Critic::Swift 1.000003
+    requirements:
+      English 0
+      File::Spec 0
+      List::MoreUtils 0.21
+      Perl::Critic::Policy 1.082
+      Perl::Critic::TestUtils 1.082
+      Perl::Critic::Utils 1.082
+      Test::More 0
+      Test::Perl::Critic 1.01
+      base 0
+      strict 0
+      utf8 0
+      version 0
+      warnings 0
+  Perl-Critic-Tics-0.009
+    pathname: R/RJ/RJBS/Perl-Critic-Tics-0.009.tar.gz
+    provides:
+      Perl::Critic::Policy::Tics::ProhibitLongLines 0.009
+      Perl::Critic::Policy::Tics::ProhibitManyArrows 0.009
+      Perl::Critic::Policy::Tics::ProhibitUseBase 0.009
+      Perl::Critic::Tics 0.009
+    requirements:
+      ExtUtils::MakeMaker 6.30
+      Perl::Critic::Policy 0
+      Perl::Critic::Utils 0
+      Perl::Critic::Violation 0
+      parent 0
+      strict 0
+      warnings 0
+  Perl-Critic-TooMuchCode-0.14
+    pathname: G/GU/GUGOD/Perl-Critic-TooMuchCode-0.14.tar.gz
+    provides:
+      Perl::Critic::Policy::TooMuchCode::ProhibitDuplicateLiteral undef
+      Perl::Critic::Policy::TooMuchCode::ProhibitDuplicateSub undef
+      Perl::Critic::Policy::TooMuchCode::ProhibitExcessiveColons 0.01
+      Perl::Critic::Policy::TooMuchCode::ProhibitLargeBlock undef
+      Perl::Critic::Policy::TooMuchCode::ProhibitLargeTryBlock undef
+      Perl::Critic::Policy::TooMuchCode::ProhibitUnnecessaryScalarKeyword undef
+      Perl::Critic::Policy::TooMuchCode::ProhibitUnnecessaryUTF8Pragma undef
+      Perl::Critic::Policy::TooMuchCode::ProhibitUnusedConstant undef
+      Perl::Critic::Policy::TooMuchCode::ProhibitUnusedImport undef
+      Perl::Critic::Policy::TooMuchCode::ProhibitUnusedInclude undef
+      Perl::Critic::TooMuchCode 0.14
+    requirements:
+      List::Util 1.50
+      Module::Build::Tiny 0.034
+      PPIx::Utils 0.002
+      Perl::Critic 0
+      Scalar::Util 1.50
   Perl-Tidy-20201207
     pathname: S/SH/SHANCOCK/Perl-Tidy-20201207.tar.gz
     provides:
@@ -3486,6 +3937,20 @@ DISTRIBUTIONS
       Digest::SHA 0
       Module::Build::Tiny 0.034
       Plack 0.9910
+  Pod-MinimumVersion-50
+    pathname: K/KR/KRYDE/Pod-MinimumVersion-50.tar.gz
+    provides:
+      Pod::MinimumVersion 50
+      Pod::MinimumVersion::Parser 50
+      Pod::MinimumVersion::Report 50
+    requirements:
+      ExtUtils::MakeMaker 0
+      IO::String 1.02
+      List::Util 0
+      Pod::Parser 0
+      Test 0
+      perl 5.004
+      version 0
   Pod-Parser-1.63
     pathname: M/MA/MAREKR/Pod-Parser-1.63.tar.gz
     provides:
@@ -4003,6 +4468,30 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Task-Perl-Critic-1.008
+    pathname: T/TH/THALJEF/Task-Perl-Critic-1.008.tar.gz
+    provides:
+      Task::Perl::Critic 1.008
+    requirements:
+      Perl::Critic 1.117
+      Perl::Critic::Bangs 1.00
+      Perl::Critic::Compatibility 1.000
+      Perl::Critic::Dynamic 0.05
+      Perl::Critic::Itch 0
+      Perl::Critic::Lax 0.007
+      Perl::Critic::Moose 0
+      Perl::Critic::More 1.000
+      Perl::Critic::Nits 1.000000
+      Perl::Critic::PetPeeves::JTRAMMELL 0.01
+      Perl::Critic::Pulp 3
+      Perl::Critic::Storable 0
+      Perl::Critic::StricterSubs 0.03
+      Perl::Critic::Swift 1.000003
+      Perl::Critic::Tics 0.005
+      Test::More 0
+      Test::Perl::Critic 1.02
+      Test::Perl::Critic::Progressive 0.03
+      criticism 1.02
   Task-Weaken-1.06
     pathname: E/ET/ETHER/Task-Weaken-1.06.tar.gz
     provides:
@@ -4248,6 +4737,40 @@ DISTRIBUTIONS
       Test::Harness 3.35
       Test::More 1.302047
       Test::Warn 0.30
+  Test-Perl-Critic-1.04
+    pathname: P/PE/PETDANCE/Test-Perl-Critic-1.04.tar.gz
+    provides:
+      Test::Perl::Critic 1.04
+    requirements:
+      Carp 0
+      English 0
+      MCE 1.827
+      Module::Build 0.4
+      Perl::Critic 1.105
+      Perl::Critic::Utils 1.105
+      Perl::Critic::Violation 1.105
+      Test::Builder 0.88
+      Test::More 0
+      strict 0
+      warnings 0
+  Test-Perl-Critic-Progressive-0.03
+    pathname: T/TH/THALJEF/Test-Perl-Critic-Progressive-0.03.tar.gz
+    provides:
+      Test::Perl::Critic::Progressive 0.03
+    requirements:
+      Carp 0
+      Data::Dumper 0
+      English 0
+      Exporter 0
+      File::Spec 0
+      FindBin 0
+      Perl::Critic 1.082
+      Perl::Critic::Utils 1.082
+      Test::Builder 0
+      Test::More 0
+      base 0
+      strict 0
+      warnings 0
   Test-SharedFork-0.35
     pathname: E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
     provides:
@@ -4678,6 +5201,14 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
+  criticism-1.02
+    pathname: T/TH/THALJEF/criticism/criticism-1.02.tar.gz
+    provides:
+      criticism 1.02
+    requirements:
+      IO::String 0
+      Perl::Critic 1.089
+      Test::More 0
   curry-1.001000
     pathname: M/MS/MSTROUT/curry-1.001000.tar.gz
     provides:
