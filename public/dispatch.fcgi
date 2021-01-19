@@ -1,4 +1,8 @@
 #!/usr/bin/env perl
+
+use strict;
+use warnings;
+
 BEGIN { $ENV{DANCER_APPHANDLER} = 'PSGI';}
 use Dancer2;
 use FindBin '$RealBin';
