@@ -374,6 +374,87 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Storable 0
       perl 5.008001
+  Code-TidyAll-0.78
+    pathname: D/DR/DROLSKY/Code-TidyAll-0.78.tar.gz
+    provides:
+      Code::TidyAll 0.78
+      Code::TidyAll::Cache 0.78
+      Code::TidyAll::CacheModel 0.78
+      Code::TidyAll::CacheModel::Shared 0.78
+      Code::TidyAll::Config::INI::Reader 0.78
+      Code::TidyAll::Git::Precommit 0.78
+      Code::TidyAll::Git::Prereceive 0.78
+      Code::TidyAll::Git::Util 0.78
+      Code::TidyAll::Plugin 0.78
+      Code::TidyAll::Plugin::CSSUnminifier 0.78
+      Code::TidyAll::Plugin::GenericTransformer 0.78
+      Code::TidyAll::Plugin::GenericValidator 0.78
+      Code::TidyAll::Plugin::JSBeautify 0.78
+      Code::TidyAll::Plugin::JSHint 0.78
+      Code::TidyAll::Plugin::JSLint 0.78
+      Code::TidyAll::Plugin::JSON 0.78
+      Code::TidyAll::Plugin::MasonTidy 0.78
+      Code::TidyAll::Plugin::PHPCodeSniffer 0.78
+      Code::TidyAll::Plugin::PerlCritic 0.78
+      Code::TidyAll::Plugin::PerlTidy 0.78
+      Code::TidyAll::Plugin::PerlTidySweet 0.78
+      Code::TidyAll::Plugin::PodChecker 0.78
+      Code::TidyAll::Plugin::PodSpell 0.78
+      Code::TidyAll::Plugin::PodTidy 0.78
+      Code::TidyAll::Plugin::SortLines 0.78
+      Code::TidyAll::Result 0.78
+      Code::TidyAll::Role::GenericExecutable 0.78
+      Code::TidyAll::Role::HasIgnore 0.78
+      Code::TidyAll::Role::RunsCommand 0.78
+      Code::TidyAll::Role::Tempdir 0.78
+      Code::TidyAll::SVN::Precommit 0.78
+      Code::TidyAll::SVN::Util 0.78
+      Code::TidyAll::Util::Zglob 0.78
+      Code::TidyAll::Zglob 0.78
+      Test::Code::TidyAll 0.78
+    requirements:
+      Capture::Tiny 0
+      Config::INI::Reader 0
+      Cwd 0
+      Data::Dumper 0
+      Date::Format 0
+      Digest::SHA 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      File::Find 0
+      File::Spec 0
+      File::Which 0
+      File::pushd 0
+      Getopt::Long 0
+      IPC::Run3 0
+      IPC::System::Simple 0
+      List::Compare 0
+      List::SomeUtils 0
+      Log::Any 0
+      Module::Runtime 0
+      Moo 2.000000
+      Moo::Role 0
+      Path::Tiny 0.098
+      Scalar::Util 0
+      Scope::Guard 0
+      Specio 0.40
+      Specio::Declare 0
+      Specio::Library::Builtins 0
+      Specio::Library::Numeric 0
+      Specio::Library::Path::Tiny 0.04
+      Specio::Library::String 0
+      Test::Builder 0
+      Text::Diff 1.44
+      Text::Diff::Table 0
+      Text::ParseWords 0
+      Time::Duration::Parse 0
+      Try::Tiny 0
+      base 0
+      constant 0
+      perl 5.008008
+      strict 0
+      warnings 0
   Config-Any-0.32
     pathname: H/HA/HAARG/Config-Any-0.32.tar.gz
     provides:
@@ -387,6 +468,19 @@ DISTRIBUTIONS
       Config::Any::YAML undef
     requirements:
       Module::Pluggable::Object 3.6
+  Config-INI-0.025
+    pathname: R/RJ/RJBS/Config-INI-0.025.tar.gz
+    provides:
+      Config::INI 0.025
+      Config::INI::Reader 0.025
+      Config::INI::Writer 0.025
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      Mixin::Linewise::Readers 0.105
+      Mixin::Linewise::Writers 0
+      strict 0
+      warnings 0
   Config-Tiny-2.24
     pathname: R/RS/RSAVAGE/Config-Tiny-2.24.tgz
     provides:
@@ -1634,6 +1728,16 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
+  Exporter-Lite-0.08
+    pathname: N/NE/NEILB/Exporter-Lite-0.08.tar.gz
+    provides:
+      Exporter::Lite 0.08
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 6.3
+      perl 5.006
+      strict 0
+      warnings 0
   Exporter-Tiny-1.002002
     pathname: T/TO/TOBYINK/Exporter-Tiny-1.002002.tar.gz
     provides:
@@ -2086,6 +2190,30 @@ DISTRIBUTIONS
       Symbol 0
       strict 0
       warnings 0
+  IPC-Run3-0.048
+    pathname: R/RJ/RJBS/IPC-Run3-0.048.tar.gz
+    provides:
+      IPC::Run3 0.048
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0.31
+      Time::HiRes 0
+  IPC-System-Simple-1.30
+    pathname: J/JK/JKEENAN/IPC-System-Simple-1.30.tar.gz
+    provides:
+      IPC::System::Simple 1.30
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      List::Util 0
+      POSIX 0
+      Scalar::Util 0
+      constant 0
+      perl 5.006
+      re 0
+      strict 0
+      warnings 0
   Import-Into-1.002005
     pathname: H/HA/HAARG/Import-Into-1.002005.tar.gz
     provides:
@@ -2260,6 +2388,18 @@ DISTRIBUTIONS
       Lingua::Stem::Snowball::Da 1.01
     requirements:
       ExtUtils::MakeMaker 0
+  List-Compare-0.55
+    pathname: J/JK/JKEENAN/List-Compare-0.55.tar.gz
+    provides:
+      List::Compare 0.55
+      List::Compare::Accelerated 0.55
+      List::Compare::Base::_Auxiliary 0.55
+      List::Compare::Base::_Engine 0.55
+      List::Compare::Functional 0.55
+      List::Compare::Multiple 0.55
+      List::Compare::Multiple::Accelerated 0.55
+    requirements:
+      ExtUtils::MakeMaker 0
   List-MoreUtils-0.430
     pathname: R/RE/REHSACK/List-MoreUtils-0.430.tar.gz
     provides:
@@ -2283,6 +2423,69 @@ DISTRIBUTIONS
       IPC::Cmd 0
       XSLoader 0.22
       base 0
+  List-SomeUtils-0.58
+    pathname: D/DR/DROLSKY/List-SomeUtils-0.58.tar.gz
+    provides:
+      List::SomeUtils 0.58
+      List::SomeUtils::PP 0.58
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      List::SomeUtils::XS 0.54
+      List::Util 0
+      Module::Implementation 0
+      Text::ParseWords 0
+      perl 5.006
+      strict 0
+      vars 0
+      warnings 0
+  List-SomeUtils-XS-0.58
+    pathname: D/DR/DROLSKY/List-SomeUtils-XS-0.58.tar.gz
+    provides:
+      List::SomeUtils::XS 0.58
+    requirements:
+      ExtUtils::MakeMaker 0
+      XSLoader 0
+      strict 0
+      warnings 0
+  Log-Any-1.708
+    pathname: P/PR/PREACTION/Log-Any-1.708.tar.gz
+    provides:
+      Log::Any 1.708
+      Log::Any::Adapter 1.708
+      Log::Any::Adapter::Base 1.708
+      Log::Any::Adapter::Capture 1.708
+      Log::Any::Adapter::File 1.708
+      Log::Any::Adapter::Multiplex 1.708
+      Log::Any::Adapter::Null 1.708
+      Log::Any::Adapter::Stderr 1.708
+      Log::Any::Adapter::Stdout 1.708
+      Log::Any::Adapter::Syslog 1.708
+      Log::Any::Adapter::Test 1.708
+      Log::Any::Adapter::Util 1.708
+      Log::Any::Manager 1.708
+      Log::Any::Proxy 1.708
+      Log::Any::Proxy::Null 1.708
+      Log::Any::Proxy::Test 1.708
+      Log::Any::Test 1.708
+    requirements:
+      B 0
+      Carp 0
+      Data::Dumper 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      File::Basename 0
+      FindBin 0
+      IO::File 0
+      List::Util 0
+      Storable 0
+      Sys::Syslog 0
+      Test::Builder 0
+      constant 0
+      strict 0
+      warnings 0
   MCE-1.874
     pathname: M/MA/MARIOROY/MCE-1.874.tar.gz
     provides:
@@ -2351,6 +2554,21 @@ DISTRIBUTIONS
       Carp 0
       ExtUtils::MakeMaker 0
       perl 5.006
+      strict 0
+      warnings 0
+  Mixin-Linewise-0.108
+    pathname: R/RJ/RJBS/Mixin-Linewise-0.108.tar.gz
+    provides:
+      Mixin::Linewise 0.108
+      Mixin::Linewise::Readers 0.108
+      Mixin::Linewise::Writers 0.108
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      IO::File 0
+      PerlIO::utf8_strict 0
+      Sub::Exporter 0
+      perl 5.008001
       strict 0
       warnings 0
   Module-Build-0.4231
@@ -2969,6 +3187,24 @@ DISTRIBUTIONS
       Module::Runtime 0.013
       perl 5.006
       strictures 2.000000
+  Parallel-ForkManager-2.02
+    pathname: Y/YA/YANICK/Parallel-ForkManager-2.02.tar.gz
+    provides:
+      Parallel::ForkManager 2.02
+      Parallel::ForkManager::Child 2.02
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      File::Path 0
+      File::Spec 0
+      File::Temp 0
+      Moo 0
+      Moo::Role 0
+      POSIX 0
+      Storable 0
+      perl 5.006
+      strict 0
+      warnings 0
   Params-Classify-0.015
     pathname: Z/ZE/ZEFRAM/Params-Classify-0.015.tar.gz
     provides:
@@ -3753,6 +3989,16 @@ DISTRIBUTIONS
       Perl::Tidy::VerticalAligner::Line 20201207
     requirements:
       ExtUtils::MakeMaker 0
+  PerlIO-utf8_strict-0.008
+    pathname: L/LE/LEONT/PerlIO-utf8_strict-0.008.tar.gz
+    provides:
+      PerlIO::utf8_strict 0.008
+    requirements:
+      ExtUtils::MakeMaker 0
+      XSLoader 0
+      perl 5.008
+      strict 0
+      warnings 0
   Plack-1.0048
     pathname: M/MI/MIYAGAWA/Plack-1.0048.tar.gz
     provides:
@@ -4350,6 +4596,23 @@ DISTRIBUTIONS
       strict 0
       version 0.83
       warnings 0
+  Specio-Library-Path-Tiny-0.04
+    pathname: D/DR/DROLSKY/Specio-Library-Path-Tiny-0.04.tar.gz
+    provides:
+      Specio::Library::Path::Tiny 0.04
+    requirements:
+      ExtUtils::MakeMaker 0
+      Path::Tiny 0.087
+      Scalar::Util 0
+      Specio 0.29
+      Specio::Declare 0
+      Specio::Exporter 0
+      Specio::Library::Builtins 0
+      Specio::PartialDump 0
+      overload 0
+      parent 0
+      strict 0
+      warnings 0
   Spiffy-0.46
     pathname: I/IN/INGY/Spiffy-0.46.tar.gz
     provides:
@@ -4867,6 +5130,17 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008
+  Time-Duration-Parse-0.15
+    pathname: N/NE/NEILB/Time-Duration-Parse-0.15.tar.gz
+    provides:
+      Time::Duration::Parse 0.15
+    requirements:
+      Carp 0
+      Exporter::Lite 0
+      ExtUtils::MakeMaker 0
+      perl 5.006
+      strict 0
+      warnings 0
   TimeDate-2.33
     pathname: A/AT/ATOOMIC/TimeDate-2.33.tar.gz
     provides:

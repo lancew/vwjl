@@ -27,4 +27,6 @@ on "test" => sub {
     requires "Perl::Critic::Bangs"       => "0";
     requires "Perl::Critic::TooMuchCode" => "0";
     requires "Task::Perl::Critic"        => "0";
+    requires "Code::TidyAll"             => "0";
+    requires "Parallel::ForkManager"     => "0";
 };

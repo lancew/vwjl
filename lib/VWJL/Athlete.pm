@@ -1,5 +1,6 @@
 package VWJL::Athlete;
 
+use utf8;
 use Moo;
 use VWJL::Infrastructure;
 use waza;

@@ -1,0 +1,8 @@
+[PerlTidy]
+select = bin/*.psgi lib/**/*.{pl,pm,t} cpanfile
+ 
+[PerlCritic]
+select = bin/*.psgi lib/**/*.pm 
+
+[SortLines]
+select = .perlcriticrc **/.gitignore

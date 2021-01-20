@@ -1,17 +1,17 @@
 package vwjl_admin;
-use Dancer2;
-use Dancer2::Plugin::Auth::Tiny;
-use DBI;
-use FindBin;
 
 our $VERSION = '0.1';
 
+use DBI;
+use Dancer2::Plugin::Auth::Tiny;
+use Dancer2;
+use DateTime;
+use FindBin;
+use Games::Tournament::RoundRobin;
+use Sort::Rank 'rank_sort';
 use VWJL::Admin;
 use VWJL::Infrastructure;
 use VWJL::Simulator;
-use Games::Tournament::RoundRobin;
-use Sort::Rank 'rank_sort';
-use DateTime;
 
 get '/' => sub {
     redirect '/' unless session('admin');
