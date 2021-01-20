@@ -1,7 +1,10 @@
 package VWJL::Infrastructure::DatabaseCompetition;
-use Moo::Role;
+
+use strict;
+use warnings;
 
 use DBI;
+use Moo::Role;
 
 has 'dbh' => (
     is      => 'lazy',
@@ -72,9 +75,6 @@ sub get_competition_results {
 sub add_competition {
     my ( $self, %args ) = @_;
 
-    use Data::Dumper;
-    warn '+++++++++', Dumper \%args;
-
     my $rv = $self->dbh->do(
         "INSERT INTO competitions
         ( name, description, owner_username, entry_fee, created_on )
@@ -87,8 +87,7 @@ sub add_competition {
         $args{entry_fee}
     );
 
-    warn '----------- DB:', $rv;
-
+    return 1;
 }
 
 sub add_user_to_competition {
@@ -99,6 +98,8 @@ sub add_user_to_competition {
                     (athlete_id, competition_id,added_on)
              VALUES (?,?, localtimestamp)
     ", undef, $args{athlete_id}, $args{competition_id} );
+
+    return 1;
 }
 
 sub store_result {
@@ -193,6 +194,7 @@ sub store_result {
 
     );
 
+    return 1;
 }
 
 1;
