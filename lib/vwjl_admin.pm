@@ -1,12 +1,14 @@
 package vwjl_admin;
 
+use strict;
+use warnings;
+
 our $VERSION = '0.1';
 
 use DBI;
 use Dancer2::Plugin::Auth::Tiny;
 use Dancer2;
 use DateTime;
-use FindBin;
 use Games::Tournament::RoundRobin;
 use Sort::Rank 'rank_sort';
 use VWJL::Admin;
@@ -115,9 +117,6 @@ get '/competition/:competition_id/simulate' => sub {
 post '/competition/:competition_id/simulate' => sub {
     redirect '/' unless session('admin');
     my $inf = VWJL::Infrastructure->new;
-
-    use Data::Dumper;
-    $Data::Dumper::Sortkeys = 1;
 
     my $comp = $inf->get_competition(
         competition_id => route_parameters->get('competition_id'), );
