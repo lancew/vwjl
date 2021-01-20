@@ -11,9 +11,10 @@ use VWJL::Simulator;
 get '/' => sub {
     redirect '/' unless session('user');
 
+    my $inf = VWJL::Infrastructure->new;
+
     my $athlete      = $inf->get_athlete_data( user => session('user') );
     my $competitions = $inf->get_competitions;
-    my $inf          = VWJL::Infrastructure->new;
 
     my $comps_entered;
     for my $c ( @{ $athlete->{competition_entries} } ) {
@@ -50,10 +51,11 @@ get '/:competition_id/results' => sub {
 get '/:competition_id/register' => sub {
     redirect '/' unless session('user');
 
+    my $inf = VWJL::Infrastructure->new;
+
     my $athlete     = $inf->get_athlete_data( user => session('user') );
     my $competition = $inf->get_competition(
         competition_id => route_parameters->get('competition_id') );
-    my $inf = VWJL::Infrastructure->new;
 
     template 'competition/register' => {
         athlete     => $athlete,
@@ -65,10 +67,11 @@ get '/:competition_id/register' => sub {
 post '/:competition_id/register' => sub {
     redirect '/' unless session('user');
 
+    my $inf = VWJL::Infrastructure->new;
+
     my $athlete     = $inf->get_athlete_data( user => session('user') );
     my $competition = $inf->get_competition(
         competition_id => route_parameters->get('competition_id') );
-    my $inf = VWJL::Infrastructure->new;
 
     if ( $athlete->{credits} >= $competition->{entry_fee} ) {
         $inf->update_athlete(
