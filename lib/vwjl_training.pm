@@ -1,11 +1,12 @@
 package vwjl_training;
-use Dancer2;
+
+use strict;
+use warnings;
+
 use Dancer2::Plugin::Auth::Tiny;
-use waza;
-
-our $VERSION = '0.1';
-
+use Dancer2;
 use VWJL::Athlete;
+use waza;
 
 get '/' => sub {
     redirect '/' unless session('user');

@@ -1,10 +1,10 @@
 package vwjl_ranking;
 
+use strict;
+use warnings;
+
 use Dancer2;
 use Dancer2::Plugin::Auth::Tiny;
-
-our $VERSION = '0.1';
-
 use VWJL::Ranking;
 
 get '/' => sub {
