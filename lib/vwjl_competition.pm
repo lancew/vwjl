@@ -1,18 +1,19 @@
 package vwjl_competition;
-use Dancer2;
+
+use strict;
+use warnings;
+
 use Dancer2::Plugin::Auth::Tiny;
-
-our $VERSION = '0.1';
-
+use Dancer2;
 use VWJL::Infrastructure;
 use VWJL::Simulator;
 
 get '/' => sub {
     redirect '/' unless session('user');
 
-    my $inf          = VWJL::Infrastructure->new;
-    my $competitions = $inf->get_competitions;
     my $athlete      = $inf->get_athlete_data( user => session('user') );
+    my $competitions = $inf->get_competitions;
+    my $inf          = VWJL::Infrastructure->new;
 
     my $comps_entered;
     for my $c ( @{ $athlete->{competition_entries} } ) {
@@ -21,8 +22,8 @@ get '/' => sub {
     }
 
     template 'competition/index' => {
-        competitions  => $competitions,
         athlete       => $athlete,
+        competitions  => $competitions,
         comps_entered => $comps_entered,
     };
 };
@@ -40,23 +41,23 @@ get '/:competition_id/results' => sub {
     my $rankings = $sim->calculate_ranking($results);
 
     template 'competition/results' => {
-        results  => $results,
         athlete  => $athlete,
-        rankings => $rankings
+        rankings => $rankings,
+        results  => $results,
     };
 };
 
 get '/:competition_id/register' => sub {
     redirect '/' unless session('user');
 
-    my $inf         = VWJL::Infrastructure->new;
+    my $athlete     = $inf->get_athlete_data( user => session('user') );
     my $competition = $inf->get_competition(
         competition_id => route_parameters->get('competition_id') );
-    my $athlete = $inf->get_athlete_data( user => session('user') );
+    my $inf = VWJL::Infrastructure->new;
 
     template 'competition/register' => {
-        competition => $competition,
         athlete     => $athlete,
+        competition => $competition,
         status      => 'view',
     };
 };
@@ -64,10 +65,10 @@ get '/:competition_id/register' => sub {
 post '/:competition_id/register' => sub {
     redirect '/' unless session('user');
 
-    my $inf         = VWJL::Infrastructure->new;
+    my $athlete     = $inf->get_athlete_data( user => session('user') );
     my $competition = $inf->get_competition(
         competition_id => route_parameters->get('competition_id') );
-    my $athlete = $inf->get_athlete_data( user => session('user') );
+    my $inf = VWJL::Infrastructure->new;
 
     if ( $athlete->{credits} >= $competition->{entry_fee} ) {
         $inf->update_athlete(
@@ -82,17 +83,17 @@ post '/:competition_id/register' => sub {
         );
 
         template 'competition/register' => {
-            competition => $competition,
             athlete     => $athlete,
+            competition => $competition,
             status      => 'confirmed',
         };
     }
     else {
         template 'competition/register' => {
-            competition => $competition,
             athlete     => $athlete,
+            competition => $competition,
+            error       => 'Sorry you do not have enough credits to register',
             status      => 'view',
-            error       => 'Sorry you do not have enough credits to register'
         };
     }
 };
