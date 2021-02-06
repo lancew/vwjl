@@ -18,7 +18,7 @@
     [% INCLUDE 'menu.tt' %]
 [% content %]
 <div id="footer">
-Powered by <a href="http://perldancer.org/">Dancer2</a> [% dancer_version %], Source on <a href=github.com/lancew/vwjl>GitHub</a>. Hosted at <a href=www.vwjl.net>www.vwjl.net</a>
+Powered by <a href="http://perldancer.org/">Dancer2</a> [% dancer_version %], Source on <a href=github.com/lancew/vwjl>GitHub</a>. Hosted at <a href="https://www.vwjl.net">www.vwjl.net</a>
 </div>
 </body>
 </html>
