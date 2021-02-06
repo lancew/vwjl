@@ -15,99 +15,70 @@ has 'inf' => (
 sub simulate {
     my ( $self, %args ) = @_;
 
-    my @athletes = ( $args{athlete_white}, $args{athlete_blue} );
-    my ( $won, $lost );
 
-    $athletes[0]
-        = $self->inf->get_athlete_data( user => $args{athlete_white}, );
+    my $duration = 240;
 
-    $athletes[1]
-        = $self->inf->get_athlete_data( user => $args{athlete_blue}, );
-
-    my ( $winner, $winning_waza ) = $self->_decide_winner(@athletes);
-
-    if ( $winner == 1 ) {
-        $won  = $athletes[1]->{'username'};
-        $lost = $athletes[0]->{'username'};
-        $self->inf->update_athlete(
-            field => 'wins',
-            user  => $won,
-            value => $athletes[1]->{'wins'} + 1,
-        );
-
-        $self->inf->update_athlete(
-            field => 'losses',
-            user  => $lost,
-            value => $athletes[0]->{'losses'} + 1,
-        );
-    }
-    elsif ( $winner == 0 ) {
-        $won  = $athletes[0]->{'username'};
-        $lost = $athletes[1]->{'username'};
-        $self->inf->update_athlete(
-            field => 'wins',
-            user  => $won,
-            value => $athletes[0]->{'wins'} + 1,
-        );
-
-        $self->inf->update_athlete(
-            field => 'losses',
-            user  => $lost,
-            value => $athletes[1]->{'losses'} + 1,
-        );
-    }
-
-    my $result = {
-        winner     => $won,
-        loser      => $lost,
-        round      => $args{'round'},
-        scoreboard => {
-            white => {
-                athlete => $args{athlete_white},
-                ippon   => 0,
-                wazari  => 0,
-                shido   => 0,
-            },
-            blue => {
-                athlete => $args{athlete_blue},
-                ippon   => 0,
-                wazari  => 0,
-                shido   => 0,
-            },
-            clock => {
-                total_elapsed_seconds => 240,
-                minutes               => 4,
-                seconds               => 0,
-            },
+    my $scoreboard = {
+        'clock' => {
+            'seconds'               => 0,
+            'minutes'               => 0,
+            'total_elapsed_seconds' => 200,
         },
-        commentary => $winning_waza eq 'shido'
-        ? "$lost lost to $won by $winning_waza"
-        : "$won threw $lost with $winning_waza"
+        'blue' => {
+            'wazari'  => 0,
+            'shido'   => 0,
+            'athlete' => $args{athlete_blue},
+            'ippon'   => 0,
+        },
+        'white' => {
+            'ippon'   => 0,
+            'wazari'  => 0,
+            'athlete' => $args{athlete_white},
+            'shido'   => 0,
+        }
     };
 
-    if ( $won eq $args{athlete_white} ) {
-        if ( $winning_waza eq 'shido' ) {
-            $result->{'scoreboard'}{'white'}{'shido'} = 3;
-        }
-        else {
-            $result->{'scoreboard'}{'white'}{'ippon'} = 1;
-        }
-    }
-    else {
-        if ( $winning_waza eq 'shido' ) {
-            $result->{'scoreboard'}{'blue'}{'shido'} = 3;
-        }
-        else {
-            $result->{'scoreboard'}{'blue'}{'ippon'} = 1;
-        }
+    my $commentary;
+
+    my @athletes = ( $args{athlete_white}, $args{athlete_blue} );
+
+
+    while ($scoreboard->{clock}{total_elapsed_seconds} < $duration) {
+        $athletes[0]
+            = $self->inf->get_athlete_data( user => $args{athlete_white}, );
+
+        $athletes[1]
+            = $self->inf->get_athlete_data( user => $args{athlete_blue}, );
+
+        (
+            $scoreboard,
+            $commentary,
+        ) = $self->_actions(
+            scoreboard => $scoreboard,
+            commentary => $commentary,
+            white => $athletes[0],
+            blue  => $athletes[1],
+
+        );
+
+        last if $self->_has_winner($scoreboard);
     }
 
-    $result->{'scoreboard'}{'clock'}{'minutes'} = int( rand(4) );
-    if ( $winning_waza eq 'shido' ) {
-        $result->{'scoreboard'}{'clock'}{'minutes'} = 3;
-    }
 
-    $result->{'scoreboard'}{'clock'}{'seconds'} = int( rand(59) );
+    my $won_lost = $self->_won_lost($scoreboard);
+
+
+    my @time = gmtime($scoreboard->{clock}{total_elapsed_seconds});
+    $scoreboard->{clock}{minutes} = $time[1];
+    $scoreboard->{clock}{seconds} = $time[0];
+
+    my $result = {
+        winner     => $won_lost->[0],
+        loser      => $won_lost->[1],
+        round      => $args{'round'},
+        scoreboard => $scoreboard,
+        commentary => $commentary,
+    };
 
     return $result;
 }
@@ -164,31 +135,132 @@ sub calculate_ranking {
     return \@ranks;
 }
 
-sub _decide_winner {
-    my ( $self, @athletes ) = @_;
+sub _actions {
+    my ($self, %args) = @_;
 
-    my $first        = int( rand(2) );
-    my $winner       = 0;
-    my $winning_waza = 'shido';
+    use Data::Dumper;
+    $Data::Dumper::Sortkeys = 1;
+    #warn Dumper \%args;
 
-    for my $waza ( keys %{ $athletes[$first]->{waza_levels} } ) {
-        my $first_attack = $athletes[$first]->{waza_levels}{$waza}{attack};
-        my $second_attack
-            = (
-            $athletes[ $first == 1 ? 0 : 1 ]->{waza_levels}{$waza}{defence} )
-            || 0;
+    my $attacks = $self->_who_goes_first(
+        $args{white}, $args{blue}
+    );
 
-        if ( $first_attack > $second_attack ) {
-            $winner = 1;
+    my $defends = $attacks eq 'white' ? 'blue' : 'white';
+
+
+    my $attack = $self->_make_attack(
+        $args{$attacks},$args{$defends}
+    );
+
+    if ( $attack->{result}) {
+        # Attack succeeded
+        my $roll = int(rand(100));
+        my $score = "no score";
+
+        if ($roll > 10) {
+            if ($roll > 10) { $score = 'wazari'}
+            if ($roll > 90) { $score = 'ippon'}
+
+            $args{commentary} .= "$attacks attacks with $attack->{waza}, scoring $score\n";
+            $args{scoreboard}{$attacks}{$score}++;
+
+        } else {
+            $args{commentary} .= "$attacks attacks with $attack->{waza}, but it does not score\n";
         }
-        else {
-            $winner = 0;
-        }
-        $winning_waza = $waza;
-        last;
+
+
+    } else {
+        # Attack failed
+        $args{commentary} .= "$attacks attacks with $attack->{waza}, but it fails\n";
     }
 
-    return $winner, $winning_waza;
+    $args{scoreboard}{clock}{total_elapsed_seconds}++,
+
+
+    $self->inf->update_athlete(
+        user  => $args{$attacks}->{username},
+        field => 'physical_fatigue',
+        value => $args{$attacks}->{'physical_fatigue'} + 1,
+    );
+
+    return (
+        $args{scoreboard},
+        $args{commentary},
+    );
+}
+
+sub _won_lost {
+    my ($self, $scoreboard) = @_;
+
+    if (
+        $scoreboard->{white}{ippon} ||
+        $scoreboard->{white}{wazari} == 2 ||
+        $scoreboard->{blue}{shido} == 3
+    ) {
+        return [$scoreboard->{white}{athlete},$scoreboard->{blue}{athlete}];
+    } else {
+        return [$scoreboard->{blue}{athlete},$scoreboard->{white}{athlete}];
+    }
+
+}
+
+sub _has_winner {
+    my ($self, $scoreboard) = @_;
+
+    if (
+        $scoreboard->{white}{ippon} ||
+        $scoreboard->{blue}{ippon} ||
+        $scoreboard->{white}{wazari} == 2 ||
+        $scoreboard->{blue}{wazari} == 2 ||
+        $scoreboard->{white}{shido} == 3 ||
+        $scoreboard->{blue}{shido} == 3
+    ) {
+        return 1;
+    }
+
+    return 0;
+}
+
+
+sub _who_goes_first {
+    my ($self, $white, $blue) = @_;
+
+    if ( ($white->{physical_fatigue} || 0 ) > ( $blue->{physical_fatigue} || 0 ) ) {
+        return 'blue';
+    } else {
+        return 'white';
+    }
+}
+
+sub _make_attack {
+    my ($self, $attacker, $defender) = @_;
+
+    my @waza_list = keys %{$attacker->{waza_levels}};
+
+    my $attack_waza = $waza_list[int(rand(@waza_list))];
+
+    my $attacker_levels = $attacker->{waza_levels}{$attack_waza};
+    my $defender_levels = $defender->{waza_levels}{$attack_waza};
+
+    my $success = 0;
+    if (defined $defender_levels) {
+        my $attack_roll = int(rand($attacker_levels->{attack}));
+        my $defence_roll = int(rand($defender_levels->{defence}));
+
+        if ($attack_roll > $defence_roll) {
+            $success = 1;
+        }
+
+    } else {
+        $success = 1;
+    }
+
+
+    return {
+        waza => $attack_waza,
+        result => $success,
+    };
 }
 
 1;

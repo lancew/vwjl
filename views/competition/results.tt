@@ -14,14 +14,14 @@
                     <td>[% r.0 %] [% IF r.1; r.1; END %]</td>
                     <td>[% r.2.name %]</td>
                     <td>[% r.2.score %] wins</td>
-              </tr>  
+              </tr>
             [% END %]
             </table>
             </center>
 
         <ul>
         [% FOREACH r IN results %]
-              <li> ROUND: [% r.round %] 
+              <li> ROUND: [% r.round %]
                      <table border=1>
                        <tr>
                          <td>
@@ -68,8 +68,8 @@
                        </tr>
                      </table>
                  <br /> Commentary:<br />
-                   [% r.commentary %]
-           
+                   <pre>[% r.commentary %]</pre>
+
         [% END %]
         </ul>
 

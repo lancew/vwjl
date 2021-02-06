@@ -65,7 +65,7 @@ sub update_athlete_waza {
     my ( $self, %args ) = @_;
 
     my $rv = $self->dbh->do(
-        "UPDATE waza_level 
+        "UPDATE waza_level
             SET attack = attack + ?,
                 defence = defence + ?
           WHERE athlete_id = ? AND waza = ?",
@@ -78,7 +78,7 @@ sub update_athlete_waza {
 
     if ( $rv eq '0E0' ) {
         $self->dbh->do(
-            'INSERT INTO waza_level 
+            'INSERT INTO waza_level
             (athlete_id,waza,attack,defence)
          VALUES
          (?,?,?,?)',
