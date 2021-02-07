@@ -53,7 +53,7 @@ get '/competition/add' => sub {
     template 'admin/competition/add';
 };
 
-post 'competition/add' => sub {
+post '/competition/add' => sub {
     redirect '/' unless session('admin');
 
     my $inf = VWJL::Infrastructure->new;
@@ -74,7 +74,7 @@ post 'competition/add' => sub {
         entry_fee   => $entry_fee,
     );
 
-    redirect '/admin/competitions';
+    redirect uri_for('/admin/competitions');
 };
 
 get '/competition/:competition_id' => sub {

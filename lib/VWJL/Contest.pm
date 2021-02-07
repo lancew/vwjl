@@ -3,12 +3,12 @@ package VWJL::Contest;
 use Moo;
 
 has athletes => (
-    is => 'ro',
+    is       => 'ro',
     required => 1,
 );
 
 has duration => (
-    is => 'ro',
+    is       => 'ro',
     required => 1,
 );
 
