@@ -94,7 +94,7 @@
                        </tr>
                      </table>
                  <li> Commentary:<br />
-                   [% r.commentary %]
+                   <pre>[% r.commentary %]</pre>
               </ul>
               <hr>  
             [% END %]
