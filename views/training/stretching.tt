@@ -1,0 +1,17 @@
+      <div id="content">
+        <div id="header">
+          <h1>VWJL</h1>
+          <h2>Virtual World Judo League</h2>
+          <h3>Stretching Session</h3>
+        </div>
+          <p>[% message %]</p>  
+          <p>Decrease fatigue by 1, If fatugue reaches 100 you will not be able to train. Fatigue also affects your ability to attack first in contests</p>
+          <p>This will cost you 1 credit ([% athlete.credits %] remaining).</p>
+          <ul>
+          <p>Fatigue level: [% athlete.physical_fatigue %] </p>
+            <form method=post>
+                <button type=submit>Stretch</a>
+            </form>
+          </ul>
+      </div>
+    </div>
