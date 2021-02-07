@@ -38,7 +38,9 @@ get '/uchi_komi/:waza' => sub {
         waza => route_parameters->get('waza'),
     );
 
-    redirect '/training/uchi_komi';
+    warn '------------------';
+
+    redirect '/uchi_komi';
 };
 
 1;

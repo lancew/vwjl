@@ -74,7 +74,7 @@ post '/competition/add' => sub {
         entry_fee   => $entry_fee,
     );
 
-    redirect uri_for('/admin/competitions');
+    redirect '/competitions';
 };
 
 get '/competition/:competition_id' => sub {
@@ -169,7 +169,7 @@ post '/database' => sub {
     my $admin = VWJL::Admin->new;
     $admin->run_migrations;
 
-    redirect '/admin/database';
+    redirect '/database';
 };
 
 1;
