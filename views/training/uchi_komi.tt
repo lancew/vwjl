@@ -4,17 +4,18 @@
           <h2>Virtual World Judo League</h2>
           <h3>Uchi Komi Training</h3>
         </div>
-          <p>[% message %]</p>  
+          <p>[% message %]</p>
           <p>Increase attack by 1, increase fatigue by 1 (Your risk of injury increases as your fatigue does). If fatugue reaches 100 you will not be able to train.</p>
           <ul>
           <p>Fatigue level: [% athlete.physical_fatigue %] </p>
+          <p>Credits: [% athlete.credits %] </p>
             [% FOREACH group IN waza.nage_waza %]
                 <li> [% group.key %]
                    <ul>
                      [% FOREACH w IN group.value %]
-                        <li> <a href=/training/uchi_komi/[% w.key %]>[% w.value.name %]</a> 
+                        <li> <a href=/training/uchi_komi/[% w.key %]>[% w.value.name %]</a>
                             (
-                              Attack:[% athlete.waza_levels.${w.key.lower.replace('-','_')}.attack || 0 %] 
+                              Attack:[% athlete.waza_levels.${w.key.lower.replace('-','_')}.attack || 0 %]
                               Defence:[% athlete.waza_levels.${w.key.lower.replace('-','_')}.defence || 0 %]
                             )
                      [% END%]

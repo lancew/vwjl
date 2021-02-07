@@ -188,18 +188,26 @@ sub uchi_komi {
 
     my $athlete = $self->inf->get_athlete_data( user => $args{'user'} );
 
-    $self->inf->update_athlete_waza(
-        athlete_id    => $athlete->{'id'},
-        waza          => $args{'waza'},
-        attack_delta  => 1,
-        defence_delta => 0,
-    );
+    if ($athlete->{credits} > 1) {
+        $self->inf->update_athlete_waza(
+            athlete_id    => $athlete->{'id'},
+            waza          => $args{'waza'},
+            attack_delta  => 1,
+            defence_delta => 0,
+        );
 
-    $self->inf->update_athlete(
-        user  => $args{'user'},
-        field => 'physical_fatigue',
-        value => $athlete->{'physical_fatigue'} + 1,
-    );
+        $self->inf->update_athlete(
+            user  => $args{'user'},
+            field => 'physical_fatigue',
+            value => $athlete->{'physical_fatigue'} + 1,
+        );
+
+        $self->inf->update_athlete(
+            user  => $args{'user'},
+            field => 'credits',
+            value => $athlete->{'credits'} - 1,
+        );
+    }
 
     return 1;
 }

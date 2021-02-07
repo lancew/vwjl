@@ -33,12 +33,10 @@ get '/uchi_komi/:waza' => sub {
 
     my $athlete_srv = VWJL::Athlete->new;
 
-    $athlete_srv->uchi_komi(
-        user => session('user'),
-        waza => route_parameters->get('waza'),
-    );
-
-    warn '------------------';
+        $athlete_srv->uchi_komi(
+            user => session('user'),
+            waza => route_parameters->get('waza'),
+        );
 
     redirect '/uchi_komi';
 };
