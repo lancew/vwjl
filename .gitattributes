@@ -1,1 +1,4 @@
 *.pm linguist-language=Perl
+lib/VWJL/Contest.pm linguist-language=Perl
+lib/vwjl.pm linguist-language=Perl
+
