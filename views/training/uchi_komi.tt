@@ -21,9 +21,6 @@
                      [% END%]
                    </ul>
             [% END %]
-
-            <li> <a href="/training/uchi_komi/ippon_seoi_nage">Ippon Seoi Nage</a>
-            <li> <a href="/training/uchi_komi/uchi_mata">Uchi Mata</a>
           </ul>
       </div>
     </div>
