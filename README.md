@@ -25,7 +25,8 @@
 ## Database
 second attempt by following:
 * https://dev.to/shree_j/how-to-install-and-run-psql-using-docker-41j2
-* docker run --name postgresql-container -p 5432:5432 -e POSTGRES_PASSWORD=somePassword -d postgres
+* ```docker run --name postgresql-container -p 5432:5432 -e POSTGRES_PASSWORD=somePassword -d postgres```
+    * restart the DB container with: ```docker restart postgresql-container```
 
 ### Formatting
 * Currently using http://www.dpriver.com/pp/sqlformat.htm to get consistent SQL formatting.
