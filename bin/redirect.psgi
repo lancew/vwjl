@@ -5,10 +5,10 @@ use warnings;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
 
-use Plack::Builder;
 use vwjl_redirect;
+use Plack::Builder;
 
 builder {
-    mount '/' => vwjl_direct->to_app;
+    mount '/' => vwjl_redirect->to_app;
 }
 
