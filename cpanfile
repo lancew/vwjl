@@ -1,14 +1,14 @@
-requires "Dancer2" => "0.300005";
+requires "Dancer2" => "0.301001";
 
-requires "Dancer2::Plugin::Auth::Tiny" => "0.008";
-requires 'Dancer2::Plugin::DBIC'       => "0.0100";
-requires "Dancer2::Plugin::Passphrase" => "3.3.4";
-requires "Moo"                         => "2.004004";
-requires "DBI";
-requires "DBD::Pg" => "3.14.2";
-requires "Games::Tournament";
-requires "Games::Tournament::RoundRobin";
-requires "Sort::Rank";
+requires "Dancer2::Plugin::Auth::Tiny"   => "0.008";
+requires 'Dancer2::Plugin::DBIC'         => "0.0100";
+requires "Dancer2::Plugin::Passphrase"   => "3.3.4";
+requires "Moo"                           => "2.005004";
+requires "DBI"                           => "1.643";
+requires "DBD::Pg"                       => "3.14.2";
+requires "Games::Tournament"             => "0.21";
+requires "Games::Tournament::RoundRobin" => "0.02";
+requires "Sort::Rank"                    => "0.0.2";
 requires "IO::Socket::SSL";
 requires "DateTime";
 

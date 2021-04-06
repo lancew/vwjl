@@ -920,68 +920,67 @@ DISTRIBUTIONS
       Try::Tiny 0.07
       namespace::clean 0.24
       perl 5.008001
-  Dancer2-0.300005
-    pathname: C/CR/CROMEDOME/Dancer2-0.300005.tar.gz
+  Dancer2-0.301001
+    pathname: C/CR/CROMEDOME/Dancer2-0.301001.tar.gz
     provides:
-      Dancer2 0.300005
-      Dancer2::CLI 0.300005
-      Dancer2::CLI::Command::gen 0.300005
-      Dancer2::CLI::Command::version 0.300005
-      Dancer2::Core 0.300005
-      Dancer2::Core::App 0.300005
-      Dancer2::Core::Cookie 0.300005
-      Dancer2::Core::DSL 0.300005
-      Dancer2::Core::Dispatcher 0.300005
-      Dancer2::Core::Error 0.300005
-      Dancer2::Core::Factory 0.300005
-      Dancer2::Core::HTTP 0.300005
-      Dancer2::Core::Hook 0.300005
-      Dancer2::Core::MIME 0.300005
-      Dancer2::Core::Request 0.300005
-      Dancer2::Core::Request::Upload 0.300005
-      Dancer2::Core::Response 0.300005
-      Dancer2::Core::Response::Delayed 0.300005
-      Dancer2::Core::Role::ConfigReader 0.300005
-      Dancer2::Core::Role::DSL 0.300005
-      Dancer2::Core::Role::Engine 0.300005
-      Dancer2::Core::Role::Handler 0.300005
-      Dancer2::Core::Role::HasLocation 0.300005
-      Dancer2::Core::Role::Hookable 0.300005
-      Dancer2::Core::Role::Logger 0.300005
-      Dancer2::Core::Role::Serializer 0.300005
-      Dancer2::Core::Role::SessionFactory 0.300005
-      Dancer2::Core::Role::SessionFactory::File 0.300005
-      Dancer2::Core::Role::StandardResponses 0.300005
-      Dancer2::Core::Role::Template 0.300005
-      Dancer2::Core::Route 0.300005
-      Dancer2::Core::Runner 0.300005
-      Dancer2::Core::Session 0.300005
-      Dancer2::Core::Time 0.300005
-      Dancer2::Core::Types 0.300005
-      Dancer2::FileUtils 0.300005
-      Dancer2::Handler::AutoPage 0.300005
-      Dancer2::Handler::File 0.300005
-      Dancer2::Logger::Capture 0.300005
-      Dancer2::Logger::Capture::Trap 0.300005
-      Dancer2::Logger::Console 0.300005
-      Dancer2::Logger::Diag 0.300005
-      Dancer2::Logger::File 0.300005
-      Dancer2::Logger::Note 0.300005
-      Dancer2::Logger::Null 0.300005
-      Dancer2::Plugin 0.300005
-      Dancer2::Serializer::Dumper 0.300005
-      Dancer2::Serializer::JSON 0.300005
-      Dancer2::Serializer::Mutable 0.300005
-      Dancer2::Serializer::YAML 0.300005
-      Dancer2::Session::Simple 0.300005
-      Dancer2::Session::YAML 0.300005
-      Dancer2::Template::Implementation::ForkedTiny 0.300005
-      Dancer2::Template::Simple 0.300005
-      Dancer2::Template::TemplateToolkit 0.300005
-      Dancer2::Template::Tiny 0.300005
-      Dancer2::Test 0.300005
+      Dancer2 0.301001
+      Dancer2::CLI 0.301001
+      Dancer2::CLI::Command::gen 0.301001
+      Dancer2::CLI::Command::version 0.301001
+      Dancer2::Core 0.301001
+      Dancer2::Core::App 0.301001
+      Dancer2::Core::Cookie 0.301001
+      Dancer2::Core::DSL 0.301001
+      Dancer2::Core::Dispatcher 0.301001
+      Dancer2::Core::Error 0.301001
+      Dancer2::Core::Factory 0.301001
+      Dancer2::Core::HTTP 0.301001
+      Dancer2::Core::Hook 0.301001
+      Dancer2::Core::MIME 0.301001
+      Dancer2::Core::Request 0.301001
+      Dancer2::Core::Request::Upload 0.301001
+      Dancer2::Core::Response 0.301001
+      Dancer2::Core::Response::Delayed 0.301001
+      Dancer2::Core::Role::ConfigReader 0.301001
+      Dancer2::Core::Role::DSL 0.301001
+      Dancer2::Core::Role::Engine 0.301001
+      Dancer2::Core::Role::Handler 0.301001
+      Dancer2::Core::Role::HasLocation 0.301001
+      Dancer2::Core::Role::Hookable 0.301001
+      Dancer2::Core::Role::Logger 0.301001
+      Dancer2::Core::Role::Serializer 0.301001
+      Dancer2::Core::Role::SessionFactory 0.301001
+      Dancer2::Core::Role::SessionFactory::File 0.301001
+      Dancer2::Core::Role::StandardResponses 0.301001
+      Dancer2::Core::Role::Template 0.301001
+      Dancer2::Core::Route 0.301001
+      Dancer2::Core::Runner 0.301001
+      Dancer2::Core::Session 0.301001
+      Dancer2::Core::Time 0.301001
+      Dancer2::Core::Types 0.301001
+      Dancer2::FileUtils 0.301001
+      Dancer2::Handler::AutoPage 0.301001
+      Dancer2::Handler::File 0.301001
+      Dancer2::Logger::Capture 0.301001
+      Dancer2::Logger::Capture::Trap 0.301001
+      Dancer2::Logger::Console 0.301001
+      Dancer2::Logger::Diag 0.301001
+      Dancer2::Logger::File 0.301001
+      Dancer2::Logger::Note 0.301001
+      Dancer2::Logger::Null 0.301001
+      Dancer2::Plugin 0.301001
+      Dancer2::Serializer::Dumper 0.301001
+      Dancer2::Serializer::JSON 0.301001
+      Dancer2::Serializer::Mutable 0.301001
+      Dancer2::Serializer::YAML 0.301001
+      Dancer2::Session::Simple 0.301001
+      Dancer2::Session::YAML 0.301001
+      Dancer2::Template::Implementation::ForkedTiny 0.301001
+      Dancer2::Template::Simple 0.301001
+      Dancer2::Template::TemplateToolkit 0.301001
+      Dancer2::Template::Tiny 0.301001
+      Dancer2::Test 0.301001
     requirements:
-      App::Cmd::Setup 0
       Attribute::Handlers 0
       CPAN::Meta::Requirements 2.120620
       Carp 0
@@ -991,7 +990,7 @@ DISTRIBUTIONS
       Encode 0
       Exporter 5.57
       Exporter::Tiny 0
-      ExtUtils::MakeMaker 7.1101
+      ExtUtils::MakeMaker 0
       File::Basename 0
       File::Copy 0
       File::Find 0
@@ -1018,13 +1017,12 @@ DISTRIBUTIONS
       Plack::Middleware::FixMissingBodyInRedirect 0
       Plack::Middleware::RemoveRedundantBody 0
       Ref::Util 0
-      Role::Tiny >= 2.000000, != 2.000007
+      Role::Tiny 2.000000
       Safe::Isa 0
       Sub::Quote 0
       Template 0
       Template::Tiny 0
       Test::Builder 0
-      Test::CPAN::Meta 0
       Test::More 0.92
       Type::Tiny 1.000006
       Types::Standard 0
@@ -2594,30 +2592,29 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Moo-2.004004
-    pathname: H/HA/HAARG/Moo-2.004004.tar.gz
+  Moo-2.005004
+    pathname: H/HA/HAARG/Moo-2.005004.tar.gz
     provides:
       Method::Generate::Accessor undef
       Method::Generate::BuildAll undef
       Method::Generate::Constructor undef
       Method::Generate::DemolishAll undef
-      Moo 2.004004
+      Moo 2.005004
       Moo::HandleMoose undef
       Moo::HandleMoose::FakeConstructor undef
       Moo::HandleMoose::FakeMetaClass undef
       Moo::HandleMoose::_TypeMap undef
       Moo::Object undef
-      Moo::Role 2.004004
+      Moo::Role 2.005004
       Moo::_Utils undef
-      Moo::_mro undef
-      Moo::_strictures undef
       Moo::sification undef
       oo undef
     requirements:
+      Carp 0
       Class::Method::Modifiers 1.10
-      Exporter 5.57
+      Exporter 0
       ExtUtils::MakeMaker 0
-      Role::Tiny 2.001004
+      Role::Tiny 2.002003
       Scalar::Util 1.00
       Sub::Defer 2.006006
       Sub::Quote 2.006006
@@ -4494,11 +4491,11 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       XSLoader 0
       perl 5.006
-  Role-Tiny-2.001004
-    pathname: H/HA/HAARG/Role-Tiny-2.001004.tar.gz
+  Role-Tiny-2.002004
+    pathname: H/HA/HAARG/Role-Tiny-2.002004.tar.gz
     provides:
-      Role::Tiny 2.001004
-      Role::Tiny::With 2.001004
+      Role::Tiny 2.002004
+      Role::Tiny::With 2.002004
     requirements:
       Exporter 5.57
       perl 5.006
