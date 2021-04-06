@@ -167,13 +167,13 @@ sub _actions {
             .= "$attacks attacks with $attack->{waza}, but it fails\n";
     }
 
-    $args{scoreboard}{clock}{total_elapsed_seconds}++,
+    $args{scoreboard}{clock}{total_elapsed_seconds}++;
 
-        $self->inf->update_athlete(
+    $self->inf->update_athlete(
         user  => $args{$attacks}->{username},
         field => 'physical_fatigue',
-        value => $args{$attacks}->{'physical_fatigue'} + 1,
-        );
+        value => ( $args{$attacks}->{'physical_fatigue'} || 0 ) + 1,
+    );
 
     return ( $args{scoreboard}, $args{commentary}, );
 }

@@ -19,6 +19,8 @@
 ## Run Perltidy
  ```carton exec perltidy lib/vwjl.pm```
 
+## Run the tests
+```carton exec prove -lvr t```
 
 ## Database
 second attempt by following:
