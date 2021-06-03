@@ -1,4 +1,4 @@
-requires "Dancer2" => "0.301001";
+requires "Dancer2" => "0.301003";
 
 requires "Dancer2::Plugin::Auth::Tiny"   => "0.008";
 requires 'Dancer2::Plugin::DBIC'         => "0.0100";
