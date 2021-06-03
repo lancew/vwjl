@@ -171,6 +171,27 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  App-UpdateCPANfile-1.1.1
+    pathname: H/HI/HITODE/App-UpdateCPANfile-1.1.1.tar.gz
+    provides:
+      App::UpdateCPANfile v1.1.1
+      App::UpdateCPANfile::CPANfileSnapshotParser undef
+      App::UpdateCPANfile::Change undef
+      App::UpdateCPANfile::PackageDetails undef
+    requirements:
+      CPAN::DistnameInfo 0
+      CPAN::Meta::Prereqs 2.150010
+      CPAN::PackageDetails 0
+      Carton 0
+      Getopt::Long 0
+      IO::String 0
+      JSON 0
+      LWP::UserAgent 0
+      List::Util 0
+      Module::Build::Tiny 0.035
+      Module::CPANfile 0
+      Module::CPANfile::Writer 0
+      perl 5.010001
   AppConfig-1.71
     pathname: N/NE/NEILB/AppConfig-1.71.tar.gz
     provides:
@@ -222,6 +243,31 @@ DISTRIBUTIONS
     requirements:
       B 0
       ExtUtils::MakeMaker 0
+  Babble-0.090007
+    pathname: M/MS/MSTROUT/Babble-0.090007.tar.gz
+    provides:
+      App::sigfix 0.001001
+      Babble 0.090007
+      Babble::Filter undef
+      Babble::Grammar undef
+      Babble::Match undef
+      Babble::Plugin::CoreSignatures undef
+      Babble::Plugin::DefinedOr undef
+      Babble::Plugin::PostfixDeref undef
+      Babble::Plugin::SKT undef
+      Babble::Plugin::Sigify undef
+      Babble::Plugin::State undef
+      Babble::Plugin::SubstituteAndReturn undef
+      Babble::PluginChain undef
+      Babble::SubMatch undef
+      Babble::SymbolGenerator undef
+    requirements:
+      Module::Build::Tiny 0.034
+      Module::Runtime 0
+      Moo 2
+      Mu 0
+      PPR 0.000021
+      strictures 2
   CLI-Osprey-0.08
     pathname: A/AR/ARODLAND/CLI-Osprey-0.08.tar.gz
     provides:
@@ -237,6 +283,73 @@ DISTRIBUTIONS
       Moo 0
       Moo::Role 0
       Path::Tiny 0
+  CPAN-Common-Index-0.010
+    pathname: D/DA/DAGOLDEN/CPAN-Common-Index-0.010.tar.gz
+    provides:
+      CPAN::Common::Index 0.010
+      CPAN::Common::Index::LocalPackage 0.010
+      CPAN::Common::Index::MetaDB 0.010
+      CPAN::Common::Index::Mirror 0.010
+      CPAN::Common::Index::Mux::Ordered 0.010
+    requirements:
+      CPAN::DistnameInfo 0
+      CPAN::Meta::YAML 0
+      Carp 0
+      Class::Tiny 0
+      ExtUtils::MakeMaker 6.17
+      File::Basename 0
+      File::Copy 0
+      File::Fetch 0
+      File::Spec 0
+      File::Temp 0.19
+      File::stat 0
+      HTTP::Tiny 0
+      Module::Load 0
+      Search::Dict 1.07
+      Tie::Handle::SkipHeader 0
+      URI 0
+      parent 0
+      perl 5.008001
+      strict 0
+      warnings 0
+  CPAN-DistnameInfo-0.12
+    pathname: G/GB/GBARR/CPAN-DistnameInfo-0.12.tar.gz
+    provides:
+      CPAN::DistnameInfo 0.12
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
+  CPAN-Meta-Check-0.014
+    pathname: L/LE/LEONT/CPAN-Meta-Check-0.014.tar.gz
+    provides:
+      CPAN::Meta::Check 0.014
+    requirements:
+      CPAN::Meta::Prereqs 2.132830
+      CPAN::Meta::Requirements 2.121
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Module::Metadata 1.000023
+      base 0
+      perl 5.006
+      strict 0
+      warnings 0
+  CPAN-PackageDetails-0.263
+    pathname: B/BD/BDFOY/CPAN-PackageDetails-0.263.tar.gz
+    provides:
+      CPAN::PackageDetails 0.263
+      CPAN::PackageDetails::Entries 0.263
+      CPAN::PackageDetails::Entry 0.263
+      CPAN::PackageDetails::Header 0.263
+      CPAN::PackageDetails::PerlHash 0.263
+      CPAN::PackageDetails::Redis 0.263
+    requirements:
+      CPAN::DistnameInfo 0
+      ExtUtils::MakeMaker 6.64
+      File::Spec::Functions 0
+      IO::Compress::Gzip 0
+      IO::Uncompress::Gunzip 0
+      perl 5.008
+      version 0.78
   Capture-Tiny-0.48
     pathname: D/DA/DAGOLDEN/Capture-Tiny-0.48.tar.gz
     provides:
@@ -261,6 +374,47 @@ DISTRIBUTIONS
       overload 0
       perl 5.006
       strict 0
+  Carton-v1.0.34
+    pathname: M/MI/MIYAGAWA/Carton-v1.0.34.tar.gz
+    provides:
+      Carton 1.000034
+      Carton::Builder undef
+      Carton::CLI undef
+      Carton::CPANfile undef
+      Carton::Dependency undef
+      Carton::Dist undef
+      Carton::Dist::Core undef
+      Carton::Environment undef
+      Carton::Error undef
+      Carton::Error::CPANfileNotFound undef
+      Carton::Error::CommandExit undef
+      Carton::Error::CommandNotFound undef
+      Carton::Error::SnapshotNotFound undef
+      Carton::Error::SnapshotParseError undef
+      Carton::Index undef
+      Carton::Mirror undef
+      Carton::Package undef
+      Carton::Packer undef
+      Carton::Snapshot undef
+      Carton::Snapshot::Emitter undef
+      Carton::Snapshot::Parser undef
+      Carton::Tree undef
+      Carton::Util undef
+    requirements:
+      CPAN::Meta 2.120921
+      CPAN::Meta::Requirements 2.121
+      Class::Tiny 1.001
+      ExtUtils::MakeMaker 0
+      Getopt::Long 2.39
+      JSON::PP 2.27300
+      Menlo::CLI::Compat 1.9018
+      Module::CPANfile 0.9031
+      Module::CoreList 0
+      Path::Tiny 0.033
+      Try::Tiny 0.09
+      parent 0.223
+      perl 5.008005
+      version 0.77
   Class-Accessor-Grouped-0.10014
     pathname: H/HA/HAARG/Class-Accessor-Grouped-0.10014.tar.gz
     provides:
@@ -1803,6 +1957,18 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  ExtUtils-MakeMaker-CPANfile-0.09
+    pathname: I/IS/ISHIGAKI/ExtUtils-MakeMaker-CPANfile-0.09.tar.gz
+    provides:
+      ExtUtils::MakeMaker::CPANfile 0.09
+    requirements:
+      CPAN::Meta::Converter 2.141170
+      Cwd 0
+      ExtUtils::MakeMaker 6.17
+      File::Path 0
+      Module::CPANfile 0
+      Test::More 0.88
+      version 0.76
   FFI-CheckLib-0.27
     pathname: P/PL/PLICEASE/FFI-CheckLib-0.27.tar.gz
     provides:
@@ -1857,6 +2023,23 @@ DISTRIBUTIONS
       File::Which 0.05
       POSIX 0
       perl 5.008003
+  File-Listing-6.14
+    pathname: P/PL/PLICEASE/File-Listing-6.14.tar.gz
+    provides:
+      File::Listing 6.14
+      File::Listing::apache 6.14
+      File::Listing::dosftp 6.14
+      File::Listing::netware 6.14
+      File::Listing::unix 6.14
+      File::Listing::vms 6.14
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      HTTP::Date 0
+      Time::Local 0
+      base 0
+      perl 5.006
   File-PathList-1.04
     pathname: A/AD/ADAMK/File-PathList-1.04.tar.gz
     provides:
@@ -2039,6 +2222,21 @@ DISTRIBUTIONS
       HTML::Tagset 3.20
     requirements:
       ExtUtils::MakeMaker 0
+  HTTP-Cookies-6.10
+    pathname: O/OA/OALDERS/HTTP-Cookies-6.10.tar.gz
+    provides:
+      HTTP::Cookies 6.10
+      HTTP::Cookies::Microsoft 6.10
+      HTTP::Cookies::Netscape 6.10
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      HTTP::Date 6
+      HTTP::Headers::Util 6
+      HTTP::Request 0
+      locale 0
+      perl 5.008001
+      strict 0
   HTTP-Date-6.05
     pathname: O/OA/OALDERS/HTTP-Date-6.05.tar.gz
     provides:
@@ -2136,6 +2334,30 @@ DISTRIBUTIONS
       Scalar::Util 0
       Test::Deep 0
       Test::More 0.88
+      perl 5.008001
+  HTTP-Negotiate-6.01
+    pathname: G/GA/GAAS/HTTP-Negotiate-6.01.tar.gz
+    provides:
+      HTTP::Negotiate 6.01
+    requirements:
+      ExtUtils::MakeMaker 0
+      HTTP::Headers 6
+      perl 5.008001
+  HTTP-Tinyish-0.17
+    pathname: M/MI/MIYAGAWA/HTTP-Tinyish-0.17.tar.gz
+    provides:
+      HTTP::Tinyish 0.17
+      HTTP::Tinyish::Base undef
+      HTTP::Tinyish::Curl undef
+      HTTP::Tinyish::HTTPTiny undef
+      HTTP::Tinyish::LWP undef
+      HTTP::Tinyish::Wget undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      File::Which 0
+      HTTP::Tiny 0.055
+      IPC::Run3 0
+      parent 0
       perl 5.008001
   Hash-Merge-0.302
     pathname: H/HE/HERMES/Hash-Merge-0.302.tar.gz
@@ -2465,6 +2687,59 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.006
+  Menlo-1.9019
+    pathname: M/MI/MIYAGAWA/Menlo-1.9019.tar.gz
+    provides:
+      Menlo 1.9019
+      Menlo::Builder::Static undef
+      Menlo::Dependency undef
+      Menlo::Index::MetaCPAN undef
+      Menlo::Index::MetaDB 1.9019
+      Menlo::Index::Mirror undef
+      Menlo::Util undef
+    requirements:
+      CPAN::Common::Index 0.006
+      CPAN::DistnameInfo 0
+      CPAN::Meta 2.132830
+      CPAN::Meta::Check 0
+      CPAN::Meta::Requirements 0
+      CPAN::Meta::YAML 0
+      Capture::Tiny 0
+      Class::Tiny 1.001
+      Exporter 0
+      ExtUtils::Config 0.003
+      ExtUtils::Helpers 0.020
+      ExtUtils::InstallPaths 0.002
+      ExtUtils::MakeMaker 0
+      File::Temp 0
+      File::Which 0
+      File::pushd 0
+      Getopt::Long 2.36
+      HTTP::Tiny 0.054
+      HTTP::Tinyish 0.04
+      JSON::PP 2
+      Module::CPANfile 0
+      Module::CoreList 0
+      Module::Metadata 0
+      Parse::CPAN::Meta 0
+      Parse::PMFile 0.26
+      String::ShellQuote 0
+      URI 0
+      Win32::ShellQuote 0
+      local::lib 0
+      parent 0
+      perl 5.008001
+      version 0
+  Menlo-Legacy-1.9022
+    pathname: M/MI/MIYAGAWA/Menlo-Legacy-1.9022.tar.gz
+    provides:
+      Menlo::CLI::Compat 1.9022
+      Menlo::Legacy 1.9022
+    requirements:
+      ExtUtils::MakeMaker 0
+      Menlo 1.9018
+      perl 5.008001
+      version 0.9905
   Mixin-Linewise-0.108
     pathname: R/RJ/RJBS/Mixin-Linewise-0.108.tar.gz
     provides:
@@ -2551,6 +2826,28 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Module-CPANfile-1.1004
+    pathname: M/MI/MIYAGAWA/Module-CPANfile-1.1004.tar.gz
+    provides:
+      Module::CPANfile 1.1004
+      Module::CPANfile::Environment undef
+      Module::CPANfile::Prereq undef
+      Module::CPANfile::Prereqs undef
+      Module::CPANfile::Requirement undef
+    requirements:
+      CPAN::Meta 2.12091
+      CPAN::Meta::Prereqs 2.12091
+      ExtUtils::MakeMaker 0
+      parent 0
+  Module-CPANfile-Writer-0.01
+    pathname: A/AK/AKIYM/Module-CPANfile-Writer-0.01.tar.gz
+    provides:
+      Module::CPANfile::Writer 0.01
+    requirements:
+      Babble 0
+      Module::Build::Tiny 0.035
+      PPR 0
+      perl 5.010
   Module-Find-0.15
     pathname: C/CR/CRENZ/Module-Find-0.15.tar.gz
     provides:
@@ -2636,6 +2933,16 @@ DISTRIBUTIONS
       Sub::Defer 2.006006
       Sub::Quote 2.006006
       perl 5.006
+  MooX-ShortHas-1.202040
+    pathname: M/MI/MITHALDU/MooX-ShortHas-1.202040.tar.gz
+    provides:
+      MooX::ShortHas 1.202040
+    requirements:
+      ExtUtils::MakeMaker 0
+      Moo 2.003006
+      Moo::_Utils 0
+      perl 5.006
+      strictures 2
   Moose-2.2014
     pathname: E/ET/ETHER/Moose-2.2014.tar.gz
     provides:
@@ -3145,6 +3452,37 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test 0
       perl 5.006
+  Mu-1.191300
+    pathname: M/MI/MITHALDU/Mu-1.191300.tar.gz
+    provides:
+      Mu 1.191300
+      Mu::Role 1.191300
+    requirements:
+      ExtUtils::MakeMaker 0
+      Import::Into 0
+      Moo 0
+      Moo::Role 0
+      MooX::ShortHas 0
+      perl 5.006
+      strictures 2
+  Net-HTTP-6.21
+    pathname: O/OA/OALDERS/Net-HTTP-6.21.tar.gz
+    provides:
+      Net::HTTP 6.21
+      Net::HTTP::Methods 6.21
+      Net::HTTP::NB 6.21
+      Net::HTTPS 6.21
+    requirements:
+      Carp 0
+      Compress::Raw::Zlib 0
+      ExtUtils::MakeMaker 0
+      IO::Socket::INET 0
+      IO::Uncompress::Gunzip 0
+      URI 0
+      base 0
+      perl 5.006002
+      strict 0
+      warnings 0
   Net-SSLeay-1.88
     pathname: C/CH/CHRISN/Net-SSLeay-1.88.tar.gz
     provides:
@@ -3438,6 +3776,17 @@ DISTRIBUTIONS
       PPI 1.250
       Scalar::Util 0
       perl 5.006
+  PPR-0.000028
+    pathname: D/DC/DCONWAY/PPR-0.000028.tar.gz
+    provides:
+      PPR 0.000028
+      PPR::ERROR 0.000028
+      PPR::X 0.000027
+      PPR::X::ERROR 0.000027
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
+      perl 5.01
   Package-DeprecationManager-0.17
     pathname: D/DR/DROLSKY/Package-DeprecationManager-0.17.tar.gz
     provides:
@@ -3576,6 +3925,18 @@ DISTRIBUTIONS
       overload 0
       strict 0
       warnings 0
+  Parse-PMFile-0.43
+    pathname: I/IS/ISHIGAKI/Parse-PMFile-0.43.tar.gz
+    provides:
+      Parse::PMFile 0.43
+    requirements:
+      Dumpvalue 0
+      ExtUtils::MakeMaker 0
+      ExtUtils::MakeMaker::CPANfile 0.09
+      File::Spec 0
+      JSON::PP 2.00
+      Safe 0
+      version 0.83
   Parse-RecDescent-1.967015
     pathname: J/JT/JTBRAUN/Parse-RecDescent-1.967015.tar.gz
     provides:
@@ -4032,55 +4393,6 @@ DISTRIBUTIONS
       Readonly 0
       Storable 2.16
       Test::More 0
-  Perl-Critic-Freenode-0.033
-    pathname: D/DB/DBOOK/Perl-Critic-Freenode-0.033.tar.gz
-    provides:
-      Perl::Critic::Freenode 0.033
-      Perl::Critic::Freenode::Utils 0.033
-      Perl::Critic::Policy::Freenode::AmpersandSubCalls 0.033
-      Perl::Critic::Policy::Freenode::ArrayAssignAref 0.033
-      Perl::Critic::Policy::Freenode::BarewordFilehandles 0.033
-      Perl::Critic::Policy::Freenode::ConditionalDeclarations 0.033
-      Perl::Critic::Policy::Freenode::ConditionalImplicitReturn 0.033
-      Perl::Critic::Policy::Freenode::DeprecatedFeatures 0.033
-      Perl::Critic::Policy::Freenode::DiscouragedModules 0.033
-      Perl::Critic::Policy::Freenode::DollarAB 0.033
-      Perl::Critic::Policy::Freenode::Each 0.033
-      Perl::Critic::Policy::Freenode::EmptyReturn 0.033
-      Perl::Critic::Policy::Freenode::IndirectObjectNotation 0.033
-      Perl::Critic::Policy::Freenode::LexicalForeachIterator 0.033
-      Perl::Critic::Policy::Freenode::LoopOnHash 0.033
-      Perl::Critic::Policy::Freenode::ModPerl 0.033
-      Perl::Critic::Policy::Freenode::MultidimensionalArrayEmulation 0.033
-      Perl::Critic::Policy::Freenode::OpenArgs 0.033
-      Perl::Critic::Policy::Freenode::OverloadOptions 0.033
-      Perl::Critic::Policy::Freenode::POSIXImports 0.033
-      Perl::Critic::Policy::Freenode::PackageMatchesFilename 0.033
-      Perl::Critic::Policy::Freenode::PreferredAlternatives 0.033
-      Perl::Critic::Policy::Freenode::Prototypes 0.033
-      Perl::Critic::Policy::Freenode::StrictWarnings 0.033
-      Perl::Critic::Policy::Freenode::Threads 0.033
-      Perl::Critic::Policy::Freenode::Wantarray 0.033
-      Perl::Critic::Policy::Freenode::WarningsSwitch 0.033
-      Perl::Critic::Policy::Freenode::WhileDiamondDefaultAssignment 0.033
-    requirements:
-      Carp 0
-      Exporter 0
-      List::Util 1.33
-      Module::Build::Tiny 0.034
-      PPI 1.254
-      Path::Tiny 0.101
-      Perl::Critic 1.126
-      Perl::Critic::Policy::Objects::ProhibitIndirectSyntax 1.126
-      Perl::Critic::Policy::Subroutines::ProhibitAmpersandSigils 1.126
-      Perl::Critic::Policy::ValuesAndExpressions::ProhibitArrayAssignAref 90
-      Perl::Critic::Policy::Variables::ProhibitConditionalDeclarations 1.126
-      Perl::Critic::Policy::Variables::ProhibitLoopOnHash 0.005
-      Perl::Critic::Policy::Variables::RequireLexicalLoopIterators 1.126
-      Scalar::Util 0
-      parent 0
-      perl 5.010001
-      version 0
   Perl-Critic-Itch-0.07
     pathname: M/MA/MARCELO/Perl-Critic-Itch-0.07.tar.gz
     provides:
@@ -4955,6 +5267,12 @@ DISTRIBUTIONS
       Sub::Exporter 0.972
       strict 0
       warnings 0
+  String-ShellQuote-1.04
+    pathname: R/RO/ROSCH/String-ShellQuote-1.04.tar.gz
+    provides:
+      String::ShellQuote 1.04
+    requirements:
+      ExtUtils::MakeMaker 0
   Sub-Exporter-0.987
     pathname: R/RJ/RJBS/Sub-Exporter-0.987.tar.gz
     provides:
@@ -5557,6 +5875,16 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       constant 0
       perl 5.00503
+  Tie-Handle-Offset-0.004
+    pathname: D/DA/DAGOLDEN/Tie-Handle-Offset-0.004.tar.gz
+    provides:
+      Tie::Handle::Offset 0.004
+      Tie::Handle::SkipHeader 0.004
+    requirements:
+      ExtUtils::MakeMaker 6.17
+      Tie::Handle 0
+      perl 5.006
+      strict 0
   Time-Duration-Parse-0.15
     pathname: N/NE/NEILB/Time-Duration-Parse-0.15.tar.gz
     provides:
@@ -5814,6 +6142,24 @@ DISTRIBUTIONS
       Exporter 0
       Module::Build 0.4005
       perl 5.008001
+  WWW-RobotRules-6.02
+    pathname: G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
+    provides:
+      WWW::RobotRules 6.02
+      WWW::RobotRules::AnyDBM_File 6.00
+      WWW::RobotRules::InCore 6.02
+    requirements:
+      AnyDBM_File 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      URI 1.10
+      perl 5.008001
+  Win32-ShellQuote-0.003001
+    pathname: H/HA/HAARG/Win32-ShellQuote-0.003001.tar.gz
+    provides:
+      Win32::ShellQuote 0.003001
+    requirements:
+      perl 5.006
   XML-LibXML-2.0206
     pathname: S/SH/SHLOMIF/XML-LibXML-2.0206.tar.gz
     provides:
@@ -6003,6 +6349,74 @@ DISTRIBUTIONS
       XSLoader 0
       lib 0
       perl 5.008001
+  libwww-perl-6.54
+    pathname: O/OA/OALDERS/libwww-perl-6.54.tar.gz
+    provides:
+      LWP 6.54
+      LWP::Authen::Basic 6.54
+      LWP::Authen::Digest 6.54
+      LWP::Authen::Ntlm 6.54
+      LWP::ConnCache 6.54
+      LWP::Debug 6.54
+      LWP::Debug::TraceHTTP 6.54
+      LWP::DebugFile 6.54
+      LWP::MemberMixin 6.54
+      LWP::Protocol 6.54
+      LWP::Protocol::cpan 6.54
+      LWP::Protocol::data 6.54
+      LWP::Protocol::file 6.54
+      LWP::Protocol::ftp 6.54
+      LWP::Protocol::gopher 6.54
+      LWP::Protocol::http 6.54
+      LWP::Protocol::loopback 6.54
+      LWP::Protocol::mailto 6.54
+      LWP::Protocol::nntp 6.54
+      LWP::Protocol::nogo 6.54
+      LWP::RobotUA 6.54
+      LWP::Simple 6.54
+      LWP::UserAgent 6.54
+      libwww::perl undef
+    requirements:
+      CPAN::Meta::Requirements 2.120620
+      Digest::MD5 0
+      Encode 2.12
+      Encode::Locale 0
+      ExtUtils::MakeMaker 0
+      File::Copy 0
+      File::Listing 6
+      Getopt::Long 0
+      HTML::Entities 0
+      HTML::HeadParser 0
+      HTTP::Cookies 6
+      HTTP::Date 6
+      HTTP::Negotiate 6
+      HTTP::Request 6
+      HTTP::Request::Common 6
+      HTTP::Response 6
+      HTTP::Status 6.18
+      IO::Select 0
+      IO::Socket 0
+      LWP::MediaTypes 6
+      MIME::Base64 2.1
+      Module::Metadata 0
+      Net::FTP 2.58
+      Net::HTTP 6.18
+      Scalar::Util 0
+      Try::Tiny 0
+      URI 1.10
+      URI::Escape 0
+      WWW::RobotRules 6
+      base 0
+      perl 5.008001
+      strict 0
+      warnings 0
+  local-lib-2.000024
+    pathname: H/HA/HAARG/local-lib-2.000024.tar.gz
+    provides:
+      lib::core::only undef
+      local::lib 2.000024
+    requirements:
+      perl 5.006
   multidimensional-0.014
     pathname: I/IL/ILMARI/multidimensional-0.014.tar.gz
     provides:

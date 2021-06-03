@@ -22,6 +22,9 @@
 ## Run the tests
 ```carton exec prove -lvr t```
 
+## Update module dependencies
+```carton exec update-cpanfile update```
+
 ## Database
 second attempt by following:
 * https://dev.to/shree_j/how-to-install-and-run-psql-using-docker-41j2
@@ -74,7 +77,7 @@ Running with SSL on DO:
 * [X] /ranking - Athletes by wins
 * [ ] Email sending?
 * [ ] Password reset
-* [ ] Extend the simulator to be more of a sequence of hajime-mate 
+* [ ] Extend the simulator to be more of a sequence of hajime-mate
 * [ ] Extend the traning options (specifically we need some recovery for fatigue
 * [ ] Prize money for top 3 (top 5) ?
 * [ ] Trash talking?
