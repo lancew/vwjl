@@ -31,6 +31,16 @@ second attempt by following:
 * ```docker run --name postgresql-container -p 5432:5432 -e POSTGRES_PASSWORD=somePassword -d postgres```
     * restart the DB container with: ```docker restart postgresql-container```
 
+### Migrations
+All database changes are "roll forward" via files in /db
+
+There is a manual migration step (including after installation), visit /admin/database and you will see the current mighration level and max level to go to.
+
+click the runmigration button, job done... hopefully.
+[] This is currently open to the universe, and is not elegant. TODO: find a better way. :)
+
+
+
 ### Formatting
 * Currently using http://www.dpriver.com/pp/sqlformat.htm to get consistent SQL formatting.
 
