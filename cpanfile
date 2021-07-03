@@ -1,4 +1,4 @@
-requires "Dancer2" => '== 0.301003';
+requires "Dancer2" => '== 0.301004';
 
 requires "Dancer2::Plugin::Auth::Tiny"   => '== 0.008';
 requires 'Dancer2::Plugin::DBIC'         => '== 0.0100';
@@ -19,8 +19,8 @@ recommends "HTTP::Parser::XS" => '== 0.17';
 
 on "test" => sub {
     requires "Test::More"                => '== 1.302185';
-    requires "HTTP::Request::Common"     => '== 6.32';
-    requires "Perl::Tidy"                => '== 20210402';
+    requires "HTTP::Request::Common"     => '== 6.33';
+    requires "Perl::Tidy"                => '== 20210625';
     requires "Perl::Critic"              => '== 1.140';
     requires "Test::MockModule"          => '== v0.176.0';
     requires "Perl::Critic::Freenode"    => '== v1.0.0';
