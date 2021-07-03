@@ -1,0 +1,36 @@
+use strict;
+use warnings;
+
+use WebService::SQLFormat;
+use FindBin;
+
+my $f = WebService::SQLFormat->new(
+    identifier_case => 'lower',
+    keyword_case => 'upper',
+);
+
+my $dir = "$FindBin::Bin/../db";
+opendir my $dh, $dir or die "Could not open '$dir' for reading '$!'\n";
+my @migration_files = readdir $dh;
+closedir $dh;
+
+my @files;
+for my $file ( sort @migration_files ) {
+	next unless $file =~ /^\d{3}/x;
+
+	my $filename = $dir . '/' . $file;
+	local $/ = undef;
+	open( my $fh, '<:encoding(UTF-8)', $filename )
+		or die "Could not open file '$filename' $!";
+	my $sql = <$fh>;
+	close $fh;
+
+	my $new_sql = $f->format_sql($sql);
+
+	open( $fh, '>:encoding(UTF-8)', $filename )
+        or die "Could not open file '$filename' $!";
+	print $fh $new_sql;
+	close $fh;
+
+
+}

@@ -2524,6 +2524,21 @@ DISTRIBUTIONS
       Scalar::Util 0
       perl 5.006002
       strict 0
+  LWP-Protocol-https-6.10
+    pathname: O/OA/OALDERS/LWP-Protocol-https-6.10.tar.gz
+    provides:
+      LWP::Protocol::https 6.10
+      LWP::Protocol::https::Socket 6.10
+    requirements:
+      ExtUtils::MakeMaker 0
+      IO::Socket::SSL 1.54
+      LWP::Protocol::http 0
+      LWP::UserAgent 6.06
+      Mozilla::CA 20180117
+      Net::HTTPS 6
+      base 0
+      perl 5.008001
+      strict 0
   Lingua-EN-Inflect-1.905
     pathname: D/DC/DCONWAY/Lingua-EN-Inflect-1.905.tar.gz
     provides:
@@ -5999,6 +6014,42 @@ DISTRIBUTIONS
       Exporter::Tiny 1.000000
       ExtUtils::MakeMaker 6.17
       perl 5.006001
+  Types-Path-Tiny-0.006
+    pathname: D/DA/DAGOLDEN/Types-Path-Tiny-0.006.tar.gz
+    provides:
+      Types::Path::Tiny 0.006
+    requirements:
+      ExtUtils::MakeMaker 6.17
+      Path::Tiny 0
+      Type::Library 0.008
+      Type::Utils 0
+      Types::Standard 0
+      Types::TypeTiny 0.004
+      perl 5.008001
+      strict 0
+      warnings 0
+  Types-URI-0.007
+    pathname: T/TO/TOBYINK/Types-URI-0.007.tar.gz
+    provides:
+      Types::URI 0.007
+    requirements:
+      ExtUtils::MakeMaker 6.17
+      Type::Library 1.000000
+      Types::Path::Tiny 0
+      Types::Standard 0
+      Types::UUID 0
+      URI 0
+      URI::FromHash 0
+      perl 5.008
+  Types-UUID-0.004
+    pathname: T/TO/TOBYINK/Types-UUID-0.004.tar.gz
+    provides:
+      Types::UUID 0.004
+    requirements:
+      ExtUtils::MakeMaker 6.17
+      Type::Tiny 1.000000
+      UUID::Tiny 1.02
+      perl 5.008
   UML-Class-Simple-0.22
     pathname: A/AG/AGENT/UML-Class-Simple-0.22.tar.gz
     provides:
@@ -6115,6 +6166,31 @@ DISTRIBUTIONS
       strict 0
       utf8 0
       warnings 0
+  URI-FromHash-0.05
+    pathname: D/DR/DROLSKY/URI-FromHash-0.05.tar.gz
+    provides:
+      URI::FromHash 0.05
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Params::Validate 0
+      URI 1.68
+      strict 0
+      warnings 0
+  UUID-Tiny-1.04
+    pathname: C/CA/CAUGUSTIN/UUID-Tiny-1.04.tar.gz
+    provides:
+      UUID::Tiny 1.04
+    requirements:
+      Carp 0
+      Digest::MD5 0
+      ExtUtils::MakeMaker 0
+      IO::File 0
+      MIME::Base64 0
+      POSIX 0
+      Test::More 0
+      Time::HiRes 0
   Variable-Magic-0.62
     pathname: V/VP/VPIT/Variable-Magic-0.62.tar.gz
     provides:
@@ -6155,6 +6231,20 @@ DISTRIBUTIONS
       Fcntl 0
       URI 1.10
       perl 5.008001
+  WebService-SQLFormat-0.000007
+    pathname: O/OA/OALDERS/WebService-SQLFormat-0.000007.tar.gz
+    provides:
+      WebService::SQLFormat 0.000007
+    requirements:
+      ExtUtils::MakeMaker 0
+      JSON::MaybeXS 0
+      LWP::Protocol::https 0
+      LWP::UserAgent 0
+      Module::Runtime 0
+      Moo 2.002004
+      Types::Standard 0
+      Types::URI 0
+      perl 5.006
   Win32-ShellQuote-0.003001
     pathname: H/HA/HAARG/Win32-ShellQuote-0.003001.tar.gz
     provides:

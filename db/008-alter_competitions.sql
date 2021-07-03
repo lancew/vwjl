@@ -1,2 +1,2 @@
 ALTER TABLE competitions
-  ADD COLUMN status VARCHAR(20); 
+  ADD COLUMN status varchar(20);

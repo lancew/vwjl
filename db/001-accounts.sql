@@ -5,4 +5,4 @@ CREATE TABLE accounts
      passphrase VARCHAR (150) NOT NULL,
      created_on TIMESTAMP NOT NULL,
      last_login TIMESTAMP
-  ); 
+  );

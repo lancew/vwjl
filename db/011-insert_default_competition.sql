@@ -1,9 +1,9 @@
 INSERT INTO competitions
-            (NAME,
+            (name,
              description,
              owner_username,
              created_on)
 VALUES      ('Novice League',
              'A starter league',
              'lancew',
-             localtimestamp);
+             LOCALTIMESTAMP);

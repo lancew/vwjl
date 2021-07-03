@@ -30,5 +30,6 @@ on "test" => sub {
     requires "Code::TidyAll"             => '== 0.78';
     requires "Parallel::ForkManager"     => '== 2.02';
     requires "App::UpdateCPANfile"       => '== v1.1.1';
+    requires "WebService::SQLFormat"     => '== 0.000007';
 };
 

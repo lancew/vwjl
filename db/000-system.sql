@@ -1,8 +1,8 @@
-CREATE TABLE system
+CREATE TABLE SYSTEM
   (
      db_migration_level INT DEFAULT 0
-  ); 
+  );
 
-INSERT INTO system
+INSERT INTO SYSTEM
             (db_migration_level)
-VALUES     (0); 
+VALUES     (0);
