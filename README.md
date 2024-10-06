@@ -4,32 +4,37 @@
 ![screenshot of simulation view](2021-01-03.png "Screenshot of simulation view")
 
 
-## Install dependencies:
- ```carton install```
-
-## Run the app:
- ```DB_RAISEERROR=1 DB_SOURCE="dbi:Pg:dbname=postgres;host=localhost" DB_USERNAME=postgres DB_PASSWORD="somePassword" carton exec plackup -R lib,views bin/app.psgi``` (-R lib,views for reload)
-
-## Access the app via:
- http://localhost:5000
-
-## Run perlcritic
- ```carton exec perlcritic -3 lib/vwjl.pm```
-
-## Run Perltidy
- ```carton exec perltidy lib/vwjl.pm```
-
-## Run the tests
-```carton exec prove -lvr t```
-
-## Update module dependencies
-```carton exec update-cpanfile update```
+Changing to carmel from carton
 
 ## Database
 second attempt by following:
 * https://dev.to/shree_j/how-to-install-and-run-psql-using-docker-41j2
 * ```docker run --name postgresql-container -p 5432:5432 -e POSTGRES_PASSWORD=somePassword -d postgres```
     * restart the DB container with: ```docker restart postgresql-container```
+
+
+## Install dependencies:
+ ```carmel install```
+
+## Run the app:
+ ```DB_RAISEERROR=1 DB_SOURCE="dbi:Pg:dbname=postgres;host=localhost" DB_USERNAME=postgres DB_PASSWORD="somePassword" carmel exec plackup --port 9090 --host 127.0.0.1 -R lib,views bin/app.psgi``` (-R lib,views for reload)
+
+## Access the app via:
+ http://localhost:5000
+
+## Run perlcritic
+ ```carmel exec perlcritic -3 lib/vwjl.pm```
+
+## Run Perltidy
+ ```carmel exec perltidy lib/vwjl.pm```
+
+## Run the tests
+```carmel exec prove -lvr t```
+
+## Update module dependencies
+```carmel exec update-cpanfile update```
+
+
 
 ### Migrations
 All database changes are "roll forward" via files in /db
@@ -65,21 +70,21 @@ Then you can start with docker run as above.
 * ssl stuff: ```apt-get install zlib1g-dev```
 * more ssl: ```apt-get install libssl-dev```
 * cpanm ```apt update; apt install cpanminus```
-* carton ```cpanm Carton```
+* carmel ```cpanm Carmel```
 * clone the repo: ```git clone https://github.com/lancew/vwjl.git```
 * ```cd vwjl```
-* Install modules: ```carton install```
+* Install modules: ```carmel install```
 
 
 ## DO Hacks while building it up
 
 I've hacked up a script to redirect, call it on DO with:
 
-```carton exec plackup bin/redirect.psgi --port 80```
+```carmel exec plackup bin/redirect.psgi --port 80```
 
 Running with SSL on DO:
 
-```DB_RAISEERROR=0 DB_SOURCE="dbi:Pg:dbname=xxxxxxxx;host=xxxxxxxx;port=xxxxx" DB_USERNAME=xxxxxxx DB_PASSWORD="xxxxxxxx" carton exec plackup -R lib,views bin/app.psgi --enable-ssl --ssl-key-file=/etc/letsencrypt/live/www.vwjl.net/privkey.pem --ssl-cert-file=/etc/letsencrypt/live/www.vwjl.net/fullchain.pem --port 443```
+```DB_RAISEERROR=0 DB_SOURCE="dbi:Pg:dbname=xxxxxxxx;host=xxxxxxxx;port=xxxxx" DB_USERNAME=xxxxxxx DB_PASSWORD="xxxxxxxx" carmel exec plackup -R lib,views bin/app.psgi --enable-ssl --ssl-key-file=/etc/letsencrypt/live/www.vwjl.net/privkey.pem --ssl-cert-file=/etc/letsencrypt/live/www.vwjl.net/fullchain.pem --port 443```
 
 
 ## TODO

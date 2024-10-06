@@ -1,3 +1,4 @@
 *.swp
 .tidyall.d
+.carmel
 local
