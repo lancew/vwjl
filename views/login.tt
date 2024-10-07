@@ -7,7 +7,7 @@
               [% IF error %]<h2>[% error %]</h2>[% END %]
               <form method=Post>
                       <input type="text" placeholder="Username" name="user" autofocus>
-                      <input type="text" placeholder="Password" name="password">
+                      <input type="password" placeholder="Password" name="password">
                       <button type="submit">Login</button>
               </form>
 

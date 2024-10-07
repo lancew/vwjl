@@ -19,7 +19,7 @@
                             <li><a href="/logout">Logout</a>
                         <hr>
                  [% ELSE %]
-                       <li> <a href="/login" autofocus>Login</a>
+                       <li> <a href="/login">Login</a>
                        <li> or <a href="/register">Register</a>
                  [% END %]
             </ul>

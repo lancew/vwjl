@@ -147,12 +147,14 @@ sub _actions {
         my $score = "no score";
 
         if ( $roll > 10 ) {
-            if ( $roll > 10 ) { $score = 'wazari' }
+            if ( $roll > 80 ) { $score = 'wazari' }
             if ( $roll > 90 ) { $score = 'ippon' }
 
-            $args{commentary}
-                .= "$attacks attacks with $attack->{waza}, scoring $score\n";
-            $args{scoreboard}{$attacks}{$score}++;
+            if ($score ne 'no score') {
+                $args{commentary}
+                    .= "$attacks attacks with $attack->{waza}, scoring $score\n";
+                $args{scoreboard}{$attacks}{$score}++;
+            }
 
         }
         else {

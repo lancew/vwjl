@@ -194,6 +194,20 @@ sub store_result {
 
     );
 
+    # Increment the winning athlete's wins
+    $self->dbh->do("
+        UPDATE athletes
+        SET wins = wins + 1
+        WHERE username = ?
+    ", undef, $args{winner});
+
+    # Increment the losing athlete's losses
+    $self->dbh->do("
+        UPDATE athletes
+        SET losses = losses + 1
+        WHERE username = ?
+    ", undef, $args{loser});
+
     return 1;
 }
 
